@@ -2896,3 +2896,148 @@ C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Micro
 2016-05-07T17:42:36: Saving group "C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\crispy_forms"
 2016-05-07T17:42:36: End of group "C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\crispy_forms"
 2016-05-07T17:42:37: Deleting 0 files
+
+2016-06-27T13:29:49: Start analysis
+2016-06-27T13:29:49: [WARNING] Library was set explicitly - skipping path detection
+2016-06-27T13:29:49: IncludeModulesFromModulePath = win32com
+2016-06-27T13:29:50: Deleting 0 files
+2016-06-27T13:29:50: astropy.CallDepth = 0
+2016-06-27T13:29:50: matplotlib.CallDepth = 3
+2016-06-27T13:29:50: pandas.CallDepth = 0
+2016-06-27T13:29:50: sympy.CallDepth = 0
+2016-06-27T13:29:50: Start group "C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn" with 44 files
+2016-06-27T13:29:51: Parsing "gunicorn.arbiter" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\arbiter.py")
+2016-06-27T13:29:51: Parsing "gunicorn.argparse_compat" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\argparse_compat.py")
+2016-06-27T13:29:51: Parsing "gunicorn.config" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\config.py")
+2016-06-27T13:29:51: Parsing "gunicorn.debug" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\debug.py")
+2016-06-27T13:29:51: Parsing "gunicorn.errors" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\errors.py")
+2016-06-27T13:29:51: Parsing "gunicorn.glogging" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\glogging.py")
+2016-06-27T13:29:51: Parsing "gunicorn.pidfile" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\pidfile.py")
+2016-06-27T13:29:51: Parsing "gunicorn.reloader" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\reloader.py")
+2016-06-27T13:29:51: Parsing "gunicorn.selectors" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\selectors.py")
+2016-06-27T13:29:51: Parsing "gunicorn.six" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\six.py")
+2016-06-27T13:29:51: Parsing "gunicorn.sock" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\sock.py")
+2016-06-27T13:29:51: Parsing "gunicorn.util" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\util.py")
+2016-06-27T13:29:51: Parsing "gunicorn._compat" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\_compat.py")
+2016-06-27T13:29:51: Parsing "gunicorn" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\__init__.py")
+2016-06-27T13:29:51: Parsing "gunicorn.app.base" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\app\base.py")
+2016-06-27T13:29:51: Parsing "gunicorn.app.djangoapp" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\app\djangoapp.py")
+2016-06-27T13:29:51: Parsing "gunicorn.app.django_wsgi" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\app\django_wsgi.py")
+2016-06-27T13:29:51: Parsing "gunicorn.app.pasterapp" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\app\pasterapp.py")
+2016-06-27T13:29:51: Parsing "gunicorn.app.wsgiapp" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\app\wsgiapp.py")
+2016-06-27T13:29:51: Parsing "gunicorn.app" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\app\__init__.py")
+2016-06-27T13:29:51: Parsing "gunicorn.http.body" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\http\body.py")
+2016-06-27T13:29:51: Parsing "gunicorn.http.errors" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\http\errors.py")
+2016-06-27T13:29:51: Parsing "gunicorn.http.message" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\http\message.py")
+2016-06-27T13:29:51: Parsing "gunicorn.http.parser" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\http\parser.py")
+2016-06-27T13:29:51: Parsing "gunicorn.http.unreader" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\http\unreader.py")
+2016-06-27T13:29:51: Parsing "gunicorn.http.wsgi" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\http\wsgi.py")
+2016-06-27T13:29:51: Parsing "gunicorn.http._sendfile" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\http\_sendfile.py")
+2016-06-27T13:29:51: Parsing "gunicorn.http" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\http\__init__.py")
+2016-06-27T13:29:51: Parsing "gunicorn.instrument.statsd" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\instrument\statsd.py")
+2016-06-27T13:29:51: Parsing "gunicorn.instrument" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\instrument\__init__.py")
+2016-06-27T13:29:51: Parsing "gunicorn.management" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\management\__init__.py")
+2016-06-27T13:29:51: Parsing "gunicorn.management.commands.run_gunicorn" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\management\commands\run_gunicorn.py")
+2016-06-27T13:29:51: Parsing "gunicorn.management.commands" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\management\commands\__init__.py")
+2016-06-27T13:29:51: Parsing "gunicorn.workers.async" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\workers\async.py")
+2016-06-27T13:29:51: Parsing "gunicorn.workers.base" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\workers\base.py")
+2016-06-27T13:29:51: Parsing "gunicorn.workers.gaiohttp" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\workers\gaiohttp.py")
+2016-06-27T13:29:51: Parsing "gunicorn.workers.geventlet" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\workers\geventlet.py")
+2016-06-27T13:29:51: Parsing "gunicorn.workers.ggevent" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\workers\ggevent.py")
+2016-06-27T13:29:51: Parsing "gunicorn.workers.gthread" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\workers\gthread.py")
+2016-06-27T13:29:51: Parsing "gunicorn.workers.gtornado" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\workers\gtornado.py")
+2016-06-27T13:29:51: Parsing "gunicorn.workers.sync" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\workers\sync.py")
+2016-06-27T13:29:51: Parsing "gunicorn.workers.workertmp" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\workers\workertmp.py")
+2016-06-27T13:29:51: Parsing "gunicorn.workers._gaiohttp" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\workers\_gaiohttp.py")
+2016-06-27T13:29:51: [WARNING] File "C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\workers\_gaiohttp.py" contained parse errors
+2016-06-27T13:29:51: (84,23) - (84,27) invalid syntax
+(93,24) - (93,28) invalid syntax
+(121,23) - (121,27) invalid syntax
+(129,15) - (129,19) invalid syntax
+2016-06-27T13:29:51: Parsing "gunicorn.workers" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn\workers\__init__.py")
+2016-06-27T13:29:51: Parsing complete
+2016-06-27T13:29:51: Analyzing "gunicorn.arbiter"
+2016-06-27T13:29:51: Analyzing "gunicorn.argparse_compat"
+2016-06-27T13:29:51: Analyzing "gunicorn.config"
+2016-06-27T13:29:51: Analyzing "gunicorn.debug"
+2016-06-27T13:29:51: Analyzing "gunicorn.errors"
+2016-06-27T13:29:51: Analyzing "gunicorn.glogging"
+2016-06-27T13:29:51: Analyzing "gunicorn.pidfile"
+2016-06-27T13:29:51: Analyzing "gunicorn.reloader"
+2016-06-27T13:29:51: Analyzing "gunicorn.selectors"
+2016-06-27T13:29:51: Analyzing "gunicorn.six"
+2016-06-27T13:29:51: Analyzing "gunicorn.sock"
+2016-06-27T13:29:51: Analyzing "gunicorn.util"
+2016-06-27T13:29:51: Analyzing "gunicorn._compat"
+2016-06-27T13:29:51: Analyzing "gunicorn"
+2016-06-27T13:29:51: Analyzing "gunicorn.app.base"
+2016-06-27T13:29:51: Analyzing "gunicorn.app.djangoapp"
+2016-06-27T13:29:51: Analyzing "gunicorn.app.django_wsgi"
+2016-06-27T13:29:51: Analyzing "gunicorn.app.pasterapp"
+2016-06-27T13:29:51: Analyzing "gunicorn.app.wsgiapp"
+2016-06-27T13:29:51: Analyzing "gunicorn.app"
+2016-06-27T13:29:51: Analyzing "gunicorn.http.body"
+2016-06-27T13:29:51: Analyzing "gunicorn.http.errors"
+2016-06-27T13:29:51: Analyzing "gunicorn.http.message"
+2016-06-27T13:29:51: Analyzing "gunicorn.http.parser"
+2016-06-27T13:29:51: Analyzing "gunicorn.http.unreader"
+2016-06-27T13:29:51: Analyzing "gunicorn.http.wsgi"
+2016-06-27T13:29:51: Analyzing "gunicorn.http._sendfile"
+2016-06-27T13:29:51: Analyzing "gunicorn.http"
+2016-06-27T13:29:51: Analyzing "gunicorn.instrument.statsd"
+2016-06-27T13:29:51: Analyzing "gunicorn.instrument"
+2016-06-27T13:29:51: Analyzing "gunicorn.management"
+2016-06-27T13:29:51: Analyzing "gunicorn.management.commands.run_gunicorn"
+2016-06-27T13:29:51: Analyzing "gunicorn.management.commands"
+2016-06-27T13:29:51: Analyzing "gunicorn.workers.async"
+2016-06-27T13:29:51: Analyzing "gunicorn.workers.base"
+2016-06-27T13:29:51: Analyzing "gunicorn.workers.gaiohttp"
+2016-06-27T13:29:51: Analyzing "gunicorn.workers.geventlet"
+2016-06-27T13:29:51: Analyzing "gunicorn.workers.ggevent"
+2016-06-27T13:29:51: Analyzing "gunicorn.workers.gthread"
+2016-06-27T13:29:51: Analyzing "gunicorn.workers.gtornado"
+2016-06-27T13:29:51: Analyzing "gunicorn.workers.sync"
+2016-06-27T13:29:51: Analyzing "gunicorn.workers.workertmp"
+2016-06-27T13:29:51: Analyzing "gunicorn.workers._gaiohttp"
+2016-06-27T13:29:51: Analyzing "gunicorn.workers"
+2016-06-27T13:29:51: Starting analysis of 44 modules
+2016-06-27T13:29:54: Analysis complete
+2016-06-27T13:29:54: Saving group "C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn"
+2016-06-27T13:29:54: End of group "C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\gunicorn"
+2016-06-27T13:29:54: Start group "C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\whitenoise" with 15 files
+2016-06-27T13:29:54: Parsing "whitenoise.base" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\whitenoise\base.py")
+2016-06-27T13:29:54: Parsing "whitenoise.byte_ranges" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\whitenoise\byte_ranges.py")
+2016-06-27T13:29:54: Parsing "whitenoise.compress" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\whitenoise\compress.py")
+2016-06-27T13:29:54: Parsing "whitenoise.django" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\whitenoise\django.py")
+2016-06-27T13:29:54: Parsing "whitenoise.httpstatus_backport" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\whitenoise\httpstatus_backport.py")
+2016-06-27T13:29:54: Parsing "whitenoise.media_types" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\whitenoise\media_types.py")
+2016-06-27T13:29:54: Parsing "whitenoise.middleware" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\whitenoise\middleware.py")
+2016-06-27T13:29:54: Parsing "whitenoise.static_file" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\whitenoise\static_file.py")
+2016-06-27T13:29:54: Parsing "whitenoise.storage" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\whitenoise\storage.py")
+2016-06-27T13:29:54: Parsing "whitenoise.utils" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\whitenoise\utils.py")
+2016-06-27T13:29:54: Parsing "whitenoise" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\whitenoise\__init__.py")
+2016-06-27T13:29:54: Parsing "whitenoise.runserver_nostatic" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\whitenoise\runserver_nostatic\__init__.py")
+2016-06-27T13:29:54: Parsing "whitenoise.runserver_nostatic.management" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\whitenoise\runserver_nostatic\management\__init__.py")
+2016-06-27T13:29:54: Parsing "whitenoise.runserver_nostatic.management.commands.runserver" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\whitenoise\runserver_nostatic\management\commands\runserver.py")
+2016-06-27T13:29:54: Parsing "whitenoise.runserver_nostatic.management.commands" ("C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\whitenoise\runserver_nostatic\management\commands\__init__.py")
+2016-06-27T13:29:54: Parsing complete
+2016-06-27T13:29:54: Analyzing "whitenoise.base"
+2016-06-27T13:29:54: Analyzing "whitenoise.byte_ranges"
+2016-06-27T13:29:54: Analyzing "whitenoise.compress"
+2016-06-27T13:29:54: Analyzing "whitenoise.django"
+2016-06-27T13:29:54: Analyzing "whitenoise.httpstatus_backport"
+2016-06-27T13:29:54: Analyzing "whitenoise.media_types"
+2016-06-27T13:29:54: Analyzing "whitenoise.middleware"
+2016-06-27T13:29:54: Analyzing "whitenoise.static_file"
+2016-06-27T13:29:54: Analyzing "whitenoise.storage"
+2016-06-27T13:29:54: Analyzing "whitenoise.utils"
+2016-06-27T13:29:54: Analyzing "whitenoise"
+2016-06-27T13:29:54: Analyzing "whitenoise.runserver_nostatic"
+2016-06-27T13:29:54: Analyzing "whitenoise.runserver_nostatic.management"
+2016-06-27T13:29:54: Analyzing "whitenoise.runserver_nostatic.management.commands.runserver"
+2016-06-27T13:29:54: Analyzing "whitenoise.runserver_nostatic.management.commands"
+2016-06-27T13:29:54: Starting analysis of 15 modules
+2016-06-27T13:29:54: Analysis complete
+2016-06-27T13:29:54: Saving group "C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\whitenoise"
+2016-06-27T13:29:54: End of group "C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\env\Lib\site-packages\whitenoise"
+2016-06-27T13:29:56: Deleting 0 files
