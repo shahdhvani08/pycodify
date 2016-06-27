@@ -12,7 +12,7 @@ def home(request):
 
     #val = request.POST.get('name')
     #print val
-    return render(request, '/app/firstapp/home.html', {})
+    return render(request, 'app/firstapp/home.html', {})
     #return render_to_response('firstapp/home.html', RequestContext(request), {})
 
 def login(request):
