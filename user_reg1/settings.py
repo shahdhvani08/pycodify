@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'user_reg1.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-DATABASES = {
+'''DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'user_reg1',
@@ -95,6 +95,17 @@ DATABASES = {
         'PASSWORD': '',
         'HOST': '',
         'PORT': '' ,
+    }
+}'''
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd4rcqil78fri6t',
+        'USER': 'odcpjbhcqueize',
+        'PASSWORD': 'gQvXOR7kyNFvZtIjrnTtm8ZQ4L',
+        'HOST': 'ec2-54-235-208-3.compute-1.amazonaws.com',
+        'PORT': '5432' ,
     }
 }
 
