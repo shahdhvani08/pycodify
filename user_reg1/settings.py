@@ -26,7 +26,7 @@ SECRET_KEY = 'f3767f6d-8757-42e1-99b4-65c80aaeab01'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['test-pycodify.herokuapp.com']
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'pycodify@gmail.com'
 EMAIL_HOST_PASSWORD = 'pycodify1234'
@@ -135,13 +135,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, "static_folder", "our_static")
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static_folder", "static_root")
+#STATIC_ROOT = os.path.join(BASE_DIR, "static_folder", "static_root")
 
-STATICFILES_DIRS = [
+'''STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static_folder", "our_static"),
-]
+]'''
 
 REGISTRATION_OPEN = True                # If True, users can register
 ACCOUNT_ACTIVATION_DAYS = 7     # One-week activation window; you may, of course, use a different value.

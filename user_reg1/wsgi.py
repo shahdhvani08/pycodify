@@ -14,6 +14,7 @@ framework.
 
 """
 import os
+from whitenoise.django import DjangoWhiteNoise
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "user_reg1.settings")
 
@@ -22,7 +23,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "user_reg1.settings")
 # setting points here.
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
-
+application = DjangoWhiteNoise(application)
 # Apply WSGI middleware here.
 # from helloworld.wsgi import HelloWorldApplication
 # application = HelloWorldApplication(application)
