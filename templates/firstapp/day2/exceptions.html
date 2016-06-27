@@ -1,0 +1,109 @@
+﻿{% extends "firstapp/course_base.html" %}
+
+{% block content %}
+
+
+<h1>Exception Handling in Python </h1>
+<br>
+<p><b>Exceptions handling</b> in Python is very similar to Java. The code, which harbours the risk of an exception, is embedded in a <code>try</code> block. But whereas in Java exceptions are caught by catch clauses, we have statements introduced by an "<code>except</code>" keyword in Python. It's possible to "create custom-made" exceptions: With the raise statement it's possible to force a specified exception to occur.</p>
+<p>Let's look at a simple example. Assuming we want to ask the user to enter an integer number. If we use a <code>input()</code>, the input will be a string, which we have to cast into an integer. If the input has not been a valid integer, we will generate (raise) a <code>ValueError</code>. We show this in the following interactive session:</p>
+
+<pre class = "brush:py;">
+>>> n = int(input("Please enter a number: "))
+Please enter a number: 23.5
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: invalid literal for int() with base 10: '23.5'
+</pre>
+
+<p>With the aid of <b>exception handling</b>, we can write robust code for reading an integer from input:</p>
+
+<pre class = "brush:py;">
+while True:
+    try:
+        n = input("Please enter an integer: ")
+        n = int(n)
+        break
+    except ValueError:
+        print("No valid integer! Please try again ...")
+print("Great, you successfully entered an integer!")
+</pre>
+
+<p>It's a loop, which breaks only, if a valid integer has been given. The example script works like this:</p>
+<p>The <code>while</code> loop is entered. The code within the <code>try</code> clause will be executed statement by statement. If no exception occurs during the execution, the execution will reach the break statement and the while loop will be left. If an exception occurs, i.e. in the casting of n, the rest of the try block will be skipped and the except clause will be executed. The raised error, in our case a ValueError, has to match one of the names after except. In our example only one, i.e. "ValueError:". After having printed the text of the print statement, the execution does another loop. It starts with a new input().</p> 
+
+<p>An example usage could look like this:</p>
+<pre class = "brush:py;">
+$ python integer_read.py 
+Please enter an integer: abc
+No valid integer! Please try again ...
+Please enter an integer: 42.0
+No valid integer! Please try again ...
+Please enter an integer: 42
+Great, you successfully entered an integer!
+$
+</pre>
+
+<h3>Clean-up Actions (try ... finally)</h3>
+
+<p>So far the try statement had always been paired with <code>except</code> clauses. But there is another way to use it as well. The <code>try</code> statement can be followed by a <code>finally</code> clause. Finally clauses are called <b>clean-up or termination</b> clauses, because they must be executed under all circumstances, i.e. a "<code>finally</code>" clause is always executed regardless if an exception occurred in a try block or not.</p> 
+<p>A simple example to demonstrate the <code>finally</code> clause:</p>
+
+<pre class = "brush:py;">
+try:
+    x = float(input("Your number: "))
+    inverse = 1.0 / x
+finally:
+    print("There may or may not have been an exception.")
+print("The inverse: ", inverse)
+</pre>
+<p>Let's look at the output of the previous script, if we first input a correct number and after this a string, which is raising an error:</p>
+
+<pre class = "brush:py;">
+Your number: python
+There may or may not have been an exception.
+
+Traceback (most recent call last):
+  File "C:/xampp/htdocs/python_workshop/exception.py", line 2, in <module>
+    x = float(input("Your number: "))
+  File "<string>", line 1, in <module>
+NameError: name 'python' is not defined
+</pre>
+
+<h3>Combining try, except and finally</h3>
+
+<p>"<code>finally</code>" and "<code>except</code>" can be used together for the same <code>try</code> block, as can be seen the following Python example:</p>
+
+<pre class = "brush:py;">
+try:
+    x = float(input("Your number: "))
+    inverse = 1.0 / x
+except ValueError:
+    print("You should have given either an int or a float")
+except ZeroDivisionError:
+    print("Infinity")
+finally:
+</pre>
+
+<p>The output of the previous script,for various values looks like this:</p>
+<pre class = "brush:py;">
+>>> 
+Your number: 1
+There may or may not have been an exception.
+>>> 
+Your number: 0
+Infinity
+There may or may not have been an exception.
+>>> 
+Your number: python
+There may or may not have been an exception.
+
+Traceback (most recent call last):
+  File "C:/xampp/htdocs/python_workshop/finally_try_except.py", line 2, in <module>
+    x = float(input("Your number: "))
+  File "<string>", line 1, in <module>
+NameError: name 'python' is not defined
+>>> 
+</pre>
+
+{% endblock %}

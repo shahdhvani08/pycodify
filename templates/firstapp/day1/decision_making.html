@@ -1,0 +1,182 @@
+﻿{% extends "firstapp/course_base.html" %}
+
+{% block content %}
+<h1>Python Decision Making</h1>
+<br>
+<p><b>Decision making</b> is anticipation of conditions occurring while execution of the program and specifying actions taken according to the conditions.
+Decision structures evaluate multiple expressions which produce TRUE or FALSE as outcome. You need to determine which action to take and which statements to execute if outcome is TRUE or FALSE otherwise.
+Python programming language assumes any <b>non-zero</b> and <b>non-null</b> values as TRUE, and if it is either <b>zero</b> or <b>null</b>, then it is assumed as FALSE value.</p>
+
+<p>Python programming language provides following types of decision making statements.</p>
+
+<table class="table table-striped" style="width:50%">
+  <tr>
+    <th><b>Statement</b></th>
+    <th><b>Description</b></th> 
+  </tr>
+    <tr>
+    <td>if statements</td>
+    <td>An if statement consists of a boolean expression followed by one or more statements.</td> 
+  </tr>
+   <tr>
+    <td>if...else statements</td>
+    <td>An if statement can be followed by an optional else statement, which executes when the boolean expression is FALSE.</td> 
+  </tr>
+   <tr>
+    <td>nested if statements</td>
+    <td>You can use one if or else if statement inside another if or else if statement(s).
+  </tr>
+ </table>
+<h2>Python IF statement</h2>
+<hr>
+<p>The <b>if statement</b> contains a logical expression using which data is compared and a decision is made based on the result of the comparison.<p>
+<b>Syntax:</b>
+<pre class = "brush:py;">
+if condition :
+	indentedStatementBlock
+
+</pre>
+<p>If the condition is true, then do the indented statements. If the condition is not true, then skip the indented statements.</p>
+<p><b>Example:</b></p>
+
+<pre class = "brush:py;">
+#!/usr/bin/python
+
+var1 = 100
+if var1:
+   print "1 - Got a true expression value"
+   print var1
+
+var2 = 0
+if var2:
+   print "2 - Got a true expression value"
+   print var2
+print "Good bye!"
+</pre>
+
+<p>When the above code is executed, it produces the following result −</p>
+<pre class = "brush:py;">
+1 - Got a true expression value
+100
+Good bye!
+</pre>
+
+<h2>Python IF...ELIF...ELSE Statements</h2>
+<hr>
+<p>The general Python if-else syntax is</p>
+
+<pre class = "brush:py;">
+if condition :
+	indentedStatementBlockForTrueCondition
+else:
+	indentedStatementBlockForFalseCondition
+</pre>
+<p>These statement blocks can have any number of statements, and can include about any kind of statement.</p>
+<pre class = "brush:py;">
+ temperature = float(input('What is the temperature? '))
+    if temperature > 70:
+        print('Wear shorts.')
+    else:
+        print('Wear long pants.')
+    print('Get some exercise outside.')
+</pre>
+<p>The middle four lines are an if-else statement. Again it is close to English, though you might say “otherwise” instead of “else” (but else is shorter!). There are two indented blocks: One, like in the simple if statement, comes right after the <code>if</code>heading and is executed when the condition in the if heading is true. In the <code>if-else</code> form this is followed by an <code>else</code>: line, followed by another indented block that is only executed when the original condition is false. In an <code>if-else</code> statement exactly one of two possible indented blocks is executed.</p>
+
+<p>A line is also shown outdented next, about getting exercise. Since it is outdented, it is not a part of the if-else statement: It is always executed in the normal forward flow of statements, after the <code>if-else</code> statement (whichever block is selected).</p>
+<h3>The elif Statement</h3>
+<p>The <code>elif</code> statement allows you to check multiple expressions for TRUE and execute a block of code as soon as one of the conditions evaluates to TRUE.
+Similar to the else, the elif statement is optional. However, unlike else, for which there can be at most one statement, there can be an arbitrary number of elif statements following an if.</p>
+<pre class = "brush:py;">
+syntax
+if expression1:
+   statement(s)
+elif expression2:
+   statement(s)
+elif expression3:
+   statement(s)
+else:
+   statement(s)
+</pre>
+<p>Core Python does not provide switch or case statements as in other languages, but we can use <code>if..elif...statements</code> to simulate switch case as follows −</p>
+<p><b>Example</b></p>
+<pre class = "brush:py;">
+
+#!/usr/bin/python
+
+var = 100
+if var == 200:
+   print "1 - Got a true expression value"
+   print var
+elif var == 150:
+   print "2 - Got a true expression value"
+   print var
+elif var == 100:
+   print "3 - Got a true expression value"
+   print var
+else:
+   print "4 - Got a false expression value"
+   print var
+
+print "Good bye!"
+</pre>
+
+<p>When the above code is executed, it produces the following result −</p>
+<pre class = "brush:py;">
+3 - Got a true expression value
+100
+Good bye!
+</pre>
+<h2>Nested IF statements</h2>
+<hr>
+<p>Often you want to distinguish between more than two distinct cases, but conditions only have two possible results, True or False, so the only direct choice is between two options. As anyone who has played “20 Questions” knows, you can distinguish more cases by further questions. If there are more than two choices, a single test may only reduce the possibilities, but further tests can reduce the possibilities further and further. Since most any kind of statement can be placed in an indented statement block, one choice is a further <code>if</code> statement. For instance consider a function to convert a numerical grade to a letter grade, ‘A’, ‘B’, ‘C’, ‘D’ or ‘F’, where the cutoffs for ‘A’, ‘B’, ‘C’, and ‘D’ are 90, 80, 70, and 60 respectively. One way to write the function would be test for one grade at a time, and resolve all the remaining possibilities inside the next <code>else</code> clause:</p>
+<pre class = "brush:py;">
+score = 70
+    if score >= 90:
+        letter = 'A'
+    else:   # grade must be B, C, D or F
+        if score >= 80:
+            letter = 'B'
+        else:  # grade must be C, D or F
+            if score >= 70:
+                letter = 'C'
+            else:    # grade must D or F
+                if score >= 60:
+                    letter = 'D'
+                else:
+                    letter = 'F'
+    return letter
+</pre>
+<p>This repeatedly increasing indentation with an if statement as the else block can be annoying and distracting. A preferred alternative in this situation, that avoids all this indentation, is to combine each </code>else</code>and <code>if</code> block into an <code>elif</code> block:
+
+score = 70
+    if score >= 90:
+        letter = 'A'
+    elif score >= 80:
+        letter = 'B'
+    elif score >= 70:
+        letter = 'C'
+    elif score >= 60:
+        letter = 'D'
+    else:
+        letter = 'F'
+    return letter
+</pre>
+<p>The most elaborate syntax for an <code>if-elif-else</code> statement is indicated in general below:</p>
+
+<pre class = "brush:py;">
+if condition1 :
+	indentedStatementBlockForTrueCondition1
+elif condition2 :
+	indentedStatementBlockForFirstTrueCondition2
+elif condition3 :
+	indentedStatementBlockForFirstTrueCondition3
+elif condition4 :
+	indentedStatementBlockForFirstTrueCondition4
+else:
+	indentedStatementBlockForEachConditionFalse
+</pre>
+<p>The <code>if</code>, each <code>elif</code>, and the final <code>else</code> line are all aligned. There can be any number of <code>elif</code> lines, each followed by an indented block. (Three happen to be illustrated above.) With this construction exactly one of the indented blocks is executed. It is the one corresponding to the first True condition, or, if all conditions are False, it is the block after the final else line.
+
+<p>Be careful of the strange Python contraction. It is <code>elif</code>, not <code>elseif</code>.</p>
+
+{% endblock %}

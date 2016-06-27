@@ -1,0 +1,376 @@
+﻿{% extends "firstapp/course_base.html" %}
+
+{% block content %}
+
+<h1>Python Object Types: Dictionaries and Tuples</h1>
+<br>
+<h2>Dictionaries</h2>
+<hr>
+<p>Dictionaries are not sequences at all. They are <b>mappings</b>. Mappings are collections of objects but they store objects by key instead of by relative position.</p>
+<p>It is best to think of a dictionary as an unordered set of <b>key: value pairs</b>, with the requirement that the keys are unique (within one dictionary) and must be of an immutable types, such as a Python string, a number, or a tuple. The value can be of any type including collection of types hence it is possible to create nested data structures.</p>
+
+<p>When we add a key to a dictionary, we must also add a value for that key. Python dictionaries are optimized for retrieving the value when we know the key, but not the other way around. They are very similar to C++'s unordered maps. Dictionaries provide very fast key lookup.</p>
+
+<p>So, mappings don't maintain any reliable left-to-right order. They simply map keys to their associated values. Dictionaries are the only mapping type in Python's core objects set. They are mutable, so they may changed in-place and can grow and shrink on demand.</p>
+
+<p>Dictionaries are coded in <b>curly braces</b> when written as literals. They consist of a series of key: value pairs. Dictionaries are useful when we need to associate a set of values with keys such as to describe the properties of something. For example:</p>
+
+<pre class = "brush:py;">
+>>> D = {'Composer': 'Brahms', 'period': 'Romantic', 'Symphony': 1}
+</pre>
+<p>We can <b>index</b> this dictionary by key to fetch and change the keys' associated values. The dictionary index operation uses the same syntax as that used for sequences, but the item in the square brackets is a <b>key not a relative position</b>:</p>
+
+<pre class = "brush:py;">
+>>> # Fetch value of key 'Composer'
+>>> D['Composer']
+'Brahms'
+>>> 
+>>> # Add 3 to 'Symphony' value
+>>> D['Symphony'] += 3
+>>> D
+{'period': 'Romantic', 'Symphony': 4, 'Composer': 'Brahms'}
+>>> 
+</pre>
+<p>We can build the dictionary in different way starting with an empty dictionary and fills it out one key at a time.</p>
+
+<pre class = "brush:py;">
+>>> 
+>>> D = {}
+>>> D['Composer'] = 'Beethoven'
+>>> D['Period'] = 'Classic'
+>>> D['Symphony'] = 9
+>>> 
+>>> D
+{'Symphony': 9, 'Period': 'Classic', 'Composer': 'Beethoven'}
+>>> 
+>>> print (D['Composer'])
+Beethoven
+>>>
+</pre>
+
+
+
+<h3>Nesting</h3>
+
+<p>Let's make the previous example more complicated. We need a first name besides a last name and we want to store several pieces not just the <code>symphony</code>:
+
+<pre class = "brush:py;">
+>>> 
+>>> D = {'Composer': {'first': 'Johannes', 'last' : 'Brahms'},
+         'Period': 'Romantic',
+         'Piece' : ['Piano Concerto No. 1', 'Piano Concerto No. 2',
+		    'Symphony No. 1', 'Symphony No. 2',
+		    'Violin Concerto in D Major',
+		    'Hungarian Dances'] }
+>>> D
+{'Piece': ['Piano Concerto No. 1', 'Piano Concerto No. 2', 
+'Symphony No. 1', 'Symphony No. 2', 'Violin Concerto in D Major', 
+'Hungarian Dances'], 'Period': 'Romantic', 'Composer': {'last': 
+'Brahms', 'first': 'Johannes'}}
+>>> 
+</pre>
+<p>Here we have a three-key dictionary at the top: '<code>Composer</code>', '<code>Period</code>', and '<code>Piece</code>'. But the values have become more complicated: a nested dictionary for the name to support multiple parts, and a nested for the piece to list multiple pieces. We can access the components of this structure:</p>
+
+<pre class = "brush:py;">
+>>> 
+>>> # 'Composer' is a nested dictionary
+>>> D['Composer']
+{'last': 'Brahms', 'first': 'Johannes'}
+>>> 
+>>> # Index the nested dictionary
+>>> D['Composer']['last']
+'Brahms'
+>>> 
+>>> # Piece is a nested list
+>>> D['Piece']
+['Piano Concerto No. 1', 'Piano Concerto No. 2', 'Symphony No. 1',
+ 'Symphony No. 2', 'Violin Concerto in D Major', 'Hungarian Dances']
+>>> 
+>>> # Index the nested list
+>>> D['Piece'][-1]
+'Hungarian Dances'
+>>> 
+>>> # Expand the Piece list
+>>> D['Piece'].append('Variations on a Theme by Paganini')
+>>> D
+{'Piece': ['Piano Concerto No. 1', 'Piano Concerto No. 2', 
+'Symphony No. 1', 'Symphony No. 2', 'Violin Concerto in D Major',
+ 'Hungarian Dances', 'Variations on a Theme by Paganini'], 'Period': 
+'Romantic', 'Composer': {'last': 'Brahms', 'first': 'Johannes'}}
+>>> 
+</pre>
+<p>Notice how the last operation here expands the nested piece list. Because the piece list is a separate block of memory from the dictionary that contains it, it can grow and shrink freely.<p>
+
+<p>Let's do some <b>clean up</b>. In <code>Python</code>, when we lose the last reference to object by assigning its variable to something else. For example, all of the memory space occupied by that object's structure is automatically cleaned up for us:
+
+<pre class = "brush:py;">
+>>> 
+>>> D = 0
+>>> D
+0
+>>> 
+</pre>
+<p>Python has <b>garbage collection</b> feature. So, the space is reclaimed immediately as soon as the last reference to an object is removed.</p>
+
+<h3>Creating Nested dictionary</h3>
+
+
+<p>We want to construct the following dictionary:</p>
+
+<pre class = "brush:py;">
+{
+ 'a':
+     {
+        '1': {'count': 0, 'results': [{'grade': 'ok', 'rc': 0}, {'grade': 'warning', 'rc': 1}]},
+        '2': {'count': 0, 'results': [{'grade': 'ok', 'rc': 0}, {'grade': 'warning', 'rc': 1}]},
+        '3': {'count': 0, 'results': [{'grade': 'ok', 'rc': 0}, {'grade': 'warning', 'rc': 1}]},
+        '4': {'count': 0, 'results': [{'grade': 'ok', 'rc': 0}, {'grade': 'warning', 'rc': 1}]},
+        '5': {'count': 0, 'results': [{'grade': 'ok', 'rc': 0}, {'grade': 'warning', 'rc': 1}]}
+     },
+ 'c':
+     {
+        '1': {'count': 0, 'results': [{'grade': 'ok', 'rc': 0}, {'grade': 'warning', 'rc': 1}]},
+        '2': {'count': 0, 'results': [{'grade': 'ok', 'rc': 0}, {'grade': 'warning', 'rc': 1}]},
+        '3': {'count': 0, 'results': [{'grade': 'ok', 'rc': 0}, {'grade': 'warning', 'rc': 1}]},
+        '4': {'count': 0, 'results': [{'grade': 'ok', 'rc': 0}, {'grade': 'warning', 'rc': 1}]},
+        '5': {'count': 0, 'results': [{'grade': 'ok', 'rc': 0}, {'grade': 'warning', 'rc': 1}]}
+     },
+ 'b':
+     {
+        '1': {'count': 0, 'results': [{'grade': 'ok', 'rc': 0}, {'grade': 'warning', 'rc': 1}]},
+        '2': {'count': 0, 'results': [{'grade': 'ok', 'rc': 0}, {'grade': 'warning', 'rc': 1}]},
+        '3': {'count': 0, 'results': [{'grade': 'ok', 'rc': 0}, {'grade': 'warning', 'rc': 1}]},
+        '4': {'count': 0, 'results': [{'grade': 'ok', 'rc': 0}, {'grade': 'warning', 'rc': 1}]},
+        '5': {'count': 0, 'results': [{'grade': 'ok', 'rc': 0}, {'grade': 'warning', 'rc': 1}]}
+    }
+}
+</pre>
+
+<p>The code looks like this:</p>
+
+<pre class = "brush:py;">
+L1 = ['a','b','c']
+L2 = ['1','2','3','4','5']
+
+res_list = [
+    {'grade': 'ok', 'rc': 0},
+    {'grade': 'warning', 'rc': 1}
+]
+
+sub_dict = {
+    'count': 0,
+    'results': res_list
+}
+
+my_dict = {}
+for l1 in L1:
+    my_dict[l1] = {}
+
+for l1 in L1:
+    for l2 in L2:
+        my_dict[l1][l2] = sub_dict
+
+print my_dict
+</pre>
+
+<h3>Sorting Keys using for Loops</h3>
+<p>Dictionary only support accessing items by <code>key</code>. They also support type-specific operation with method calls. Since dictionaries are not sequences, they don't maintain any dependable left-to-right order. As we've seen in the previous example, if we print the dictionary back, its keys may come back in a different order than how we typed them.</p>
+
+<pre class = "brush:py;">
+>>> 
+>>> D = {'a': 97, 'b': 98, 'c': 99}
+>>> D
+{'a': 97, 'c': 99, 'b': 98}
+>>> 
+</pre>
+<p>What should we do if we want to impose an ordering on a dictionary's items?. One common solution is to grab a list of keys with the dictionary keys method, and sort that with the list sort method. Then, step through the result using for loop:</p>
+
+<pre class = "brush:py;">
+>>> 
+>>> # Unordered keys list
+>>> sortKeys = list(D.keys())
+>>> sortKeys
+['a', 'c', 'b']
+>>> # Sorted keys list
+>>> sortKeys.sort()
+>>> sortKeys
+['a', 'b', 'c']
+>>> 
+>>> # Iterate through sorted keys
+>>> for k in sortKeys:
+	print (k, '=>', D[k])
+
+a => 97
+b => 98
+c => 99
+>>>
+</pre>
+<p>This is a three-step process, though. We can do it with built-in <code>sorted()</code> in one step:</p>
+
+<pre class = "brush:py;">
+>>> 
+>>> D
+{'a': 97, 'c': 99, 'b': 98}
+>>> for k in sorted(D):
+	print (k, '=>', D[k])
+
+a => 97
+b => 98
+c => 99
+>>> 
+</pre>
+<p>The <code>for</code> loop is a simple and efficient way to step through all the items in a sequence and run a block of code for each item in turn.</p>
+<h3>Getting key and value pairs separately:</h3>
+<p>Consider a dictionary 'tel' with following key - value pairs:</p>
+
+<pre class = "brush:py;">
+>>> tel = {'jack': 4098, 'sape': 4139}
+>>> tel['guido'] = 4127        // inserting key value pair in dictionary 
+>>> tel
+{'sape': 4139, 'guido': 4127, 'jack': 4098}
+>>> tel['jack']
+4098
+>>> del tel['sape']     // deleting key-value pair
+>>> tel['irv'] = 4127  
+>>> tel
+{'guido': 4127, 'irv': 4127, 'jack': 4098}
+>>> tel.keys()
+['guido', 'irv', 'jack']
+>>> 'guido' in tel
+True
+ 
+>>> for key, value in tel.iteritems(): // getting key and value pairs separately
+			print key
+			
+// getting key from the given value:
+>>> mydict = {'george':16,'amber':19}
+>>> print(list(mydict.keys())[list(mydict.values()).index(16)])
+George
+
+// deleting key-value pair from the given values:
+del mydict[list(mydict.keys())[list(mydict.values()).index(a)]]
+>>> print mydict
+{'amber': 19}
+</pre>
+
+<h2>Tuples</h2>
+<hr>
+<p>The <code>tuple</code> object ( reads like toople or tuhple) is <b>immutable</b> list. It is an ordered sequence of zero or more object references. Tuples are coded in parentheses instead of square brackets and they support arbitrary types, arbitrary nesting, and the usual sequence operations such as <code>len()</code> as well as the same <code>slicing</code> syntax.</p>
+
+A tuple is much like a list except that it is immutable (unchangeable) once created. Since tuples are immutable, we cannot replace or delete any of items. So, if we want to modify an ordered sequence, we need to use a list instead of a tuple, or if we already have a tuple but want to modify it, all we need is to just convert it to a list, and then apply the changes we want to make.
+
+<pre class = "brush:py;">
+>>> empty = ()
+>>> type(empty)
+<class 'tuple'>
+>>> t = ("1")
+>>> type(t)
+<class 'str'>
+>>> t = ("1",)
+>>> type(t)
+<class 'tuple'>
+</pre>
+<p>Above example shows how to construct tuples. Note that to create a one item tuple, we should use a comma to distinguish it from an expression with <code>()</code>.</p>
+
+<pre class = "brush:py;">
+>>> 
+>>> # 4-tiem tuple
+>>> T = (1, 2, 3, 4)
+>>> len(T)
+4
+>>> T + (5, 6)
+(1, 2, 3, 4, 5, 6)
+>>> 
+>>> # Indexing, slicing etc.
+>>> T
+(1, 2, 3, 4)
+>>> T[1:]
+(2, 3, 4)
+>>> T[0:]
+(1, 2, 3, 4)
+>>> T[:-1]
+(1, 2, 3)
+>>> 
+</pre>
+<p>Tuples have two type-specific callable methods:</p>
+
+<pre class = "brush:py;">
+>>> T = ('a','b','c','d','e','f','b','c','b')
+>>> # Tuple methods: 'f' appears at offset 5
+>>> T.index('f')
+5
+>>> # 'b' appears three times
+>>> T.count('b')
+3
+</pre>
+<p>The primary distinction for tuples is that they cannot be changed once created. That is, they are immutable sequences:</p>
+
+<pre class = "brush:py;">
+>>> # Tuples are immutable
+>>> T[0] = 'A'
+Traceback (most recent call last):
+  File "", line 1, in 
+    T[0] = 'A'
+TypeError: 'tuple' object does not support item assignment
+>>> 
+</pre>
+<p>Like <code>lists</code> and <code>dictionaries</code>, <code>tuples</code> support mixed types and nesting, but they don't grow and shrink because they are immutable:</p>
+
+<pre class = "brush:py;">
+>>> 
+>>> T =(3, 'mixed', ['A', 3, 2])
+>>> T[1]
+'mixed'
+>>> T[2][0]
+'A'
+>>> T.append(44)
+Traceback (most recent call last):
+  File "", line 1, in 
+    T.append(44)
+AttributeError: 'tuple' object has no attribute 'append'
+>>> 
+</pre>
+<h3>List and Tuples comparison</h3>
+
+<pre class = "brush:py;">
+t = ('12', '23', 'hello')
+>>> print t
+('12', '23', 'hello')
+>>> print t[0]
+12
+>>> u = t, ('1', '2')
+>>> print u
+(('12', '23', 'hello'), ('1', '2'))
+>>> print u[0]
+('12', '23', 'hello')
+>>> print u[0][0]
+12
+>>>
+</pre>
+
+<h3>Mutable objects within tuple</h3>
+
+<pre class = "brush:py;">
+a = [‘R’, ‘G’, ‘B’, ‘A’]
+x, y = u
+>>> print x, y
+('12', '23', 'hello') ('1', '2')
+>>> q = (a, t)
+>>> print q
+(['R', 'D', 'B', 'A'], ('12', '23', 'hello'))
+>>> q[1][1] = 'Z'    /// Error
+>>>
+</pre>
+<p>This shows that a tuple can hold a mutable object i.e List and an immutable object i.e Tuple.
+Below code shows how we can append a list within a tuple:</p>
+
+<pre class = "brush:py;">
+>>> c, d = q
+>>> print c, d
+['R', 'D', 'B', 'A'] ('12', '23', 'hello')
+>>> c[1] = 'Z'
+>>> print c
+['R', 'Z', 'B', 'A']
+</pre>
+
+{% endblock %}

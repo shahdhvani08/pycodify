@@ -1,0 +1,434 @@
+﻿{% extends "firstapp/course_base.html" %}
+
+{% block content %}
+
+<h1>Objects</h1>
+<br>
+<p>In Python data takes the form of <code>objects</code> either built-in objects that Python provides, or objects we create using Python. Because objects are the most fundamental notion in Python programming, we'll start with built-in object types.</p>
+
+<table class="table table-striped" style="width:50%">
+  <tr>
+    <th><b>Object Type</b></th>
+    <th><b>Example literals/creation</b></th> 
+  </tr>
+  <tr>
+    <td>Numbers</td>
+    <td>1234, 3.1415, 3+4j, Decimal, Fraction</td> 
+  </tr>
+   <tr>
+    <td>Strings</td>
+    <td>'python', "Jupiter's", b'a\x01c'</td> 
+  </tr>
+  <tr>
+    <td>Lists</td>
+    <td>[1, [2, 'three'], 4]</td> 
+  </tr>
+   <tr>
+    <td>Dictionaries</td>
+    <td>{'Apple': 'iPhone', 'Google': 'Android'}</td> 
+  </tr>
+ <tr>
+    <td>Tuples</td>
+    <td>(1, 'php', 3, 'Y')</td> 
+  </tr>	
+<tr>
+    <td>Files</td>
+    <td>myFile = open('python', 'r')</td> 
+  </tr>	
+  <tr>
+    <td>Sets</td>
+    <td>set('xyz'), {'x', 'y', 'z'}</td> 
+  </tr>	
+  <tr>
+    <td>Program unit types</td>
+    <td>Functions, modules, classes</td> 
+  </tr>	
+</table>	
+
+<p>There are no type declarations in Python. The syntax of the expressions we run determines the types of object we create and use. In Python, every value has a datatype, but we don't need to declare the datatype of variables. How does that work? Based on each variable's original assignment, Python figures out what type it is and keeps tracks of that internally.</p>
+	
+<p>Of course, there are more types than those in the table above. Everything is an object in Python, so there are types like module, function, class, method, file, and even compiled code.</p>	
+
+ <p>Once we create an object, we bind its operation set for all time. We can perform only string operations on a string and list operations on a list. Python is <code>dynamically typed</code>, however, it is also <code>strongly typed</code>, i.e., we can perform on an object only operations that are valid for its type.</p>
+ <p>So everything in Python is an object. Strings are objects. Lists are objects. Functions are objects. Classes are objects. Class instances are objects. Even modules are objects.</p>
+ 
+ <h2>Using Python as a Calculator</h2>
+ <hr>
+ <p>Let’s try some simple Python commands. Start the interpreter and wait for the primary prompt,<code>>>></code>.</p>
+ <h3>Numbers</h3>
+ <p>The interpreter acts as a simple calculator: you can type an expression at it and it will write the value. Expression syntax is straightforward: the operators <code>+</code>, <code>-</code>, <code>*</code> and <code>/</code> work just like in most other languages (for example, Pascal or C); parentheses (<code>()</code>) can be used for grouping. For example:</p>
+ <pre class="brush: py;">
+	>>>
+	>>> 2 + 2
+	4
+	>>> 50 - 5*6
+	20
+	>>> (50 - 5*6) / 4
+	5.0
+	>>> 8 / 5    # division always returns a floating point number
+	1.6
+	>>>
+	</pre>
+<p>The integer numbers (e.g. <code>2</code>, <code>4</code>,<code>20</code>) have type <code>int</code>, the ones with a fractional part (e.g. <code>5.0</code>, <code>1.6</code>) have type <code>float</code>.</p>
+ <p>Division (<code>/</code>) always returns a float. To do <code>floor division</code> and get an integer result (discarding any fractional result) you can use the <code>//</code> operator; to calculate the remainder you can use <code>%</code>:</p>
+ <pre class = "brush: py;">
+	>>>
+	>>> 17 / 3  # classic division returns a float
+	5.666666666666667
+	>>>
+	>>> 17 // 3  # floor division discards the fractional part
+	5
+	>>> 17 % 3  # the % operator returns the remainder of the division
+	2
+	>>> 5 * 3 + 2  # result * divisor + remainder
+	17
+	>>>
+</pre>
+
+<p>With Python, it is possible to use the <code>**</code> operator to calculate powers:</p>
+<pre class = "brush:py;">
+>>> 5 ** 2  # 5 squared
+25
+>>> 2 ** 7  # 2 to the power of 7
+128
+>>>
+</pre>
+<p>The equal sign (<code>=</code>) is used to assign a value to a variable. Afterwards, no result is displayed before the next interactive prompt:
+
+>>>
+>>> width = 20
+>>> height = 5 * 9
+>>> width * height
+900
+>>>
+</pre>
+<p>If a variable is not “defined” (assigned a value), trying to use it will give you an error:</p>
+<pre class = "brush:py;">
+>>>
+>>> n  # try to access an undefined variable
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'n' is not defined
+>>>
+</pre>
+There is full support for floating point; operators with mixed type operands convert the integer operand to floating point:
+
+<pre class = "brush:py;">
+>>>
+>>> 3 * 3.75 / 1.5
+7.5
+>>> 7.0 / 2
+3.5
+>>>
+</pre>
+<p>In interactive mode, the last printed expression is assigned to the variable <code>_</code>. This means that when you are using Python as a desk calculator, it is somewhat easier to continue calculations, for example:</p>
+
+<pre class = "brush:py;">
+>>>
+>>> tax = 12.5 / 100
+>>> price = 100.50
+>>> price * tax
+12.5625
+>>> price + _
+113.0625
+>>> round(_, 2)
+113.06
+>>>
+</pre>
+<p>This variable should be treated as read-only by the user. Don’t explicitly assign a value to it — you would create an independent local variable with the same name masking the built-in variable with its magic behavior.</p>
+
+<p>In addition to int and float, Python supports other types of numbers, such as <code>Decimal</code> and <code>Fraction</code>. Python also has built-in support for <code>complex numbers</code>, and uses the <code>j</code> or <code>J</code> suffix to indicate the imaginary part (e.g. <code>3+5j</code>).</p.
+<p>There are useful numeric <code>modules</code> that ship with Python:</p>
+<pre class = "brush:py;">
+>>> 
+>>> import math
+>>> math.pi
+3.141592653589793
+>>> math.sqrt(1000)
+31.622776601683793
+>>> 
+>>> 
+>>> import random
+>>> random.random()
+0.4245390260050892
+>>> random.choice([1,2,3,4,5])
+3
+>>> 
+</pre>
+<p>The <code>math</code> module contains advanced numeric tools as functions, while the <code>random</code> module performs random number generation and random selections.</p>
+<h3>Python Strings - Sequence Operations</h3>
+<p>A sequence is an ordered collection of objects. Sequences maintain a left-to-right order among the items. Their items are stored and fetched by their relative position. Actually, strings are sequences of one-character strings. Other types of sequences include lists and tuples.</p>
+<p>As sequences, strings support operations that assume a positional ordering among items. We can verify its length with the built-in <code>len</code> function and fetch its components with indexing expressions. Characters in a string can be accessed using the standard <code>[ ]</code> syntax, and like Java and C++, Python uses zero-based indexing</p>
+<pre class = "brush:py;">
+>>> S = 'Picasso'
+>>> len(S)
+7
+>>> S[0]
+'P'
+>>> S[1]
+'i'
+>>> 
+</pre>
+<p>We can index backward, from the end. Positive indexes count from the left, and negative indexes count back from the right:</p>
+<pre class = "brush:py;">
+>>> S[-1]
+'o'
+>>> S[-2]
+'s'
+>>> S[len(S)-1]
+'o'
+>>> 
+</pre>
+<p>Actually, a negative index is simply added to the string's size.</p>
+<p>Sequences also support a more general form of indexing known as <b>slicing</b>. It is a way to extract an entire section (slice) in a single step:</p>
+
+<pre class = "brush:py;">
+>>> S
+'Picasso'
+>>> S[1:4]
+'ica'
+>>> 
+</pre>
+
+<p>The general form,<code>X[I:J]</code>, means <b>give me everything in X from offset I up to but not including offset J</b>. The result is returned in a new object. The second of the operations gives us all the characters in string <b>S</b> from offsets 1 through 3 (which is 4-1) as a new string. The effect is to slice or <b>parse</b> out the two characters in the middle.</p>
+<p>In a slice, the left bound defaults to zero, and the right bound defaults to the length of the sequence being sliced. This leads to some common usage variations</p>
+
+<pre class = "brush:py;">
+>>> 
+>>> S[1:]
+'icasso'
+>>> # Everything past the first(1:len(S))
+>>> S[1:]
+'icasso'
+>>> # S itself hasn't changed
+>>> S
+'Picasso'
+>>> # Everything but the last
+>>> S[0:6]
+'Picass'
+>>> # Same as S[0:6]
+>>> S[:6]
+'Picass'
+>>> # Everything but the last again, but simpler (0:-1)
+>>> S[:-1]
+'Picass'
+>>> # All of S as a top-level copy(0:len(S))
+>>> S[:]
+'Picasso'
+>>> 
+</pre>
+
+<p>As sequences, strings also support concatenation with the plus sign by joining two strings into a new string and repetition by making a new string by repeating another:</p>
+
+<pre class = "brush:py;">
+>>> S
+'Picasso'
+>>> S + "'s painting"
+"Picasso's painting"
+>>> # S is not changed
+>>> S
+'Picasso'
+>>> # Repetition
+>>> S * 3
+'PicassoPicassoPicasso'
+>>> 
+</pre>
+
+<h3>Python Strings - Immutability</h3>
+<p>Every string operation produces a new string as its result. This is because strings are <b>immutable</b> in Python. They cannot be changed in-place after they are created. For instance, we can't change a string by assigning to one of its positions, but we can always build a new one and assign it to the same name. Because Python cleans up old objects as we go, this isn't as inefficient as it may sound:</p>
+<pre class = "brush:py;">
+>>> 
+>>> S
+'Picasso'
+>>> 
+>>> # Immutable objects cannot be changed
+>>> S[0]='X'
+Traceback (most recent call last):
+  File "", line 1, in 
+    S[0]='X'
+TypeError: 'str' object does not support item assignment
+>>> #
+>>> # But we can run expressions to make new objects
+>>> S = 'X' + S[1:]
+>>> S
+'Xicasso'
+>>> 
+</pre>
+<p>Every object in Python is classified as either <b>immutable</b> or not. In terms of the core types, <code>numbers</code>, <code>strings</code>, and <code>tuples</code> are <b>immutable</b>; <code>lists</code> and <code>dictionaries</code> are not. Among other things, <b>immutability</b> can be used to guarantee that an object remains constant throughout our program.</p.
+
+<p>Unlike Java, the '<code>+</code>' does not automatically convert numbers or other types to string form. The <code>str()</code> function converts values to a string form so they can be combined with other strings.
+<pre class = "brush:py;">
+>>> 
+>>> pi = 3.14
+>>> text = 'The value of pi is ' + pi      ## NO, does not work
+>>> text = 'The value of pi is '  + str(pi)  ## yes
+</pre>
+
+<h3>Python Strings - Type-Specific Methods</h3>
+<p>The string <code>find</code> method is the basic substring <b>search</b> operation, and the string <code>replace</code> method performs global <b>searches</b> and <b>replacements</b>:</p>
+
+<pre class = "brush:py;">
+>>> S = 'Picasso'
+>>> S
+'Picasso'
+>>> 
+>>> # Find the offset of a substring
+>>> S.find('ss')
+4
+>>> S
+'Picasso'
+>>> # Replace occurrences of a substring with another
+>>> S.replace('ss','tt')
+'Picatto'
+>>> S
+'Picasso'
+>>>
+</pre> 
+<p>Despite the names of these string methods, we are not changing the original strings here, but creating strings as the results since string are immutable. String methods are the first line of text-processing tools in Python. Other methods split a <b>string</b> into <b>substrings</b> on a delimiter, perform case conversions, test the content of the string, and strip whitespace characters off the ends of the string:</p>
+
+<pre class = "brush:py;">
+>>> 
+>>> line ='aaa,bbb,ccccc,dd'
+>>> # Split on a delimiter into a list of substrings
+>>> line.split(',')
+['aaa', 'bbb', 'ccccc', 'dd']
+>>> 
+>>> 
+>>> S ='Picasso'
+>>> 
+>>> # Upper- and lower case convedrsion
+>>> S.upper()
+'PICASSO'
+>>> # Content tests: isalpha, isdigit, etc.
+>>> S.isalpha()
+True
+>>> 
+>>> line = 'aaa,bbb,ccccc,dd\n'
+>>> # Remove whitespace characters on the right side
+>>> line = line.rstrip()
+>>> line
+'aaa,bbb,ccccc,dd'
+>>> 
+</pre>
+
+<p>Strings also support an advance substitution known as <b>formatting</b>, available as both an expression and a string method call:</p>
+
+<pre class = "brush:py;">
+>>> 
+>>> # Formatting expression
+>>> '%s, Spain, and %s' % ('Picasso','Painting!')
+'Picasso, Spain, and Painting!'
+>>> # Formatting method
+>>> '{0}, Spain, and {1}'.format('Pacasso', 'Painting!')
+'Pacasso, Spain, and Painting!'
+>>> 
+</pre>
+
+<h3>String Methods</h3>
+
+Here are some of the most common string methods. A method is like a function, but it runs "on" an object. If the variable s is a string, then the code <code>s.lower()</code> runs the <code>lower()</code> method on that string object and returns the result. Here are some of the most common string methods:
+<ul>
+<li>s.lower(), s.upper() -- returns the lowercase or uppercase version of the string</li>
+<li>s.strip() -- returns a string with whitespace removed from the start and end</li>
+<li>s.isalpha()/s.isdigit()/s.isspace()... -- tests if all the string chars are in the various character classes</li>
+<li>s.startswith('other'), s.endswith('other') -- tests if the string starts or ends with the given other string</li>
+<li>s.find('other') -- searches for the given other string (not a regular expression) within s, and returns the first index where it begins or -1 if not found</li>
+<li>s.replace('old', 'new') -- returns a string where all occurrences of 'old' have been replaced by 'new'</li>
+<li>s.split('delim') -- returns a list of substrings separated by the given delimiter. The delimiter is not a regular expression, it's just text. 'aaa,bbb,ccc'.split(',') -> ['aaa', 'bbb', 'ccc']. As a convenient special case s.split() (with no arguments) splits on all whitespace chars.</li>
+<li>s.join(list) -- opposite of split(), joins the elements in the given list together using the string as the delimiter. e.g. '---'.join(['aaa', 'bbb', 'ccc']) -> aaa---bbb---ccc</li>
+</ul>
+
+<p>A google search for "python str" should lead you to the official <a href = "https://docs.python.org/3/library/stdtypes.html#string-methods">python.org string methods</a> which lists all the str methods.</p>
+
+<h3>Python Lists</h3>
+<p>Python knows a number of compound data types, used to group together other values. The most versatile is the <code>list</code>, which can be written as a list of comma-separated values (items) between square brackets. Lists might contain items of different types, but usually the items all have the same type.</p>
+
+<pre class = "brush:py;">
+>>>
+>>> squares = [1, 4, 9, 16, 25]
+>>> squares
+[1, 4, 9, 16, 25]
+>>>
+</pre>
+<p>Like strings (and all other built-in sequence type), lists can be <b>indexed</b> and <b>sliced</b>:</p>
+
+<pre class = "brush:py;">
+>>>
+>>> squares[0]  # indexing returns the item
+1
+>>> squares[-1]
+25
+>>> squares[-3:]  # slicing returns a new list
+[9, 16, 25]
+</pre>
+<p>All <b>slice operations</b> return a new list containing the requested elements. This means that the following slice returns a new (shallow) copy of the <code>list</code>:</p>
+
+<pre class = "brush:py;">
+>>>
+>>> squares[:]
+[1, 4, 9, 16, 25]
+>>>
+</pre>
+
+<p>Lists also support operations like <b>concatenation</b>:
+
+<pre class = "brush:py;">
+>>>
+>>> squares + [36, 49, 64, 81, 100]
+[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+>>>
+</pre>
+<p>Unlike <code>strings</code>, which are <b>immutable</b>, <code>lists</code> are a <b>mutable,/b> type, i.e. it is possible to change their content:</p>
+
+<pre class = "brush:py;">
+>>>
+>>> cubes = [1, 8, 27, 65, 125]  # something's wrong here
+>>> 4 ** 3  # the cube of 4 is 64, not 65!
+64
+>>> cubes[3] = 64  # replace the wrong value
+>>> cubes
+[1, 8, 27, 64, 125]
+>>>
+</pre>
+<p>You can also add new items at the end of the <code>list</code>, by using the <code>append()</code> method:</p>
+
+<pre class = "brush:py;">
+>>>
+>>> cubes.append(216)  # add the cube of 6
+>>> cubes.append(7 ** 3)  # and the cube of 7
+>>> cubes
+[1, 8, 27, 64, 125, 216, 343]
+>>>
+</pre>
+<p>Assignment to slices is also possible, and this can even change the size of the list or clear it entirely:</p>
+
+<pre class = "brush:py;">
+>>>
+>>> letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+>>> letters
+['a', 'b', 'c', 'd', 'e', 'f', 'g']
+>>> # replace some values
+>>> letters[2:5] = ['C', 'D', 'E']
+>>> letters
+['a', 'b', 'C', 'D', 'E', 'f', 'g']
+>>> # now remove them
+>>> letters[2:5] = []
+>>> letters
+['a', 'b', 'f', 'g']
+>>> # clear the list by replacing all the elements with an empty list
+>>> letters[:] = []
+>>> letters
+[]
+>>>
+</pre>
+<p>The built-in function <code>len()</code> also applies to <code>lists</code>:
+
+<pre class = "brush:py;">
+>>>
+>>> letters = ['a', 'b', 'c', 'd']
+>>> len(letters)
+4
+>>>
+</pre>
+
+{% endblock %}

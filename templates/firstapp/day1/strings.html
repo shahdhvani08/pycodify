@@ -1,0 +1,227 @@
+﻿{% extends "firstapp/course_base.html" %}
+
+{% block content %}
+<h1>Python Object Types - String</h1>
+<br>
+<p>Good news is that Python 3.x doesn't have a special Unicode string type/class. Every string is a <code>Unicode string</code>.</p>
+
+<h2>String Literals</h2>
+<hr>
+<p>Python strings are fairly easy to use. But there are so many ways to write them in our code:</p>
+
+<pre class = "brush:py;">
+>>> # Single quotes
+>>> print('P"casso')
+P"casso
+
+>>> # Double quotes
+>>> print("P'casso")
+P'casso
+
+>>> # Tripple quotes
+>>> print('''...Picasso...''')
+...Picasso...
+
+>>> # Escape sequences
+>>> print("P\ti\nca\Osso")
+P	i
+ca\Osso
+
+>>> #Raw strings
+>>> print(r"C:\myscript.py")
+C:\myscript.py
+
+>>> # Byte strings
+>>> print(b'Picas\x01so')
+b'Picas\x01so'
+>>> type(b'Picas\x01so')
+<class 'bytes'>
+>>> type('normal_string')
+
+
+>>> # Unicode strings
+>>> S = 'A\u00c4B\U000000e8C'
+>>> S
+'A-B-C'
+>>> len(S)
+5
+>>> 
+</pre>
+
+
+<h2>Quoted Strings</h2>
+<hr>
+<p>Single and double quote characters are the same.</p>
+
+<pre class = "brush:py;">
+>>> 'Picasso', "Picasso"
+('Picasso', 'Picasso')
+>>>
+</pre>
+<p>The reason for supporting both is that it allows us to embed a quote character of the other variety inside a <code>string</code> without escaping it with a <b>backslash</b>.</p>
+
+<pre class = "brush:py;">
+>>> 'Mozart"s', "Mozart's"
+('Mozart"s', "Mozart's")
+>>>
+</pre>
+
+<p>Python <b>concatenates</b> adjacent string literals in any expression.</p>
+
+<pre class = "brush:py;">
+>>> masters = "Mozart " 'and' " Picasso"
+>>> masters
+'Mozart and Picasso'
+>>>
+</pre>
+
+<p>If we add <b>commas</b> between these strings, we'll have a <code>tuple</code> not a <code>string</code>.</p>
+
+<pre class = "brush:py;">
+>>> "Mozart\"s", 'Picasso\'s'
+('Mozart"s', "Picasso's")
+>>>
+</pre>
+
+<h2>Escape Sequences</h2>
+<hr>
+<p>A </b>backslash</b> is representative of a general pattern in <code>strings</code>. <b>Backslashes</b> are used to introduce special byte coding, escape sequences.</p>
+<p><b>Escape sequences</b> let us embed byte codes in strings that cannot easily be type on a keyboard. The character <code>\</code>, and one or more characters following it in the string literal, are replaced with a single character in the resulting string object. The object has the binary value specified by the sequence. For instance, here is a five-character string that embeds a newline and a tab:</p>
+
+<pre class = "brush:py;">
+>>> s = 'a\nb\tc'
+>>>
+</pre>
+<p>The two characters <code>\n</code> stand for a single character - the byte containing the binary value of the newline character in our character set which is ASCII code 10. The sequence \t is replaced with the tab character. The way this string looks when printed depends on how we print it. While the interactive echo shows the special characters as escapes, but print interprets them instead:</p>
+
+<pre class = "brush:py;">
+>>> s
+'a\nb\tc'
+>>> print(s)
+a
+b	c
+>>>
+</pre>
+<p>We can check how many <b>characters</b> are in the <code>string</code>.
+
+<pre class = "brush:py;">
+>>> len(s)
+5
+>>>
+</pre>
+<p>So, the string is five bytes long. It contains an ASCII a, a new line, an ASCII b, etc. The <b>backslash characters</b> are not really stored with the string in memory. They are just used to tell <code>Python</code> to store special byte values in the string. Here are string backslash characters: </p>
+
+<p>Some escape sequences allow us to embed binary values into the bytes of a string. Here we have five-character string with two binary zeros:</p>
+
+<pre class = "brush:py;">
+>>> s = 'A\0B\0C'
+>>> s
+'A\x00B\x00C'
+>>>
+</pre>
+<p>The zero(null) byte does not terminate a string. Instead, <code>Python</code> keeps the string's length and text in memory. Here we have a string with a binary 1 and 2 (in octal) and 3 (hexa):</p>
+
+<pre class = "brush:py;">
+>>> s = '\001\002\x03'
+>>> s
+'\x01\x02\x03'
+>>> len(s)
+3
+>>>
+</pre>
+<p>Here, <code>Python</code> prints out nonprintable characters in hex, regardless of how they are specified. Here we have "Picasso", a tab, a newline, and a zero value coded in hex:</p>
+
+<pre class = "brush:py;">
+>>> s = "Pi\tcc\nas\x00so"
+>>> s
+'Pi\tcc\nas\x00so'
+>>> print(s)
+Pi	cc
+as
+>>>
+</pre>
+<p>If <code>Python</code> does not recognize the character after a backslash (<code>\</code>) as an escape code, it simply keeps the backslash in the string:</p>
+
+<pre class = "brush:py;">
+>>> x = "Picas\so"
+>>> x
+'Picas\\so'
+>>> len(x)
+8
+>>>
+</pre>
+
+<h2>Raw String with Escape Sequences</h2>
+<hr>
+<p>Let's look at the following code for opening a file:</p>
+
+<pre class = "brush:py;">
+>>> myfile = open('C:\new\text.txt', 'w')
+Traceback (most recent call last):
+  File ...
+    myfile = open('C:\new\text.txt', 'w')
+IOError: [Errno 22] Invalid argument: 'C:\new\text.txt'
+>>>
+</pre>
+
+<p>The problem is that <code>\n</code> is considered as a <b>newline character</b>, and <code>\t</code> as a <b>tab</b>. This is where raw strings can do something. If the letter <code>r</code> (uppercase or lowercase) appears before the opening quote of a string, it suppresses the escape mechanism. The result is that <code>Python</code> keeps our backslash literally. In other words, backslashes are not handled in any special way in a string literal prefixed with '<code>r</code>'. So <code>r"\n"</code> is a two-character string containing '<code>\</code>' and '<code>n</code>', while "<code>\n</code>" is a one-character string containing a newline. Usually patterns will be expressed in Python code using this raw string notation.</p>
+
+<p>So, to fix the filename problem, we can just add the letter <code>r</code>:</p>
+
+<pre class = "brush:py;">
+>>> myfile = open(r'C:\new\text.txt', 'w')
+>>>
+</pre>
+<p>Or, since two backslashes are really an escape sequence for one backslash, we can keep our backslash by doubling them:</p>
+
+<pre class = "brush:py;">
+>>> myfile = open('C:\\new\\text.txt', 'w')
+>>>
+</pre>
+<p>Actually, we sometimes need to this method when we should print <code>strings</code> with embedded backslashes:</p>
+
+<pre class = "brush:py;">
+>>> path = r'C:\new\text.txt'
+>>> path
+'C:\\new\\text.txt'
+>>> print(path)
+C:\new\text.txt
+>>> len(path)
+15
+>>>
+</pre>
+
+<h2>The Third Limit and Slice Objects</h2>
+<hr>
+<p>Slice expressions have an optional third index as a <b>step</b> or <b>stride</b>:<p>
+
+<pre class = "brush:py;">
+X[i:j:k]
+</pre>
+<p>That means "<b>extract all the items in X, from offset i through j-1 by k</b>."
+
+<pre class = "brush:py;">
+>>> S = 'Edsger Dijkstra'
+>>> S[1:10:2]
+'dgrDj'
+>>> S[::2]
+'Ese ikta'
+>>>
+</pre>
+<p>A stride of -1 indicates that the slice should go from right to left. The net effect is to reverse the sequence:</p>
+
+<pre class = "brush:py;">
+>>> S[::-1]
+'artskjiD regsdE'
+>>>
+</pre>
+<p>With a negative stride, the meanings of the first two bounds are reversed. In other words, the slice <code>S[5:1:-1]</code> fetches the items from 2 to 5, in reverse order:</p>
+
+<pre class = "brush:py;">
+>>> S = '01234567'
+>>> S[5:1:-1]
+'5432'
+>>>
+</pre>
+
+{% endblock %}

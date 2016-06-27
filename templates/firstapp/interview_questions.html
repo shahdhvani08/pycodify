@@ -1,0 +1,1236 @@
+﻿{% extends "firstapp/course_base.html" %}
+
+{% block content %}
+<h1>Python Interview Questions</h1>
+<br>
+<div class="panel-group" id="accordion">
+<div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#1">What is Python?</a>
+            </h4>
+          </div>
+<div id="1" class="panel-collapse collapse in">
+            <div class="panel-body">
+ Python is a high-level, interpreted, interactive and object-oriented scripting language. Python is designed to be highly readable. It uses English keywords frequently where as other languages use punctuation, and it has fewer syntactical constructions than other languages.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#2">Name some of the features of Python.</a>
+        </h4>
+      </div>
+<div id="2" class="panel-collapse collapse">
+            <div class="panel-body">
+ Following are some of the salient features of python −
+
+It supports functional and structured programming methods as well as OOP.
+It can be used as a scripting language or can be compiled to byte-code for building large applications.
+It provides very high-level dynamic data types and supports dynamic type checking.
+It supports automatic garbage collection.
+It can be easily integrated with C, C++, COM, ActiveX, CORBA, and Java.
+
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#3">What is the purpose of PYTHONPATH environment variable?</a>
+        </h4>
+      </div>
+<div id="3" class="panel-collapse collapse">
+            <div class="panel-body">
+ PYTHONPATH - It has a role similar to PATH. This variable tells the Python interpreter where to locate the module files imported into a program. It should include the Python source library directory and the directories containing Python source code. PYTHONPATH is sometimes preset by the Python installer.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#4">What is the purpose of PYTHONSTARTUP environment variable?</a>
+        </h4>
+      </div>
+<div id="4" class="panel-collapse collapse">
+            <div class="panel-body">
+ PYTHONSTARTUP - It contains the path of an initialization file containing Python source code. It is executed every time you start the interpreter. It is named as .pythonrc.py in Unix and it contains commands that load utilities or modify PYTHONPATH.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#5">What is the purpose of PYTHONCASEOK environment variable?</a>
+        </h4>
+      </div>
+<div id="5" class="panel-collapse collapse">
+            <div class="panel-body">
+ PYTHONCASEOK  − It is used in Windows to instruct Python to find the first case-insensitive match in an import statement. Set this variable to any value to activate it.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#6">What is the purpose of PYTHONHOME environment variable?</a>
+        </h4>
+      </div>
+<div id="6" class="panel-collapse collapse">
+            <div class="panel-body">
+ PYTHONHOME − It is an alternative module search path. It is usually embedded in the PYTHONSTARTUP or PYTHONPATH directories to make switching module libraries easy.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#7">Is python a case sensitive language?</a>
+        </h4>
+      </div>
+<div id="7" class="panel-collapse collapse">
+            <div class="panel-body">
+ Yes! Python is a case sensitive programming language.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#8">What are the supported data types in Python?</a>
+        </h4>
+      </div>
+<div id="8" class="panel-collapse collapse">
+            <div class="panel-body">
+ Python has five standard data types −
+
+Numbers
+String
+List
+Tuple
+Dictionary
+
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#9">What is the output of print str if str = 'Hello World!'?</a>
+        </h4>
+      </div>
+<div id="9" class="panel-collapse collapse">
+            <div class="panel-body">
+ It will print complete string. Output would be Hello World!.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#10">What is the output of print str[0] if str = 'Hello World!'?</a>
+        </h4>
+      </div>
+<div id="10" class="panel-collapse collapse">
+            <div class="panel-body">
+ It will print first character of the string. Output would be H.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#11">What is the output of print str[2:5] if str = 'Hello World!'?</a>
+        </h4>
+      </div>
+<div id="11" class="panel-collapse collapse">
+            <div class="panel-body">
+ It will print characters starting from 3rd to 5th. Output would be llo.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#12">What is the output of print str[2:] if str = 'Hello World!'?</a>
+        </h4>
+      </div>
+<div id="12" class="panel-collapse collapse">
+            <div class="panel-body">
+ It will print characters starting from 3rd character. Output would be llo World!.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#13">What is the output of print str * 2 if str = 'Hello World!'?</a>
+        </h4>
+      </div>
+<div id="13" class="panel-collapse collapse">
+            <div class="panel-body">
+ It will print string two times. Output would be Hello World!Hello World!.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#14">What is the output of print str + "TEST" if str = 'Hello World!'?</a>
+        </h4>
+      </div>
+<div id="14" class="panel-collapse collapse">
+            <div class="panel-body">
+ It will print concatenated string. Output would be Hello World!TEST.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#15">What is the output of print list if list = [ 'abcd', 786 , 2.23, 'john', 70.2 ]?</a>
+        </h4>
+      </div>
+<div id="15" class="panel-collapse collapse">
+            <div class="panel-body">
+It will print concatenated lists. Output would be [ 'abcd', 786 , 2.23, 'john', 70.2 ].
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#16">What is the output of print list[0] if list = [ 'abcd', 786 , 2.23, 'john', 70.2 ]?</a>
+        </h4>
+      </div>
+<div id="16" class="panel-collapse collapse">
+            <div class="panel-body">
+ It will print first element of the list. Output would be abcd.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#17">What is the output of print list[1:3] if list = [ 'abcd', 786 , 2.23, 'john', 70.2 ]?</a>
+        </h4>
+      </div>
+<div id="17" class="panel-collapse collapse">
+            <div class="panel-body">
+ It will print elements starting from 2nd till 3rd. Output would be [786, 2.23].
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#18">What is the output of print list[2:] if list = [ 'abcd', 786 , 2.23, 'john', 70.2 ]?</a>
+        </h4>
+      </div>
+<div id="18" class="panel-collapse collapse">
+            <div class="panel-body">
+ It will print elements starting from 3rd element. Output would be [2.23, 'john', 70.200000000000003].
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#19">What is the output of print tinylist * 2 if tinylist = [123, 'john']?</a>
+        </h4>
+      </div>
+<div id="19" class="panel-collapse collapse">
+            <div class="panel-body">
+ It will print list two times. Output would be [123, 'john', 123, 'john'].
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#20">What is the output of print list + tinylist * 2 if list = [ 'abcd', 786 , 2.23, 'john', 70.2 ] and tinylist = [123, 'john']?</a>
+        </h4>
+      </div>
+<div id="20" class="panel-collapse collapse">
+            <div class="panel-body">
+ It will print concatenated lists. Output would be ['abcd', 786, 2.23, 'john', 70.2, 123, 'john', 123, 'john'].
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#21">What are tuples in Python?</a>
+        </h4>
+      </div>
+<div id="21" class="panel-collapse collapse">
+            <div class="panel-body">
+ A tuple is another sequence data type that is similar to the list. A tuple consists of a number of values separated by commas. Unlike lists, however, tuples are enclosed within parentheses.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#22">What is the difference between tuples and lists in Python?</a>
+        </h4>
+      </div>
+<div id="22" class="panel-collapse collapse">
+            <div class="panel-body">
+ The main differences between lists and tuples are − Lists are enclosed in brackets ( [ ] ) and their elements and size can be changed, while tuples are enclosed in parentheses ( ( ) ) and cannot be updated. Tuples can be thought of as read-only lists.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#23">What is the output of print tuple if tuple = ( 'abcd', 786 , 2.23, 'john', 70.2 )?</a>
+        </h4>
+      </div>
+<div id="23" class="panel-collapse collapse">
+            <div class="panel-body">
+ It will print complete tuple. Output would be ('abcd', 786, 2.23, 'john', 70.200000000000003).
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#24">What is the output of print tuple[0] if tuple = ( 'abcd', 786 , 2.23, 'john', 70.2 )?</a>
+        </h4>
+      </div>
+<div id="24" class="panel-collapse collapse">
+            <div class="panel-body">
+ It will print first element of the tuple. Output would be abcd.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#25">What is the output of print tuple[1:3] if tuple = ( 'abcd', 786 , 2.23, 'john', 70.2 )?</a>
+        </h4>
+      </div>
+<div id="25" class="panel-collapse collapse">
+            <div class="panel-body">
+ It will print elements starting from 2nd till 3rd. Output would be (786, 2.23).
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#26">What is the output of print tuple[2:] if tuple = ( 'abcd', 786 , 2.23, 'john', 70.2 )?</a>
+        </h4>
+      </div>
+<div id="26" class="panel-collapse collapse">
+            <div class="panel-body">
+ It will print elements starting from 3rd element. Output would be (2.23, 'john', 70.200000000000003).
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#27">What is the output of print tinytuple * 2 if tinytuple = (123, 'john')?</a>
+        </h4>
+      </div>
+<div id="27" class="panel-collapse collapse">
+            <div class="panel-body">
+ It will print tuple two times. Output would be (123, 'john', 123, 'john').
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#28">What is the output of print tuple + tinytuple if tuple = ( 'abcd', 786 , 2.23, 'john', 70.2 ) and tinytuple = (123, 'john')?</a>
+        </h4>
+      </div>
+<div id="28" class="panel-collapse collapse">
+            <div class="panel-body">
+ It will print concatenated tuples. Output would be ('abcd', 786, 2.23, 'john', 70.200000000000003, 123, 'john').
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#29">What are Python's dictionaries?</a>
+        </h4>
+      </div>
+<div id="29" class="panel-collapse collapse">
+            <div class="panel-body">
+ Python's dictionaries are kind of hash table type. They work like associative arrays or hashes found in Perl and consist of key-value pairs. A dictionary key can be almost any Python type, but are usually numbers or strings. Values, on the other hand, can be any arbitrary Python object.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#30">How will you create a dictionary in python?</a>
+        </h4>
+      </div>
+<div id="30" class="panel-collapse collapse">
+            <div class="panel-body">
+ Dictionaries are enclosed by curly braces ({ }) and values can be assigned and accessed using square braces ([]).
+
+dict = {}
+dict['one'] = "This is one"
+dict[2]     = "This is two"
+tinydict = {'name': 'john','code':6734, 'dept': 'sales'}
+
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#31">How will you get all the keys from the dictionary?</a>
+        </h4>
+      </div>
+<div id="31" class="panel-collapse collapse">
+            <div class="panel-body">
+ Using dictionary.keys() function, we can get all the keys from the dictionary object.
+
+print dict.keys()   # Prints all the keys
+
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#32">How will you get all the values from the dictionary?</a>
+        </h4>
+      </div>
+<div id="32" class="panel-collapse collapse">
+            <div class="panel-body">
+ Using dictionary.values() function, we can get all the values from the dictionary object.
+
+print dict.values()   # Prints all the values
+
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#33">How will you convert a string to an int in python?</a>
+        </h4>
+      </div>
+<div id="33" class="panel-collapse collapse">
+            <div class="panel-body">
+ int(x [,base]) - Converts x to an integer. base specifies the base if x is a string.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#34">How will you convert a string to a long in python?</a>
+        </h4>
+      </div>
+<div id="34" class="panel-collapse collapse">
+            <div class="panel-body">
+ long(x [,base] ) - Converts x to a long integer. base specifies the base if x is a string.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#35">How will you convert a string to a float in python?</a>
+        </h4>
+      </div>
+<div id="35" class="panel-collapse collapse">
+            <div class="panel-body">
+ float(x) − Converts x to a floating-point number.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#36">How will you convert a object to a string in python?</a>
+        </h4>
+      </div>
+<div id="36" class="panel-collapse collapse">
+            <div class="panel-body">
+ str(x) − Converts object x to a string representation.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#37">How will you convert a object to a regular expression in python?</a>
+        </h4>
+      </div>
+<div id="37" class="panel-collapse collapse">
+            <div class="panel-body">
+ repr(x) − Converts object x to an expression string.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#38">How will you convert a String to an object in python?</a>
+        </h4>
+      </div>
+<div id="38" class="panel-collapse collapse">
+            <div class="panel-body">
+ eval(str) − Evaluates a string and returns an object.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#39">How will you convert a string to a tuple in python?</a>
+        </h4>
+      </div>
+<div id="39" class="panel-collapse collapse">
+            <div class="panel-body">
+ tuple(s) − Converts s to a tuple.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#40">How will you convert a string to a list in python?</a>
+        </h4>
+      </div>
+<div id="40" class="panel-collapse collapse">
+            <div class="panel-body">
+ list(s) − Converts s to a list.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#41">How will you convert a string to a set in python?</a>
+        </h4>
+      </div>
+<div id="41" class="panel-collapse collapse">
+            <div class="panel-body">
+ set(s) − Converts s to a set.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#42">How will you create a dictionary using tuples in python?</a>
+        </h4>
+      </div>
+<div id="42" class="panel-collapse collapse">
+            <div class="panel-body">
+ dict(d) − Creates a dictionary. d must be a sequence of (key,value) tuples.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#43">How will you convert a string to a frozen set in python?</a>
+        </h4>
+      </div>
+<div id="43" class="panel-collapse collapse">
+            <div class="panel-body">
+ frozenset(s) − Converts s to a frozen set.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#44">How will you convert an integer to a character in python?</a>
+        </h4>
+      </div>
+<div id="44" class="panel-collapse collapse">
+            <div class="panel-body">
+ chr(x) − Converts an integer to a character.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#45">How will you convert an integer to an unicode character in python?</a>
+        </h4>
+      </div>
+<div id="45" class="panel-collapse collapse">
+            <div class="panel-body">
+ unichr(x) − Converts an integer to a Unicode character.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#46">How will you convert a single character to its integer value in python?</a>
+        </h4>
+      </div>
+<div id="46" class="panel-collapse collapse">
+            <div class="panel-body">
+ ord(x) − Converts a single character to its integer value.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#47">How will you convert an integer to hexadecimal string in python?</a>
+        </h4>
+      </div>
+<div id="47" class="panel-collapse collapse">
+            <div class="panel-body">
+ hex(x) − Converts an integer to a hexadecimal string.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#48">How will you convert an integer to octal string in python?</a>
+        </h4>
+      </div>
+<div id="48" class="panel-collapse collapse">
+            <div class="panel-body">
+ oct(x) − Converts an integer to an octal string.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#49">What is the purpose of ** operator?</a>
+        </h4>
+      </div>
+<div id="49" class="panel-collapse collapse">
+            <div class="panel-body">
+ ** Exponent − Performs exponential (power) calculation on operators. a**b = 10 to the power 20 if a = 10 and b = 20.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#50">What is the purpose of // operator?</a>
+        </h4>
+      </div>
+<div id="50" class="panel-collapse collapse">
+            <div class="panel-body">
+ // Floor Division −  The division of operands where the result is the quotient in which the digits after the decimal point are removed.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#51">What is the purpose of is operator?</a>
+        </h4>
+      </div>
+<div id="51" class="panel-collapse collapse">
+            <div class="panel-body">
+ is − Evaluates to true if the variables on either side of the operator point to the same object and false otherwise. x is y, here is results in 1 if id(x) equals id(y).
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#52">What is the purpose of not in operator?</a>
+        </h4>
+      </div>
+<div id="52" class="panel-collapse collapse">
+            <div class="panel-body">
+ not in − Evaluates to true if it does not finds a variable in the specified sequence and false otherwise. x not in y, here not in results in a 1 if x is not a member of sequence y.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#53">What is the purpose break statement in python?</a>
+        </h4>
+      </div>
+<div id="53" class="panel-collapse collapse">
+            <div class="panel-body">
+ break statement − Terminates the loop statement and transfers execution to the statement immediately following the loop.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#54">What is the purpose continue statement in python?</a>
+        </h4>
+      </div>
+<div id="54" class="panel-collapse collapse">
+            <div class="panel-body">
+ continue statement − Causes the loop to skip the remainder of its body and immediately retest its condition prior to reiterating.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#55">What is the purpose pass statement in python?</a>
+        </h4>
+      </div>
+<div id="55" class="panel-collapse collapse">
+            <div class="panel-body">
+ pass statement − The pass statement in Python is used when a statement is required syntactically but you do not want any command or code to execute.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#56">How can you pick a random item from a list or tuple?</a>
+        </h4>
+      </div>
+<div id="56" class="panel-collapse collapse">
+            <div class="panel-body">
+ choice(seq) − Returns a random item from a list, tuple, or string.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#57">How can you pick a random item from a range?</a>
+        </h4>
+      </div>
+<div id="57" class="panel-collapse collapse">
+            <div class="panel-body">
+ randrange ([start,] stop [,step]) − returns a randomly selected element from range(start, stop, step).
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#58">How can you get a random number in python?</a>
+        </h4>
+      </div>
+<div id="58" class="panel-collapse collapse">
+            <div class="panel-body">
+ random() − returns a random float r, such that 0 is less than or equal to r and r is less than 1.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#59">How will you set the starting value in generating random numbers?</a>
+        </h4>
+      </div>
+<div id="59" class="panel-collapse collapse">
+            <div class="panel-body">
+ seed([x]) − Sets the integer starting value used in generating random numbers. Call this function before calling any other random module function. Returns None.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#60">How will you randomizes the items of a list in place?</a>
+        </h4>
+      </div>
+<div id="60" class="panel-collapse collapse">
+            <div class="panel-body">
+ shuffle(lst) − Randomizes the items of a list in place. Returns None.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#61">How will you capitalizes first letter of string?</a>
+        </h4>
+      </div>
+<div id="61" class="panel-collapse collapse">
+            <div class="panel-body">
+ capitalize() − Capitalizes first letter of string.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#62">How will you check in a string that all characters are alphanumeric?</a>
+        </h4>
+      </div>
+<div id="62" class="panel-collapse collapse">
+            <div class="panel-body">
+ isalnum() − Returns true if string has at least 1 character and all characters are alphanumeric and false otherwise.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#63">How will you check in a string that all characters are digits?</a>
+        </h4>
+      </div>
+<div id="63" class="panel-collapse collapse">
+            <div class="panel-body">
+ isdigit() − Returns true if string contains only digits and false otherwise.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#64">How will you check in a string that all characters are in lowercase?</a>
+        </h4>
+      </div>
+<div id="64" class="panel-collapse collapse">
+            <div class="panel-body">
+ islower() − Returns true if string has at least 1 cased character and all cased characters are in lowercase and false otherwise.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#65">How will you check in a string that all characters are numerics?</a>
+        </h4>
+      </div>
+<div id="65" class="panel-collapse collapse">
+            <div class="panel-body">
+ isnumeric() − Returns true if a unicode string contains only numeric characters and false otherwise.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#66">How will you check in a string that all characters are whitespaces?</a>
+        </h4>
+      </div>
+<div id="66" class="panel-collapse collapse">
+            <div class="panel-body">
+ isspace() − Returns true if string contains only whitespace characters and false otherwise.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#67">How will you check in a string that it is properly titlecased?</a>
+        </h4>
+      </div>
+<div id="67" class="panel-collapse collapse">
+            <div class="panel-body">
+ istitle() − Returns true if string is properly "titlecased" and false otherwise.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#68">How will you check in a string that all characters are in uppercase?</a>
+        </h4>
+      </div>
+<div id="68" class="panel-collapse collapse">
+            <div class="panel-body">
+ isupper() − Returns true if string has at least one cased character and all cased characters are in uppercase and false otherwise.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#69">How will you merge elements in a sequence?</a>
+        </h4>
+      </div>
+<div id="69" class="panel-collapse collapse">
+            <div class="panel-body">
+ join(seq) − Merges (concatenates) the string representations of elements in sequence seq into a string, with separator string.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#70">How will you get the length of the string? </a>
+        </h4>
+      </div>
+<div id="70" class="panel-collapse collapse">
+            <div class="panel-body">
+ len(string) − Returns the length of the string.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#71">How will you get a space-padded string with the original string left-justified to a total of width columns? </a>
+        </h4>
+      </div>
+<div id="71" class="panel-collapse collapse">
+            <div class="panel-body">
+ ljust(width[, fillchar]) − Returns a space-padded string with the original string left-justified to a total of width columns.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#72">How will you convert a string to all lowercase? </a>
+        </h4>
+      </div>
+<div id="72" class="panel-collapse collapse">
+            <div class="panel-body">
+ lower() − Converts all uppercase letters in string to lowercase.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#73">How will you remove all leading whitespace in string? </a>
+        </h4>
+      </div>
+<div id="73" class="panel-collapse collapse">
+            <div class="panel-body">
+ lstrip() − Removes all leading whitespace in string.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#74">How will you get the max alphabetical character from the string?</a>
+        </h4>
+      </div>
+<div id="74" class="panel-collapse collapse">
+            <div class="panel-body">
+ max(str) − Returns the max alphabetical character from the string str.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#75">How will you get the min alphabetical character from the string?</a>
+        </h4>
+      </div>
+<div id="75" class="panel-collapse collapse">
+            <div class="panel-body">
+ min(str) − Returns the min alphabetical character from the string str.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#76">How will you replaces all occurrences of old substring in string with new string?</a>
+        </h4>
+      </div>
+<div id="76" class="panel-collapse collapse">
+            <div class="panel-body">
+ replace(old, new [, max]) − Replaces all occurrences of old in string with new or at most max occurrences if max given.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#77">How will you remove all leading and trailing whitespace in string?</a>
+        </h4>
+      </div>
+<div id="77" class="panel-collapse collapse">
+            <div class="panel-body">
+ strip([chars]) − Performs both lstrip() and rstrip() on string.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#78">How will you change case for all letters in string?</a>
+        </h4>
+      </div>
+<div id="78" class="panel-collapse collapse">
+            <div class="panel-body">
+ swapcase() − Inverts case for all letters in string.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#79">How will you get titlecased version of string?</a>
+        </h4>
+      </div>
+<div id="79" class="panel-collapse collapse">
+            <div class="panel-body">
+ title() − Returns "titlecased" version of string, that is, all words begin with uppercase and the rest are lowercase.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#80">How will you convert a string to all uppercase? </a>
+        </h4>
+      </div>
+<div id="80" class="panel-collapse collapse">
+            <div class="panel-body">
+ upper() − Converts all lowercase letters in string to uppercase.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#81">How will you check in a string that all characters are decimal?</a>
+        </h4>
+      </div>
+<div id="81" class="panel-collapse collapse">
+            <div class="panel-body">
+ isdecimal() − Returns true if a unicode string contains only decimal characters and false otherwise.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#82">What is the difference between del() and remove() methods of list?</a>
+        </h4>
+      </div>
+<div id="82" class="panel-collapse collapse">
+            <div class="panel-body">
+ To remove a list element, you can use either the del statement if you know exactly which element(s) you are deleting or the remove() method if you do not know. 
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#83">What is the output of len([1, 2, 3])?</a>
+        </h4>
+      </div>
+<div id="83" class="panel-collapse collapse">
+            <div class="panel-body">
+ 3.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#84">What is the output of [1, 2, 3] + [4, 5, 6]?</a>
+        </h4>
+      </div>
+<div id="84" class="panel-collapse collapse">
+            <div class="panel-body">
+ [1, 2, 3, 4, 5, 6]
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#85">What is the output of ['Hi!'] * 4?</a>
+        </h4>
+      </div>
+<div id="85" class="panel-collapse collapse">
+            <div class="panel-body">
+ ['Hi!', 'Hi!', 'Hi!', 'Hi!']
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#86">What is the output of 3 in [1, 2, 3]?</a>
+        </h4>
+      </div>
+<div id="86" class="panel-collapse collapse">
+            <div class="panel-body">
+ True
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#87">What is the output of for x in [1, 2, 3]: print x?</a>
+        </h4>
+      </div>
+<div id="87" class="panel-collapse collapse">
+            <div class="panel-body">
+ 1 2 3
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#88">What is the output of L[2] if L = [1,2,3]?</a>
+        </h4>
+      </div>
+<div id="88" class="panel-collapse collapse">
+            <div class="panel-body">
+ 3, Offsets start at zero.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#89">What is the output of L[-2] if L = [1,2,3]?</a>
+        </h4>
+      </div>
+<div id="89" class="panel-collapse collapse">
+            <div class="panel-body">
+L[-1] = 3, L[-2]=2, L[-3]=1
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#90">What is the output of L[1:] if L = [1,2,3]?</a>
+        </h4>
+      </div>
+<div id="90" class="panel-collapse collapse">
+            <div class="panel-body">
+ 2, 3, Slicing fetches sections.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#91">How will you compare two lists?</a>
+        </h4>
+      </div>
+<div id="91" class="panel-collapse collapse">
+            <div class="panel-body">
+ cmp(list1, list2) − Compares elements of both lists.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#92">How will you get the length of a list?</a>
+        </h4>
+      </div>
+<div id="92" class="panel-collapse collapse">
+            <div class="panel-body">
+ len(list) − Gives the total length of the list.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#93">How will you get the max valued item of a list?</a>
+        </h4>
+      </div>
+<div id="93" class="panel-collapse collapse">
+            <div class="panel-body">
+ max(list) − Returns item from the list with max value.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#94">How will you get the min valued item of a list?</a>
+        </h4>
+      </div>
+<div id="94" class="panel-collapse collapse">
+            <div class="panel-body">
+ min(list) − Returns item from the list with min value.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#95">How will you get the index of an object in a list?</a>
+        </h4>
+      </div>
+<div id="95" class="panel-collapse collapse">
+            <div class="panel-body">
+ list.index(obj) − Returns the lowest index in list that obj appears.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#96">How will you insert an object at given index in a list?</a>
+        </h4>
+      </div>
+<div id="96" class="panel-collapse collapse">
+            <div class="panel-body">
+ list.insert(index, obj) − Inserts object obj into list at offset index.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#97">How will you remove last object from a list?</a>
+        </h4>
+      </div>
+<div id="97" class="panel-collapse collapse">
+            <div class="panel-body">
+ list.pop(obj=list[-1]) − Removes and returns last object or obj from list.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#98">How will you remove an object from a list?</a>
+        </h4>
+      </div>
+<div id="98" class="panel-collapse collapse">
+            <div class="panel-body">
+ list.remove(obj) − Removes object obj from list.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#99">How will you reverse a list?</a>
+        </h4>
+      </div>
+<div id="99" class="panel-collapse collapse">
+            <div class="panel-body">
+ list.reverse() − Reverses objects of list in place.
+</div>
+          </div>
+        </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#100">How will you sort a list?</a>
+        </h4>
+      </div>
+<div id="100" class="panel-collapse collapse">
+            <div class="panel-body">
+ list.sort([func]) − Sorts objects of list, use compare func if given.
+</div>
+          </div>
+        </div>
+</div>
+
+
+{% endblock %}

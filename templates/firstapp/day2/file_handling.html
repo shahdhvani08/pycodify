@@ -1,0 +1,148 @@
+﻿{% extends "firstapp/course_base.html" %}
+
+{% block content %}
+
+<body>
+<h1>File Handling </h1>
+<br>
+<p>The term <b>file management</b> in the context of computers refers to the manipulation of data in a file or files and documents on a computer. Though everybody has an understanding of the term file, we present a formal definition anyway:</p>
+
+<p>A <b>file</b> or a <b>computer file</b> is a chunk of logically related data or information which can be used by computer programs. Usually a file is kept on a permanent storage media, e.g. a hard drive disk. A unique name and path is used by human users or in programs or scripts to access a file for reading and modification purposes.</p> 
+
+<p>The most basic tasks involved in file manipulation are reading data from files and writing or appending data to files. </p>
+
+<h2>Reading and Writing Files in Python</h2>
+<hr>
+
+<p>In our first example we want to show how to <b>read data</b> from a file. The way of telling Python that we want to read from a file is to use the <code>open</code> function. The <b>first parameter</b> is the <code>name</code> of the file we want to read and with the <b>second parameter</b>, assigned to the value " <code>r </code>", we state that we want to read from the file:</p> 
+
+<pre class = "brush:py;">
+fobj = open("1.txt", "r")
+</pre>
+
+<p>The "<code>r</code>" is optional. An <code>open()</code> command with just a file name is opened for reading per default. The <code>open()</code> function returns a file object, which offers attributes and methods.</p>
+
+<pre class = "brush:py;">
+fobj = open("1.txt")
+</pre>
+
+<p>After we have finished working with a file, we have to  <b>close</b> it again by using the file object method <code>close()</code>:</p>
+
+<pre class = "brush:py;">
+fobj.close()
+</pre>
+
+<p>Now we want to finally open and read a file. The method <code>rstrip()</code> in the following example is used to  <b>strip off whitespaces </b> (newlines included) from the right side of the string "line":</p> 
+
+<pre class = "brush:py;">
+fobj = open("1.txt")
+for line in fobj:
+    print(line.rstrip())
+fobj.close()
+</pre>
+
+<p>If we save this script and call it, we get the following output, provided that the text file "<code>1.txt</code>" is available:</p>
+
+<pre>
+Scientific programmers, irrespective of their discipline, routinely use a small set of core packages:
+NumPy (mathematical arrays)
+SciPy (linear algebra, differential equations, signal processing and more)
+SymPy (symbolic mathematics)
+matplotlib (graph plotting)
+Pandas (data analysis)
+Another popular tool, Cython, addresses Python's relatively slow execution speed. Cython optimizes certain aspects of Python code.
+
+Beyond the core packages, software packages exist for just about every scientific discipline, including scikit-Learn for machine learning, Biopython for bioinformatics, PsychoPy for psychology and neuroscience and Astropy for astronomers.
+QuTip, another Python package, enables researchers working on quantum mechanics to define a system and then simulate how it behaves.
+>>> 
+</pre>
+
+<h3>Using "<code>with</code>" to automatically close the file</h3>
+
+<pre class = "brush:py;">
+with open(r"D:\Study tutorials\1.txt", "r") as f:
+	for line in f:
+		print(line.rstrip())
+</pre>
+
+<h3>Write into a File</h3>
+
+<p><b>Writing</b> to a file is as easy as reading from a file. To open a file for writing we set the <b>second parameter</b> to "<code>w</code>" instead of "<code>r</code>". To actually <b>write</b> the data into this file, we use the method <code>write()</code> of the file handle object.</p>
+
+<p>Let's start with a very simple and straightforward example: <p>
+
+<pre class = "brush:py;">
+fh = open("1.txt", "w")
+fh.write("To write or not to write\nthat is the question!\n")
+fh.close()
+</pre>
+
+<p>Especially if you are writing to a file, you should never forget to close the file handle again. Otherwise you will risk to end up in a non consistent state of your data.</p>
+
+<p>You will often find the with statement for reading and writing files. The advantage is that the file will be automatically closed after the indented block after the with has finished execution:</p>
+
+<pre class = "brush:py;">
+with open("1.txt", "w") as fh:
+    fh.write("To write or not to write\nthat is the question!\n")
+</pre>
+
+<h4>Example for simultaneously reading and writing:</h4> 
+
+<pre class = "brush:py;">
+with open(r"D:\Study tutorials\1.txt", "r") as f:
+	with open(r"D:\Study tutorials\2.txt", "w") as f1:
+
+		for line in f:
+			print(line.rstrip())
+			f1.write(str(line))
+</pre>
+<p>After the execution of this code, a new text file "2.txt" will be generated having the similar contents of file "1.txt".</p>
+<p>If you want to append something to an existing file, you have to use "<code>a</code>" instead of "<code>w</code>". 
+
+<h4>Reading in one go</h4>
+
+<p>So far we worked on files line by line by using a for loop. Very often, especially if the file is not too large, it's more convenient to read the file into a complete data structure, e.g. a string or a list. The file can be closed after reading and the work is accomplished on this data structure:</p>
+
+<pre class = "brush:py;">
+>>> why_python = open(r"D:\Study tutorials\1.txt", "r").readlines()
+>>> print(why_python)
+['Scientific programmers, irrespective of their discipline, routinely use a small set of core packages: \n', 'NumPy (mathematical arrays)\n', 'SciPy (linear algebra, differential equations, signal processing and more)\n', 'SymPy (symbolic mathematics)\n', 'matplotlib (graph plotting)\n', 'Pandas (data analysis)\n', "Another popular tool, Cython, addresses Python's relatively slow execution speed. Cython optimizes certain aspects of Python code.\n", '\n', '\n', 'Beyond the core packages, software packages exist for just about every scientific discipline, including scikit-Learn for machine learning, Biopython for bioinformatics, PsychoPy for psychology and neuroscience and Astropy for astronomers. \n', 'QuTip, another Python package, enables researchers working on quantum mechanics to define a system and then simulate how it behaves. ']
+</pre>
+
+<p>In the above example, the complete file is read into the <code>list</code>. We can acces e.g. the 3rd line with <code>why_python[2]</code>.</p>
+
+<pre class = "brush:py;">
+>>>why_python[2]
+'SciPy (linear algebra, differential equations, signal processing and more)\n'
+>>>print(why_python[3:5])
+['SymPy (symbolic mathematics)\n', 'matplotlib (graph plotting)\n']
+>>> type(why_python)
+<type 'list'>
+>>> 
+</pre>
+
+<p>Another convenient way to read in a file might be the method <code>read()</code> of <code>open</code>. With this method we can read the complete file into a string, as we can see in the next example:</p>
+
+<pre class = "brush:py;">
+>>> why_python = open(r"D:\Study tutorials\1.txt", "r").read()
+>>> print(why_python)
+Scientific programmers, irrespective of their discipline, routinely use a small set of core packages: 
+NumPy (mathematical arrays)
+SciPy (linear algebra, differential equations, signal processing and more)
+SymPy (symbolic mathematics)
+matplotlib (graph plotting)
+Pandas (data analysis)
+Another popular tool, Cython, addresses Python's relatively slow execution speed. Cython optimizes certain aspects of Python code.
+
+Beyond the core packages, software packages exist for just about every scientific discipline, including scikit-Learn for machine learning, Biopython for bioinformatics, PsychoPy for psychology and neuroscience and Astropy for astronomers. 
+QuTip, another Python package, enables researchers working on quantum mechanics to define a system and then simulate how it behaves. 
+>>> why_python[2]
+'i'
+>>> print(why_python[3:5])
+en
+>>> type(why_python)
+<type 'str'>
+>>> 
+</pre>
+
+{% endblock %}

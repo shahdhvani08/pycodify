@@ -1,0 +1,342 @@
+﻿{% extends "firstapp/course_base.html" %}
+
+{% block content %}
+<h1>Python Loops</h1>
+<br>
+<p>Many algorithms make it necessary for a programming language to have a construct which makes it possible to carry out a sequence of statements repeatedly. The code within the loop, i.e. the code carried out repeatedly, is called the body of the loop. </p>
+<p>Essentially, there are three different kinds of loops:</p>
+<ul>
+<li>Count-controlled loops</li>
+A construction for repeating a loop a certain number of times. An example of this kind of loop is the for-loop of the programming language C: 
+for (i=0; i <= n; i++) 
+Python doesn't know this kind of loop.
+<li>Condition-controlled loop</li>
+A loop will be repeated until a given condition changes, i.e. changes from True to False or from False to True, depending on the kind of loop. There are while loops and do while loops with this behaviour.
+<li>Collection-controlled loop</li> 
+This is a special construct which allow looping through the elements of a "collection", which can be an array, list or other ordered sequence. Like the for loop of the bash shell (e.g. for i in *, do echo $i; done) or the foreach loop of Perl.
+</ul>
+<p>Python supplies two different kinds of loops: the <b>while</b> loop and the <b>for</b> loop, which correspond to the condition-controlled loop and collection-controlled loop. 
+
+<p>Most loops contain a counter or more generally variables, which change their values in the course of calculation. These variables have to be initialized before the loop is started. The counter or other variables, which can be altered in the body of the loop, are contained in the condition. Before the body of the loop is executed, the condition is evaluated. If it evaluates to False, the while loop is finished. This means that the program flow will continue with the first statement after the while statement, i.e. on the same indentation level as the while loop. If the condition is evaluated to True, the body, - the indented block below the line with "while2 - gets executed. After the body is finished, the condition will be evaluated again. The body of the loop will be executed as long as the condition yields True.</p>
+<h2>Python while loop</h2>
+<hr>
+<p>A while loop statement in Python programming language repeatedly executes a target statement as long as a given condition is true.</p>
+
+<p><b>Syntax:</b></p>
+<pre class = "brush:py;">
+while expression:
+   statement(s)
+</pre>
+<p>Here, statement(s) may be a single statement or a block of statements. The condition may be any expression, and true is any non-zero value. The loop iterates while the condition is true.
+
+When the condition becomes false, program control passes to the line immediately following the loop.</p>
+
+<p>In Python, all the statements indented by the same number of character spaces after a programming construct are considered to be part of a single block of code. Python uses <b>indentation</b> as its method of grouping statements.</p>
+
+<p><b>Example</b></p>
+<pre class = "brush:py;">
+#!/usr/bin/python
+
+count = 0
+while (count < 9):
+   print 'The count is:', count
+   count = count + 1
+
+print "Good bye!"
+</pre>
+<p>When the above code is executed, it produces the following result:</p>
+<pre class = "brush:py;">
+The count is: 0
+The count is: 1
+The count is: 2
+The count is: 3
+The count is: 4
+The count is: 5
+The count is: 6
+The count is: 7
+The count is: 8
+Good bye!
+</pre>
+<p>The block here, consisting of the print and increment statements, is executed repeatedly until count is no longer less than 9. With each iteration, the current value of the index count is displayed and then increased by 1.</p>
+
+<h3>The Infinite Loop</h3>
+
+<p>A loop becomes <b>infinite</b> loop if a condition never becomes FALSE. You must use caution when using while loops because of the possibility that this condition never resolves to a FALSE value. This results in a loop that never ends. Such a loop is called an infinite loop.</p>
+
+<p>An infinite loop might be useful in client/server programming where the server needs to run continuously so that client programs can communicate with it as and when required.</p>
+<pre class = "brush:py;">
+#!/usr/bin/python
+
+var = 1
+while var == 1 :  # This constructs an infinite loop
+   num = raw_input("Enter a number  :")
+   print "You entered: ", num
+
+print "Good bye!"
+</pre>
+<p>When the above code is executed, it produces the following result:</p>
+<pre class = "brush:py;">
+Enter a number  :20
+You entered:  20
+Enter a number  :29
+You entered:  29
+Enter a number  :3
+You entered:  3
+Enter a number between :Traceback (most recent call last):
+  File "test.py", line 5, in <module>
+    num = raw_input("Enter a number :")
+KeyboardInterrupt
+</pre>
+<p>Above example goes in an infinite loop and you need to use <code>CTRL+C</code> to exit the program.</p>
+
+<h3>Using else Statement with while Loop</h3>
+
+<p>Python supports to have an <b>else</b> statement associated with a loop statement.</p>
+
+<p>If the <b>else</b> statement is used with a <code>for</code> loop, the <b>else</b> statement is executed when the loop has exhausted iterating the list.</p>
+
+<p>If the <b>else</b> statement is used with a <code>while</code> loop, the <b>else</b> statement is executed when the condition becomes false.</p>
+
+<p>The following example illustrates the combination of an <b>else</b> statement with a <code>while</code> statement that prints a number as long as it is less than 5, otherwise else statement gets executed.</p>
+<pre class = "brush:py;">
+#!/usr/bin/python
+
+count = 0
+while count < 5:
+   print count, " is  less than 5"
+   count = count + 1
+else:
+   print count, " is not less than 5"
+</pre>
+<p>When the above code is executed, it produces the following result:</p>
+<pre class = "brush:py;">
+0 is less than 5
+1 is less than 5
+2 is less than 5
+3 is less than 5
+4 is less than 5
+5 is not less than 5
+</pre>
+<h2>Python for Loop Statements</h2>
+<hr>
+<p>It has the ability to iterate over the items of any sequence, such as a <code>list</code> or a <code>string</code>.
+
+<p><b>Syntax:</b><p>
+<pre class = "brush:py;">
+for iterating_var in sequence:
+   statements(s)
+</pre>
+<p>If a sequence contains an expression list, it is evaluated first. Then, the first item in the sequence is assigned to the iterating variable <b>iterating_var</b>. Next, the <b>statements</b> block is executed. Each item in the list is assigned to <b>iterating_var</b>, and the <b>statement(s)</b> block is executed until the entire sequence is exhausted.</p>
+<p><b>Example:</b></p>
+<pre class = "brush:py;">
+#!/usr/bin/python
+
+for letter in 'Python':     # First Example
+   print 'Current Letter :', letter
+
+fruits = ['banana', 'apple',  'mango']
+for fruit in fruits:        # Second Example
+   print 'Current fruit :', fruit
+
+print "Good bye!"
+</pre>
+<p>When the above code is executed, it produces the following result:</p>
+<pre class = "brush:py;">
+Current Letter : P
+Current Letter : y
+Current Letter : t
+Current Letter : h
+Current Letter : o
+Current Letter : n
+Current fruit : banana
+Current fruit : apple
+Current fruit : mango
+Good bye!
+</pre>
+<h3>Iterating by Sequence Index</h3>
+<p>An alternative way of iterating through each item is by index offset into the sequence itself. Following is a simple example:</p>
+<pre class = "brush:py;">
+#!/usr/bin/python
+
+fruits = ['banana', 'apple',  'mango']
+for index in range(len(fruits)):
+   print 'Current fruit :', fruits[index]
+
+print "Good bye!"
+</pre>
+<p>When the above code is executed, it produces the following result:</p>
+<pre class = "brush:py;">
+Current fruit : banana
+Current fruit : apple
+Current fruit : mango
+Good bye!
+</pre>
+<p>Here, we took the assistance of the <code>len()</code> built-in function, which provides the total number of elements in the tuple as well as the <code>range()</code> built-in function to give us the actual sequence to iterate over.</p>
+<h4>The range() Function</h4>
+<p>If you do need to iterate over a sequence of numbers, the built-in function <code>range()</code> comes in handy. It generates lists containing arithmetic progressions:</p>
+<pre class = "brush:py;">
+>>>
+>>> range(10)
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+</pre>
+<p>The given end point is never part of the generated list; <code>range(10)</code> generates a list of 10 values, the legal indices for items of a sequence of length 10. It is possible to let the range start at another number, or to specify a different increment (even negative; sometimes this is called the ‘step’):</p>
+<pre class = "brush:py;">
+>>>
+>>> range(5, 10)
+[5, 6, 7, 8, 9]
+>>> range(0, 10, 3)
+[0, 3, 6, 9]
+>>> range(-10, -100, -30)
+[-10, -40, -70]
+</pre>
+<p>To iterate over the indices of a sequence, you can combine <code>range()</code> and <code>len()</code> as follows:</p>
+<pre class = "brush:py;">
+>>>
+>>> a = ['Mary', 'had', 'a', 'little', 'lamb']
+>>> for i in range(len(a)):
+...     print i, a[i]
+...
+0 Mary
+1 had
+2 a
+3 little
+4 lamb
+</pre>
+<h4>break, continue and pass Statements, and else Clauses on Loops</h4>
+<p>The <code>break</code> statement, like in C, breaks out of the smallest enclosing <code>for</code> or <code>while</code> loop.</p>
+
+<p>Loop statements may have an <code>else</code> clause; it is executed when the loop terminates through exhaustion of the list (with for) or when the condition becomes false (with while), but not when the loop is terminated by a break statement. This is exemplified by the following loop, which searches for prime numbers:</p>
+<pre class = "brush:py;">
+>>>
+>>> for n in range(2, 10):
+...     for x in range(2, n):
+...         if n % x == 0:
+...             print n, 'equals', x, '*', n/x
+...             break
+...     else:
+...         # loop fell through without finding a factor
+...         print n, 'is a prime number'
+...
+2 is a prime number
+3 is a prime number
+4 equals 2 * 2
+5 is a prime number
+6 equals 2 * 3
+7 is a prime number
+8 equals 2 * 4
+9 equals 3 * 3
+</pre>
+<p><b>Look closely</b>: the <b>else</b> clause belongs to the for loop, not the if statement.</p>
+
+<p>When used with a loop, the  <b>else</b> clause has more in common with the else clause of a <b>try </b> statement than it does that of  <b>if </b> statements: a try statement’s else clause runs when no exception occurs, and a loop’s else clause runs when no break occurs. For more on the try statement and exceptions, see Handling Exceptions.</p>
+
+<p>The <code>continue</code> statement, also borrowed from C, continues with the next iteration of the loop:</p>
+<pre class = "brush:py;">
+>>>
+>>> for num in range(2, 10):
+...     if num % 2 == 0:
+...         print "Found an even number", num
+...         continue
+...     print "Found a number", num
+Found an even number 2
+Found a number 3
+Found an even number 4
+Found a number 5
+Found an even number 6
+Found a number 7
+Found an even number 8
+Found a number 9
+</pre>
+<p>The <code>pass</code> statement is a null operation; nothing happens when it executes. </p>
+
+<p><b>Example</b></p>
+<pre class = "brush:py;">
+#!/usr/bin/python
+
+for letter in 'Python': 
+   if letter == 'h':
+      pass
+      print 'This is pass block'
+   print 'Current Letter :', letter
+
+print "Good bye!"
+</pre>
+<p>When the above code is executed, it produces following result: </p>
+<pre class = "brush:py;">
+Current Letter : P
+Current Letter : y
+Current Letter : t
+This is pass block
+Current Letter : h
+Current Letter : o
+Current Letter : n
+Good bye!
+</pre>
+
+<h2>Python Nested Loops</h2>
+<hr>
+<p>Python programming language allows to use one loop inside another loop. Following section shows few examples to illustrate the concept.</p>
+
+<p><b>Syntax</b></p>
+<pre class = "brush:py;">
+for iterating_var in sequence:
+   for iterating_var in sequence:
+      statements(s)
+   statements(s)
+</pre>
+<p>The syntax for a nested while loop statement in Python programming language is as follows:</p>
+<pre class = "brush:py;">
+while expression:
+   while expression:
+      statement(s)
+   statement(s)
+</pre>
+<p>A final note on loop nesting is that you can put any type of loop inside of any other type of loop. For example a for loop can be inside a while loop or vice versa.</p>
+
+<p><b>Example</b><p>
+<p>The following program uses a nested for loop to find the prime numbers from 2 to 100:</p>
+<pre class = "brush:py;">
+#!/usr/bin/python
+
+i = 2
+while(i < 100):
+   j = 2
+   while(j <= (i/j)):
+      if not(i%j): break
+      j = j + 1
+   if (j > i/j) : print i, " is prime"
+   i = i + 1
+
+print "Good bye!"
+</pre>
+<p>When the above code is executed, it produces following result:</p>
+<pre class = "brush:py;">
+2 is prime
+3 is prime
+5 is prime
+7 is prime
+11 is prime
+13 is prime
+17 is prime
+19 is prime
+23 is prime
+29 is prime
+31 is prime
+37 is prime
+41 is prime
+43 is prime
+47 is prime
+53 is prime
+59 is prime
+61 is prime
+67 is prime
+71 is prime
+73 is prime
+79 is prime
+83 is prime
+89 is prime
+97 is prime
+Good bye!
+</pre>
+
+{% endblock %}

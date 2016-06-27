@@ -1,0 +1,32 @@
+﻿{% extends "firstapp/course_base.html" %}
+
+{% block content %}
+<h1>Python Set up</h1>
+        <br>
+        <p>This page explains how to set up Python on a machine so you can run and edit Python programs, and links to the exercise code to download. You can do this before starting the class, or you can leave it until you've gotten far enough in the class that you want to write some code. This Python Class uses a simple, standard Python installation, although more complex strategies are possible. Python is free and open source, available for all operating systems from <a href="https://www.python.org/">python.org</a>. In particular we want a Python install where you can do two things:</p>
+		<ul> <li>Run an existing python program, such as hello.py</li>
+		      <li>Run the Python interpreter interactively, so you can type code right at it</ul>
+ <h2>Python on Windows</h2>
+		<hr>
+        <p>Most operating systems other than Windows already have Python installed by default. To check that Python is installed, open a command line (typically by running the "Terminal" program). Try the following to print 'Hello World' (what you type is shown in bold):
+        <pre name="code" class="python">
+			print ('Hello World')
+			Hello World
+		</pre>
+		<p>If python is not installed, see the <a href="http://python.org/download">Python.org download</a> page. To run the Python interpreter interactively, just type "python" in the terminal:
+		<pre class="brush: py;">
+		PS C:\Users\Jeril> python
+		Python 2.7.10 (default, May 23 2015, 09:44:00) [MSC v.1500 64 bit (AMD64)] on win32
+		Type "help", "copyright", "credits" or "license" for more information.
+		>>> 1 + 1
+		2
+		>>> print ('Hello SJCET')
+		Hello SJCET
+		>>>
+		</pre>
+		<p>To run a .py (python program) type <b>python filename.py</b> in the command prompt. For example, if the filename is <code>hello.py</code> then type <b>python hello.py</b></p>
+		<p>For PyCodify Class, you want a python version that is 3.x versions.</p>
+        <p>To run the Python interpreter interactively, select the Run... command from the Start menu, and type "python" -- this will launch Python interactively in its own window. On Windows, use Ctrl-Z to exit (on all other operating systems it's Ctrl-D to exit).</p>		
+
+
+{% endblock %}

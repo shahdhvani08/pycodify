@@ -1,0 +1,17 @@
+{% extends "registration/registration_base_register.html" %}
+{#{% extends 'base.html' %}#}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}{% trans "Register" %}{% endblock %}
+
+{% block content %}
+
+<form method="post" action=".">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <input class="btn btn-primary btn-lg" type="submit" value="{% trans 'Submit' %}" />
+</form>
+
+{% endblock %}
+

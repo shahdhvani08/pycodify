@@ -1,0 +1,267 @@
+﻿{% extends "firstapp/course_base.html" %}
+
+{% block content %}
+
+<h1>List Comprehension</h1>
+<br>
+<p>Python features functional programming tools like <code>map</code> and <code>filter</code> for mapping operations over sequences and collecting results.Since this is such a common task in Python coding, Python made a new expression: the <code>list comprehension</code> which is more flexible than map and filter. List comprehensions apply an arbitrary expression to items in an iterable rather than applying function. It provides a compact way of mapping a list into another list by applying a function to each of the elements of the list.</p>
+<p>Since this is such a common task in Python coding, Python made a new expression: the <code>list comprehension</code> which is more flexible than <code>map</code> and <code>filter</code>. <code>List comprehensions</code> apply an arbitrary expression to items in an iterable rather than applying function. It provides a compact way of mapping a list into another list by applying a function to each of the elements of the list.</p>
+<p>In the chapter on <code>lambda</code> and <code>map()</code> we had designed a <code>map()</code> function to convert Celsius values into Fahrenheit and vice versa. It looks like this with list comprehension:
+<pre class = "brush:py;">
+>>> Celsius = [39.2, 36.5, 37.3, 37.8]
+>>> Fahrenheit = [ ((float(9)/5)*x + 32) for x in Celsius ]
+>>> print(Fahrenheit)
+[102.56, 97.700000000000003, 99.140000000000001, 100.03999999999999]
+>>> 
+</pre>
+
+<p>A Pythagorean triple consists of three positive integers a, b, and c, such that <p>
+<p><code>a^2 + b^2 = c^2.</code></p> 
+<p>Such a triple is commonly written <b>(a, b, c)</b>, and the best known example is <b>(3, 4, 5)</b>.</p> 
+<p>The following <code>list comprehension</code> creates the Pythagorean triples:</p>
+<pre class = "brush:py;">
+>>> [(x,y,z) for x in range(1,30) for y in range(x,30) for z in range(y,30) if x**2 + y**2 == z**2]
+[(3, 4, 5), (5, 12, 13), (6, 8, 10), (7, 24, 25), (8, 15, 17), (9, 12, 15), (10, 24, 26), (12, 16, 20), (15, 20, 25), (20, 21, 29)]
+>>> 
+</pre>
+
+
+<p>Another example: Let A and B be two sets, the cross product (or Cartesian product) of A and B, written <b>A×B</b>, is the set of all pairs wherein the first element is a member of the set A and the second element is a member of the set B. </p>
+
+<p><b>Mathematical definition: </b></p>
+<p><code>A×B = {(a, b) : a belongs to A, b belongs to B}.</code></p> 
+<p>It's easy to be accomplished in Python:</p>
+<pre class = "brush:py;">
+>>> colours = [ "red", "green", "yellow", "blue" ]
+>>> things = [ "house", "car", "tree" ]
+>>> coloured_things = [ (x,y) for x in colours for y in things ]
+>>> print(coloured_things)
+[('red', 'house'), ('red', 'car'), ('red', 'tree'), ('green', 'house'), ('green', 'car'), ('green', 'tree'), ('yellow', 'house'), ('yellow', 'car'), ('yellow', 'tree'), ('blue', 'house'), ('blue', 'car'), ('blue', 'tree')]
+>>> 
+</pre>
+
+<h3>List Comprehension vs. map</h3>
+<p>Python's built-in <code>ord</code> returns the ASCII integer code of a character:
+
+<pre class = "brush:py;">
+>>> ord('A')
+65
+>>>
+</pre>
+
+<p>If we want to collect the <b>ASCII</b> codes of all characters in a string, the most straightforward method is using a for loop and append the results to a list:</p>
+
+<pre class = "brush:py;">
+>>> result = []
+>>> for x in 'Dostoyevsky':
+	result.append(ord(x))
+	
+>>> result
+[68, 111, 115, 116, 111, 121, 101, 118, 115, 107, 121]
+>>> 
+</pre>
+
+<p>If we use <code>map</code>, we can get the same result with a single function call:</p>
+<pre class = "brush:py;">
+>>> result = list(map(ord,'Dostoyevsky'))
+>>> result
+[68, 111, 115, 116, 111, 121, 101, 118, 115, 107, 121]
+>>>
+</pre>
+
+<p>But, we can get the similar result from a <code>list comprehension</code> expression. While <code>map</code> maps a function over a sequence, <code>list comprehensions</code> map an expression over a sequence:</p>
+<pre class = "brush:py;">
+>>> result = [ord(x) for x in 'Dostoyevsky']
+>>> result
+[68, 111, 115, 116, 111, 121, 101, 118, 115, 107, 121]
+>>> 
+</pre>
+
+<p><code>List comprehensions</code> collect the result of applying an arbitrary expression to a sequence and return them in a new list. The effect is similar to that of the for loop and the map call. List comprehensions become more convenient when we need to apply an <b>arbitrary expression to a sequence</b>:</p>
+
+<pre class = "brush:py;">
+>>> [x ** 3 for x in range(5)]
+[0, 1, 8, 27, 64]
+>>>
+</pre>
+
+<p>If we had to use <code>map</code>, we would need to write a function to implement the square operation, probably, <code>lambda</code> instead of using a def:</p>
+<pre class = "brush:py;">
+>>> list(map((lambda x: x ** 2),range(5)))
+[0, 1, 4, 9, 16]
+>>>
+</pre>
+
+<p>This does the job. It's only a little bit longer that the list comprehension. For more advance kinds of expressions, however, list comprehensions will often require considerably less typing.</p>
+
+
+
+<h3>List Comprehension with filter</h3>
+<p>If we use if with list compression, it is almost equivalent to the filter built-in.Let's make examples using both schemes.</p>
+
+<pre class = "brush:py;">
+>>> 
+>>> [x for x in range(10) if x % 2 == 0]
+[0, 2, 4, 6, 8]
+
+>>> list(filter((lambda x: x % 2 == 0), range(10)))
+[0, 2, 4, 6, 8]
+
+>>> result = []
+>>> for x in range(10):
+	if x % 2 == 0:
+		result.append(x)
+	
+>>> result
+[0, 2, 4, 6, 8]
+>>> 
+</pre>
+
+<p>All of these use the <code>modulus operator %</code>, to extract even numbers. The <code>filter</code> call here is not much longer that the list comprehension either. But we can combine an <code>if</code> and a <code>map</code>, in a single expression:
+
+<pre class = "brush:py;">
+>>> [x ** 2 for x in range(10) if x % 2 == 0]
+[0, 4, 16, 36, 64]
+>>> 
+</pre>
+
+<p>We collect the squares of the even numbers from 0 to 9. The <code>for loop</code> skips numbers which the if on the right is false. The expression on the left computes the squares. The equivalent map requires a lot more work. We have to combine <code>filter</code> with <code>map</code> iteration:</p>
+
+<pre class = "brush:py;">
+>>> list( map((lambda x: x ** 2), filter((lambda x: x % 2== 0),range(10))) )
+[0, 4, 16, 36, 64]
+</pre>
+
+<p>Actually, <code>list comprehensions</code> are more general. We can code any number of <code>nested for loop</code> in a list comprehension, and each may have an optional associated if test. When for loop are nested within a list comprehension, they work like equivalent <code>for loop</code> statement:</p>
+
+<pre class = "brush:py;">
+>>> result = []
+>>> result = [ x ** y for x in [10, 20, 30] for y in [2, 3, 4]]
+>>> result
+[100, 1000, 10000, 400, 8000, 160000, 900, 27000, 810000]
+>>> 
+</pre>
+
+<p>More verbose version is:</p>
+
+<pre class = "brush:py;">
+>>> result = []
+>>> for x in [10, 20, 30]:
+	for y in [2, 3, 4]:
+		result.append(x ** y)
+
+		
+>>> result
+[100, 1000, 10000, 400, 8000, 160000, 900, 27000, 810000]
+>>> 
+</pre>
+
+<p>Though <b>list comprehensions</b> construct <code>lists</code>, they can iterate over any sequence:</p>
+
+<pre class = "brush:py;">
+>>> [x + y for x in 'ball' for y in 'boy']
+['bb', 'bo', 'by', 'ab', 'ao', 'ay', 'lb', 'lo', 'ly', 'lb', 'lo', 'ly']
+>>> 
+</pre>
+
+<p>Here is a much more complicated list comprehension example:</p>
+<pre class = "brush:py;">
+>>> [(x,y) for x in range(5) if x % 2 == 0 for y in range(5) if y % 2 == 1]
+[(0, 1), (0, 3), (2, 1), (2, 3), (4, 1), (4, 3)]
+>>>
+</pre>
+<p>The expression permutes even numbers from 0 through 4 with odd numbers from 0 through 4. Here is an equivalent version which is much more verbose:</p>
+
+<pre class = "brush:py;">
+>>> result = []
+>>> for x in range(5):
+	if x % 2 == 0:
+		for y in range(5):
+			if y % 2 == 1:
+				result.append((x,y))
+
+				
+>>> result
+[(0, 1), (0, 3), (2, 1), (2, 3), (4, 1), (4, 3)]
+>>> 
+</pre>
+
+
+<h3>List Comprehension with Matrixes</h3>
+<p>Let's see how the <b>list comprehension</b> works with <b>Matrixes</b>. For example, we have two 3 x 3 matrixes as lists of nested list:</p>
+<pre class = "brush:py;">
+>>> M1 = [[1, 2, 3],
+          [4, 5, 6],
+          [7, 8, 9]]
+>>> M2 = [[9, 8, 7],
+          [6, 5, 4],
+          [3, 2, 1]]
+>>>
+</pre>
+
+<p>We can index rows and columns within rows:</p>
+
+<pre class = "brush:py;">
+>>> M1[2]
+[7, 8, 9]
+>>> M1[2][2]
+9
+>>>
+</pre>
+
+<p>List comprehensions are powerful tools for processing such structures because they automatically scan rows and columns for us. For example, though this structure stores the matrix by rows, to collect the second column we can simply iterate across the rows and pull out the desired column. We can also iterate through positions in the rows and index as we go:</p>
+
+<pre class = "brush:py;">
+>>> [r[2] for r in M1]
+[3, 6, 9]
+>>>
+</pre>
+
+<p>Here, we pulled out column 3 from M1. We can get the same result from the following list comprehension.</p>
+<pre class = "brush:py;">
+>>> [M1[r][2] for r in (0, 1, 2)]
+[3, 6, 9]
+>>>
+</pre>
+
+
+<h4><b>When to Use List Comprehension</b></h4>
+
+<p>We typically should use simple for loops when getting started with Python, and map. Use comprehension where they are easy to apply. However, there is a substantial performance advantage to use list comprehension. The map calls are roughly twice as fast as equivalent for loops. List comprehensions are usually slightly faster than map calls. This speed difference is largely due to the fact that map and list comprehensions run at C language speed inside the interpreter. It is much faster that stepping through Python for loop code within the Python Virtual Machine (PVM).
+However, for loops make logic more explicit, we may want to use them on the grounds of simplicity. On the other hand, map and list comprehensions are worth knowing and using for simpler kinds of iterations if the speed of application is an important factor.</p>
+
+<h4>Differences between version <code>2.x</code> and <code>3.x</code></h4>
+
+<p>In Python 2, the loop control variable is not local, i.e. it can change another variable of that name outside of the list comprehension, as we can see in the following example:</p>
+
+<pre class = "brush:py;">
+>>> x = "This value will be changed in the list comprehension"
+>>> res = [x for x in range(3)]
+>>> res
+[0, 1, 2]
+>>> x
+2
+>>> res = [i for i in range(5)]
+>>> i
+4
+>>> 
+</pre>
+<p><b>Guido van Rossum</b> referred to this effect as "one of Python's '<b>dirty little secrets</b>' for years". The reason for doing this was efficiency. "It started out as an intentional compromise to make list comprehensions blindingly fast, and while it was not a common pitfall for beginners, it definitely stung people occasionally."</p>
+
+<p>This "<b>dirty little secret</b>" is fixed in Python3, as you can see in the following code:</p> 
+
+<pre class = "brush:py;">
+$ python3
+Python 3.2 (r32:88445, Mar 25 2011, 19:28:28) 
+[GCC 4.5.2] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> x = "Python 3 fixed the dirty little secret"
+>>> res = [x for x in range(3)]
+>>> print(res)
+[0, 1, 2]
+>>> x
+'Python 3 fixed the dirty little secret'
+>>> 
+</pre>
+
+{% endblock %}

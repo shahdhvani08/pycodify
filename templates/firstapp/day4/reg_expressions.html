@@ -1,0 +1,466 @@
+﻿{% extends "firstapp/course_base.html" %}
+
+{% block content %} 
+<h1>Regular Expression using Python</h1>
+ <br>
+ <h2>Introduction</h2>
+ <hr>
+	<p>
+	A regular expression is a special sequence of characters that helps you match or find other strings or sets of strings, using a specialized syntax held in a pattern. Regular expressions are widely used in UNIX world.
+
+The module re provides full support for Perl-like regular expressions in Python. The <code>re</code> module raises the exception <code>re.error</code> if an error occurs while compiling or using a regular expression.
+	</p>
+<p>
+In Python, we have the re module. The applications for regular expressions are wide-spread, but they are fairly complex, so when contemplating using a regex for a certain task, think about alternatives, and come to regexes as a last resort.
+Regular expressions are a powerful language for matching text patterns. This page gives a basic introduction to regular expressions themselves sufficient for our Python exercises and shows how regular expressions work in Python. The Python "re" module provides regular expression support.
+
+</p>
+
+<p>
+Regular expression patterns are compiled into a series of bytecodes which are then executed by a matching engine written in C. For advanced use, it may be necessary to pay careful attention to how the engine will execute a given RE, and write the RE in a certain way in order to produce bytecode that runs faster. Optimization isn’t covered in this document, because it requires that you have a good understanding of the matching engine's internals.
+</p>
+<p>
+The regular expression language is relatively small and restricted, so not all possible string processing tasks can be done using regular expressions. There are also tasks that can be done with regular expressions, but the expressions turn out to be very complicated. In these cases, you may be better off writing Python code to do the processing; while Python code will be slower than an elaborate regular expression, it will also probably be more understandable.
+</p>
+
+<h2>Matching Characters</h2>
+<hr>
+<p>
+Most letters and characters will simply match themselves. For example, the regular expression <code>test</code> will match the string test exactly. (You can enable a case-insensitive mode that would let this RE match <code>Test</code> or <code>TEST</code> as well; more about this later.)
+</p>
+<p>
+There are exceptions to this rule; some characters are special metacharacters, and don’t match themselves. Instead, they signal that some out-of-the-ordinary thing should be matched, or they affect other portions of the RE by repeating them or changing their meaning. Much of this document is devoted to discussing various metacharacters and what they do.
+</p>
+<p>
+Here’s a complete list of the metacharacters; their meanings will be discussed in the rest of this HOWTO.
+</p>
+<pre>
+. ^ $ * + ? { } [ ] \ | ( )
+</pre>
+<p>
+The first metacharacters we'll look at are <code>[</code> and <code>]</code>. They're used for specifying a character class, which is a set of characters that you wish to match. Characters can be listed individually, or a range of characters can be indicated by giving two characters and separating them by a <code>'-'</code>. For example, <code>[abc]</code> will match any of the characters <code>a</code>, <code>b</code>, or <code>c</code>; this is the same as <code>[a-c]</code>, which uses a range to express the same set of characters. If you wanted to match only lowercase letters, your RE would be <code>[a-z]</code>.
+</p>
+<p>
+Metacharacters are not active inside classes. For example, <code>[akm$]</code> will match any of the characters <code>'a'</code>, <code>'k'</code>, <code>'m'</code>, or <code>'$'</code>; <code>'$'</code> is usually a metacharacter, but inside a character class it's stripped of its special nature.
+<p>
+You can match the characters not listed within the class by complementing the set. This is indicated by including a <code>'^'</code> as the first character of the class; <code>'^'</code> outside a character class will simply match the <code>'^'</code> character. For example, <code>[^5]</code> will match any character except <code>'5'</code>.
+</p>
+<p>
+Perhaps the most important metacharacter is the backslash, <code>\</code>. As in Python string literals, the backslash can be followed by various characters to signal various special sequences. It's also used to escape all the metacharacters so you can still match them in patterns; for example, if you need to match a <code>[</code> or <code>\</code>, you can precede them with a backslash to remove their special meaning: <code>\[</code> or <code>\\</code>.
+</p>
+<p>
+Some of the special sequences beginning with <code>'\'</code> represent predefined sets of characters that are often useful, such as the set of digits, the set of letters, or the set of anything that isn't whitespace. The following predefined special sequences are a subset of those available. The equivalent classes are for byte string patterns. For a complete list of sequences and expanded class definitions for Unicode string patterns, see the last part of <a href="https://docs.python.org/2/library/re.html#re-syntax">Regular Expression Syntax</a>.
+</p>
+<p><code>\d</code></p>
+<p>Matches any decimal digit; this is equivalent to the class <code>[0-9]</code>.</p>
+<p><code>\D</code></p>
+<p>Matches any non-digit character; this is equivalent to the class <code>[^0-9]</code>.</p>
+<p><code>\s</code></p>
+<p>Matches any whitespace character; this is equivalent to the class <code>[ \t\n\r\f\v]</code>.</p>
+<p><code>\S</code></p>
+<p>Matches any non-whitespace character; this is equivalent to the class <code>[^ \t\n\r\f\v]</code>.</p>
+<p><code>\w</code></p>
+<p>Matches any alphanumeric character; this is equivalent to the class <code>[a-zA-Z0-9_]</code>.</p>
+<p><code>\W</code></p>
+<p>Matches any non-alphanumeric character; this is equivalent to the class <code>[^a-zA-Z0-9_]</code>.</p>
+<p>These sequences can be included inside a character class. For example, <code>[\s,.]</code> is a character class that will match any whitespace character, or <code>','</code> or <code>'.'</code>.
+</p>
+<p>The final metacharacter in this section is <code>.</code>. It matches anything except a newline character, and there's an alternate mode <code>(re.DOTALL)</code> where it will match even a newline. <code>'.'</code> is often used where you want to match "any character".
+</p>
+
+<h2>Using Regular Expressions</h2>
+<p>Now that we've looked at some simple regular expressions, how do we actually use them in Python? The re module provides an interface to the regular expression engine, allowing you to compile REs into objects and then perform matches with them.
+</p>
+
+<h2>Compiling Regular Expressions</h2>
+<p>
+Regular expressions are compiled into pattern objects, which have methods for various operations such as searching for pattern matches or performing string substitutions.
+</p>
+<p>
+Syntax:
+<pre>
+regexp = re.compile(pattern)
+</pre>
+<p>
+<code>p</code> --> regular expression object
+</p>
+<p>
+<code>re</code> --> from the re module
+</p>
+<p>
+<code>compile</code> --> compile the pattern
+</p>
+<p>
+<code>pattern</code> --> the search term
+</p>
+<pre class="brush:py;">
+>>> import re
+>>> p = re.compile('ab*')
+>>> p  
+<_sre.SRE_Pattern object at 0x...>
+</pre>
+<code>re.compile()</code> also accepts an optional flags argument, used to enable various special features and syntax variations. We'll go over the available settings later, but for now a single example will do:
+<pre class="brush:py;">
+>>> p = re.compile('ab*', re.IGNORECASE)
+</pre>
+
+<p>
+The RE is passed to <code>re.compile()</code> as a string. REs are handled as strings because regular expressions aren't part of the core Python language, and no special syntax was created for expressing them. (There are applications that don't need REs at all, so there’s no need to bloat the language specification by including them.) Instead, the <code>re</code> module is simply a C extension module included with Python, just like the <code>socket</code> or <code>zlib</code> modules.
+</p>
+<h2>The Backslash Plague</h2>
+<p>
+As stated earlier, regular expressions use the backslash character (<code>'\'</code>) to indicate special forms or to allow special characters to be used without invoking their special meaning. This conflicts with Python's usage of the same character for the same purpose in string literals.
+</p>
+<p>
+Let's say you want to write a RE that matches the string <code>\section</code>, which might be found in a LaTeX file. To figure out what to write in the program code, start with the desired string to be matched. Next, you must escape any backslashes and other metacharacters by preceding them with a backslash, resulting in the string <code>\\section</code>. The resulting string that must be passed to <code>re.compile()</code> must be <code>\\section</code>. However, to express this as a Python string literal, both backslashes must be escaped again.
+</p>
+<table class="table table-striped" style="width:50%">
+  <tr>
+    <th><b>Characters</b></th>
+    <th><b>Stage</b></th> 
+  </tr>
+  <tr>
+    <td>\section</td>
+    <td>Text string to be matched</td> 
+    
+  </tr>
+  <tr>
+    <td>\\section</td>
+    <td>Escaped backslash for <code>re.compile()</code></td> 
+    
+  </tr>
+    <tr>
+    <td>"\\\\section"</td>
+    <td>Escaped backslashes for a string literal</td> 
+  </tr>
+</table>
+<p>
+In short, to match a literal backslash, one has to write <code>'\\\\'</code> as the RE string, because the regular expression must be <code>\\</code>, and each backslash must be expressed as <code>\\</code> inside a regular Python string literal. In REs that feature backslashes repeatedly, this leads to lots of repeated backslashes and makes the resulting strings difficult to understand.
+</p>
+<p>
+The solution is to use Python's raw string notation for regular expressions; backslashes are not handled in any special way in a string literal prefixed with <code>'r'</code>, so <code>r"\n"</code> is a two-character string containing <code>'\'</code> and <code>'n'</code>, while <code>"\n"</code> is a one-character string containing a newline. Regular expressions will often be written in Python code using this raw string notation.
+</p>
+<table class="table table-striped" style="width:50%">
+  <tr>
+    <th><b>Regular String</b></th>
+    <th><b>Raw string</b></th> 
+  </tr>
+  <tr>
+    <td>"ab*"</td>
+    <td>r"ab*"</td> 
+    
+  </tr>
+  <tr>
+    <td>"\\\\section"</td>
+    <td>r"\\section"</code></td> 
+    
+  </tr>
+    <tr>
+    <td>"\\w+\\s+\\1"</td>
+    <td>r"\w+\s+\1"</td> 
+  </tr>
+</table>
+<h2>Performing Matches</h2>
+<p>
+Once you have an object representing a compiled regular expression, what do you do with it? Pattern objects have several methods and attributes. Only the most significant ones will be covered here; consult the <code>re</code> docs for a complete listing.
+</p>
+
+<table class="table table-striped" style="width:50%">
+  <tr>
+    <th><b>Method/Attribute</b></th>
+    <th><b>Purpose</b></th> 
+  </tr>
+  <tr>
+    <td>match()</td>
+    <td>Determine if the RE matches at the beginning of the string.</td> 
+    
+  </tr>
+  <tr>
+    <td>search()</td>
+    <td>Scan through a string, looking for any location where this RE matches.</code></td> 
+    
+  </tr>
+    <tr>
+    <td>findall()</td>
+    <td>Find all substrings where the RE matches, and returns them as a list.</td> 
+  </tr>
+    
+    <tr>
+    <td>finditer()</td>
+    <td>Find all substrings where the RE matches, and returns them as an iterator.</td> 
+  </tr>
+</table>
+
+<p>
+<code>match()</code> and <code>search()</code> return None if no match can be found. If they're successful, a match object instance is returned, containing information about the match: where it starts and ends, the substring it matched, and more.
+</p>
+<p>
+This HOWTO uses the standard Python interpreter for its examples. First, run the Python interpreter, import the <code>re</code> module, and compile a RE:
+</p>
+<pre class="brush:py;">
+>>> import re
+>>> p = re.compile('[a-z]+')
+</pre>
+<p>
+Now, you can try matching various strings against the RE <code>[a-z]+</code>. An empty string shouldn’t match at all, since <code>+</code> means 'one or more repetitions'. <code>match()</code> should return None in this case, which will cause the interpreter to print no output. You can explicitly print the result of <code>match()</code> to make this clear.
+</p>
+<pre class="brush:py;">
+>>> p.match("")
+>>> print p.match("")
+None
+</pre>
+<p>
+Now, let's try it on a string that it should match, such as tempo. In this case, <code>match()</code> will return a match object, so you should store the result in a variable for later use.
+</p>
+<pre class="brush:py;">
+>>> m = p.match('tempo')
+>>> m  
+<_sre.SRE_Match object at 0x...>
+</pre>
+<p>
+Now you can query the match object for information about the matching string. match object instances also have several methods and attributes; the most important ones are:
+</p>
+
+<table class="table table-striped" style="width:50%">
+  <tr>
+    <th><b>Method/Attribute</b></th>
+    <th><b>Purpose</b></th> 
+	
+  </tr>
+  <tr>
+    <td>group()</td>
+    <td>Return the string matched by the RE</td> 
+    
+  </tr>
+  <tr>
+    <td>start()</td>
+    <td>Return the starting position of the match</code></td> 
+    
+  </tr>
+    <tr>
+    <td>end()</td>
+    <td>Return the ending position of the match</td> 
+  </tr>
+    
+    <tr>
+    <td>span()</td>
+    <td>Return a tuple containing the (start, end) positions of the match</td> 
+  </tr>
+</table>
+
+<p>
+Trying these methods will soon clarify their meaning:
+</p>
+
+<pre class="brush:py;">
+>>> m.group()
+'tempo'
+>>> m.start(), m.end()
+(0, 5)
+>>> m.span()
+(0, 5)
+</pre>
+<p>
+<code>group()</code> returns the substring that was matched by the RE. <code>start()</code> and <code>end()</code> return the starting and ending index of the match. <code>span()</code> returns both start and end indexes in a single tuple. Since the match() method only checks if the RE matches at the start of a string, start() will always be zero. However, the search() method of patterns scans through the string, so the match may not start at zero in that case.
+</p>
+<pre class="brush:py;">
+>>> print p.match('::: message')
+None
+>>> m = p.search('::: message')
+>>> print m  
+<_sre.SRE_Match object at 0x...>
+>>> m.group()
+'message'
+>>> m.span()
+(4, 11)
+</pre>
+<p>
+Two pattern methods return all of the matches for a pattern. <code>findall()</code> returns a list of matching strings:
+</p>
+<pre class="brush:py;">
+>>> p = re.compile('\d+')
+>>> p.findall('12 drummers drumming, 11 pipers piping, 10 lords a-leaping')
+['12', '11', '10']
+</pre>
+<p>
+<code>findall()</code> has to create the entire list before it can be returned as the result. The <code>finditer()</code> method returns a sequence of match object instances as an iterator.
+</p>
+<pre class="brush:py;">
+>>> iterator = p.finditer('12 drummers drumming, 11 ... 10 ...')
+>>> iterator  
+<callable-iterator object at 0x...>
+>>> for match in iterator:
+...     print match.span()
+...
+(0, 2)
+(22, 24)
+(29, 31)
+</pre>
+<h2>Regular Expression Modifiers: Option Flags</h2>
+<hr>
+<p>
+Regular expression literals may include an optional modifier to control various aspects of matching. The modifiers are specified as an optional flag. You can provide multiple modifiers using exclusive OR (|), as shown previously and may be represented by one of these −
+</p>
+<table class="table table-striped" style="width:75%">
+<tr><th>Modifier</th><th>Description</th></tr>
+<tr><td>re.I</td><td>Performs case-insensitive matching.</td></tr>
+<tr><td>re.L</td><td>Interprets words according to the current locale. This interpretation affects the alphabetic group <code>(\w and \W)</code>, as well as word boundary behavior
+(\b and \B).</td></tr>
+<tr><td>re.M</td><td>Makes $ match the end of a line (not just the end of the string) and makes ^ match the start of any line (not just the start of the string).</td></tr>
+<tr><td>re.S</td><td>Makes a period (dot) match any character, including a newline.</td></tr>
+<tr><td>re.U</td><td>Interprets letters according to the Unicode character set. This flag affects the behavior of <code>\w</code>, <code>\W</code>, <code>\b</code>, <code>\B</code>.</td></tr>
+<tr><td>re.X</td><td>Permits "cuter" regular expression syntax. It ignores whitespace (except inside a set <code>[]</code> or when escaped by a backslash) and treats unescaped <code>#</code> as a comment marker.</td></tr>
+</table>
+
+<h2>Regular Expression Patterns</h2>
+<hr>
+<p>
+Except for control characters, <code>(+ ? . * ^ $ ( ) [ ] { } | \)</code>, all characters match themselves. You can escape a control character by preceding it with a backslash.
+</p>
+<p>
+Following table lists the regular expression syntax that is available in Python -
+</p>
+<table class="table table-striped" style="width:50%">
+<tr><th>Pattern</th><th>Description</th></tr>
+<tr><td>^</td><td>Matches beginning of line.</td></tr>
+<tr><td>$</td><td>Matches end of line.</td></tr>
+<tr><td>.</td><td>Matches any single character except newline. Using m option allows it to match newline as well.</td></tr>
+<tr><td>[...]</td><td>Matches any single character in brackets.</td></tr>
+<tr><td>[^...]</td><td>Matches any single character not in brackets</td></tr>
+<tr><td>re*</td><td>Matches 0 or more occurrences of preceding expression.</td></tr>
+<tr><td>re+</td><td>Matches 1 or more occurrence of preceding expression.</td></tr>
+<tr><td>re?</td><td>Matches 0 or 1 occurrence of preceding expression.</td></tr>
+<tr><td>re{ n}</td><td>Matches exactly n number of occurrences of preceding expression.</td></tr>
+<tr><td>re{ n,}</td><td>Matches n or more occurrences of preceding expression.</td></tr>
+<tr><td>re{ n, m}</td><td>Matches at least n and at most m occurrences of preceding expression.</td></tr>
+<tr><td>a| b</td><td>Matches either a or b.</td></tr>
+<tr><td>(re)</td><td>Groups regular expressions and remembers matched text.</td></tr>
+<tr><td>(?imx)</td><td>Temporarily toggles on i, m, or x options within a regular expression. If in parentheses, only that area is affected.</td></tr>
+<tr><td>(?-imx)</td><td>Temporarily toggles off i, m, or x options within a regular expression. If in parentheses, only that area is affected.</td></tr>
+<tr><td>(?: re)</td><td>Groups regular expressions without remembering matched text.</td></tr>
+<tr><td>(?imx: re)</td><td>Temporarily toggles on i, m, or x options within parentheses.</td></tr>
+<tr><td>(?-imx: re)</td><td>Temporarily toggles off i, m, or x options within parentheses.</td></tr>
+<tr><td>(?#...)</td><td>Comment.</td></tr>
+<tr><td>(?= re)</td><td>Specifies position using a pattern. Doesn't have a range.</td></tr>
+<tr><td>(?! re)</td><td>Specifies position using pattern negation. Doesn't have a range.</td></tr>
+<tr><td>(?&gt; re)</td><td>Matches independent pattern without backtracking.</td></tr>
+<tr><td>\w</td><td>Matches word characters.</td></tr>
+<tr><td>\W</td><td>Matches nonword characters.</td></tr>
+<tr><td>\s</td><td>Matches whitespace. Equivalent to <code>[\t\n\r\f]</code>.</td></tr>
+<tr><td>\S</td><td>Matches nonwhitespace.</td></tr>
+<tr><td>\d</td><td>Matches digits. Equivalent to <code>[0-9]</code>.</td></tr>
+<tr><td>\D</td><td>Matches nondigits.</td></tr>
+<tr><td>\A</td><td>Matches beginning of string.</td></tr>
+<tr><td>\Z</td><td>Matches end of string. If a newline exists, it matches just before newline.</td></tr>
+<tr><td>\z</td><td>Matches end of string.</td></tr>
+<tr><td>\G</td><td>Matches point where last match finished.</td></tr>
+<tr><td>\b</td><td>Matches word boundaries when outside brackets. Matches backspace (0x08) when inside brackets.</td></tr>
+<tr><td>\B</td><td>Matches nonword boundaries.</td></tr>
+<tr><td>\n, \t, etc.</td><td>Matches newlines, carriage returns, tabs, etc.</td></tr>
+<tr><td>\1...\9</td><td>Matches nth grouped subexpression.</td></tr>
+<tr><td>\10</td><td>Matches nth grouped subexpression if it matched already. Otherwise refers to the octal representation of a character code.</td></tr>
+</table>
+<h2>Regular Expression Examples</h2>
+<h3>Literal characters</h3>
+<table class="table table-striped" style="width:50%">
+<tr><th>Example</th><th>Description</th></tr>
+<tr><td>python</td><td>Match "python". </td></tr>
+</table>
+<h2>Character classes</h2>
+<table class="table table-striped" style="width:50%">
+<tr><th>Example</th><th>Description</th></tr>
+<tr><td>[Pp]ython </td><td>Match "Python" or "python"</td></tr>
+<tr><td>rub[ye]</td><td>Match "ruby" or "rube"</td></tr>
+<tr><td>[aeiou]</td><td>Match any one lowercase vowel</td></tr>
+<tr><td>[0-9]</td><td>Match any digit; same as <code>[0123456789]</code></td></tr>
+<tr><td>[a-z]</td><td>Match any lowercase ASCII letter</td></tr>
+<tr><td>[A-Z]</td><td>Match any uppercase ASCII letter</td></tr>
+<tr><td>[a-zA-Z0-9]</td><td>Match any of the above</td></tr>
+<tr><td>[^aeiou]</td><td>Match anything other than a lowercase vowel</td></tr>
+<tr><td>[^0-9]</td><td>Match anything other than a digit</td></tr>
+</table>
+<h2>Special Character Classes</h2>
+<table class="table table-striped" style="width:50%">
+<tr><th>Example</th><th>Description</th></tr>
+<tr><td>.</td><td>Match any character except newline</td></tr>
+<tr><td>\d</td><td>Match a digit: <code>[0-9]</code></td></tr>
+<tr><td>\D </td><td>Match a nondigit: <code>[^0-9]</code></td></tr>
+<tr><td>\s</td><td>Match a whitespace character: <code>[ \t\r\n\f]</code></td></tr>
+<tr><td>\S </td><td>Match nonwhitespace: <code>[^ \t\r\n\f]</code></td></tr>
+<tr><td>\w</td><td>Match a single word character: <code>[A-Za-z0-9_]</code></td></tr>
+<tr><td>\W</td><td>Match a nonword character: <code>[^A-Za-z0-9_]</code></td></tr>
+</table>
+<h2>Repetition Cases</h2>
+<table class="table table-striped" style="width:50%">
+<tr><th>Example</th><th>Description</th></tr>
+<tr><td>ruby? </td><td>Match "rub" or "ruby": the y is optional</td></tr>
+<tr><td>ruby* </td><td>Match "rub" plus 0 or more ys</td></tr>
+<tr><td>ruby+</td><td>Match "rub" plus 1 or more ys</td></tr>
+<tr><td>\d{3}</td><td>Match exactly 3 digits</td></tr>
+<tr><td>\d{3,}</td><td>Match 3 or more digits</td></tr>
+<tr><td>\d{3,5}</td><td>Match 3, 4, or 5 digits</td></tr>
+</table>
+<h2>Nongreedy repetition</h2>
+<p>This matches the smallest number of repetitions &minus;</p>
+<table class="table table-striped" style="width:50%">
+<tr><th>Example</th><th>Description</th></tr>
+<tr><td>&lt;.*&gt;</td><td>Greedy repetition: matches "&lt;python&gt;perl&gt;"</td></tr>
+<tr><td>&lt;.*?&gt;</td><td>Nongreedy: matches "&lt;python&gt;" in "&lt;python&gt;perl&gt;"</td></tr>
+</table>
+<h2>Grouping with Parentheses</h2>
+<table class="table table-striped" style="width:50%">
+<tr><th>Example</th><th>Description</th></tr>
+<tr><td>\D\d+</td><td>No group: <code>+</code> repeats <code>\d</code></td></tr>
+<tr><td>(\D\d)+</td><td>Grouped: <code>+</code> repeats <code>\D\d</code> pair</code></td></tr>
+<tr><td>([Pp]ython(, )?)+</td><td>Match "Python", "Python, python, python", etc.</td></tr>
+</table>
+<h2>Backreferences</h2>
+<p>This matches a previously matched group again &minus;</p>
+<table class="table table-striped" style="width:50%">
+<tr><th>Example</th><th>Description</th></tr>
+<tr><td>([Pp])ython&amp;\1ails</td><td>Match python&amp;pails or Python&amp;Pails</td></tr>
+<tr><td>(['"])[^\1]*\1</td><td>Single or double-quoted string. <code>\1</code> matches whatever the 1st group matched. <code>\2</code> matches whatever the 2nd group matched, etc.</td></tr>
+</table>
+<h2>Alternatives</h2>
+<table class="table table-striped" style="width:50%">
+<tr><th>Example</th><th>Description</th></tr>
+<tr><td>python|perl</td><td>Match "python" or "perl"</td></tr>
+<tr><td>rub(y|le))</td><td>Match "ruby" or "ruble"</td></tr>
+<tr><td>Python(!+|\?)</td><td>"Python" followed by one or more ! or one ?</td></tr>
+</table>
+<h2>Anchors</h2>
+<p>This needs to specify match position.</p>
+<table class="table table-striped" style="width:50%">
+<tr><th>Example</th><th>Description</th></tr>
+<tr><td>^Python</td><td>Match "Python" at the start of a string or internal line</td></tr>
+<tr><td>Python$ </td><td>Match "Python" at the end of a string or line</td></tr>
+<tr><td>\APython </td><td>Match "Python" at the start of a string</td></tr> 
+<tr><td>Python\Z</td><td>Match "Python" at the end of a string</td></tr>
+<tr><td>\bPython\b</td><td>Match "Python" at a word boundary</td></tr>
+<tr><td>\brub\B</td><td>\B is nonword boundary: match "rub" in "rube" and "ruby" but not alone</td></tr>
+<tr><td>Python(?=!)</td><td>Match "Python", if followed by an exclamation point.</td></tr>
+<tr><td>Python(?!!)</td><td>Match "Python", if not followed by an exclamation point.</td></tr>
+</table>
+<h2>Special Syntax with Parentheses</h2>
+<table class="table table-striped" style="width:50%">
+<tr><th>Example</th><th>Description</th></tr>
+<tr><td>R(?#comment)</td><td>Matches "R". All the rest is a comment</td></tr>
+<tr><td>R(?i)uby</td><td>Case-insensitive while matching "uby"</td></tr>
+<tr><td>R(?i:uby)</td><td>Same as above</td></tr>
+<tr><td>rub(?:y|le))</td><td>Group only without creating \1 backreference</td></tr>
+</table>
+
+<h2>Using a regular expression</h2>
+<hr>
+<pre class="brush:py;">
+import sys
+import re
+pattern = "Fred"
+regexp = re.compile(pattern)
+for line in sys.stdin:
+    result = regexp.search(line)
+    if regular expression matches:
+		sys.stdout.write(line)
+</pre>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+﻿{% extends "firstapp/course_base.html" %}
+
+{% block content %}
+<h1>Python Introduction</h1>
+		<br>
+        
+ <h2>Language Introduction</h2>
+		<hr>
+        <p>Python is a dynamic, interpreted (bytecode-compiled) language. There are no type declarations of variables, parameters, functions, or methods in source code. This makes the code short and flexible, and you lose the compile-time type checking of the source code. Python tracks the types of all values at runtime and flags code that does not make sense as it runs.</p>
+		<p>An excellent way to see how Python code works is to run the Python interpreter and type code right into it. If you ever have a question like, "What happens if we add an <code>int</code> to a <code>list</code>?" Just typing it into the Python interpreter is a fast and likely the best way to see what happens. (See below to see what really happens!)</p>
+        <pre class="brush: py;">
+			PS C:\Users\Jeri_Dabba> python
+			Python 2.7.10 (default, May 23 2015, 09:44:00) [MSC v.1500 64 bit (AMD64)] on win32
+			Type "help", "copyright", "credits" or "license" for more information.
+			>>> a = 6                     ## set a variable in this interpreter session
+			>>> a                         ## entering an expression prints its value
+			6
+			>>> a + 2
+			8
+			>>> a = 'hi'                  ## 'a' can hold a string just as well
+			>>> a
+			'hi'
+			>>> len(a)                    ## call the len() function on a string
+			2
+			>>> a + len(a)                ## try something that doesn't work
+			Traceback (most recent call last):
+			  File "<stdin>", line 1, in <module>
+			TypeError: cannot concatenate 'str' and 'int' objects
+			>>> a + str(len(a))           ## probably what you really wanted
+			'hi2'
+			>>> foo                       ## try something else that doesn't work
+			Traceback (most recent call last):
+			  File "<stdin>", line 1, in <module>
+			NameError: name 'foo' is not defined
+			>>>                          ## type CTRL-d or CTRL-z in Windows/DOS terminal to exit)
+			PS C:\Users\Jeri_Dabba>
+		</pre>
+		
+		<p>As you can see above, it's easy to experiment with variables and operators. Also, the interpreter throws, or "raises" in Python parlance, a runtime error if the code tries to read a variable that has not been assigned a value. Like C++ and Java, Python is case sensitive so "a" and "A" are different variables. The end of a line marks the end of a statement, so unlike C++ and Java, Python does not require a semicolon at the end of each statement. Comments begin with a '#' and extend to the end of the line.</p>
+		
+	<h2>Python Source Code</h2>
+	<hr>
+	<p>Python source files use the ".py" extension and are called "modules." With a Python module <code>hello.py</code>, the easiest way to run it is with the shell command "python hello.py Alice" which calls the Python interpreter to execute the code in <code>hello.py</code>, passing it the command line argument "Alice". See the <a href="https://docs.python.org/3/contents.html">official docs page</a> on all the different options you have when running Python from the command-line.</p>
+    <p>Here's a very simple <code>hello.py</code> program (notice that blocks of code are delimited strictly using indentation rather than curly braces - more on this later!):</p>
+    
+
+    <p>Running this program from the command line looks like:
+	
+    <pre class="brush: py;">
+    PS C:\Users\Jeri_Dabba\Desktop> python hello.py
+    SJCET
+    </pre>
+
+    <h2>Identation</h2>
+    <hr>
+    <p>One unusual Python feature is that the whitespace indentation of a piece of code affects its meaning. A logical block of statements such as the ones that make up a function should all have the same indentation, set in from the indentation of their parent function or "if" or whatever. If one of the lines in a group has a different indentation, it is flagged as a syntax error.</p>
+    <p>Python's use of whitespace feels a little strange at first, but it's logical and I found I got used to it very quickly. Avoid using TABs as they greatly complicate the indentation scheme (not to mention TABs may mean different things on different platforms). Set your editor to insert spaces instead of TABs for Python code</p>
+    <p>A common question beginners ask is, "How many spaces should I indent?" According to the official <a href="https://www.python.org/dev/peps/pep-0008/#indentation">Python style guide (PEP 8)</a>, you should indent with 4 spaces.</p>
+
+    {% endblock %}

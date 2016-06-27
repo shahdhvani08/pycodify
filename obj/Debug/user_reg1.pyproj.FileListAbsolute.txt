@@ -1,0 +1,15 @@
+C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\bin\Microsoft.PythonTools.WebRole.dll
+C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\obj\Debug\attach_server.py
+C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\obj\Debug\visualstudio_py_debugger.py
+C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\obj\Debug\visualstudio_py_repl.py
+C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\obj\Debug\visualstudio_py_util.py
+C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\obj\Debug\__init__.py
+C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\obj\Debug\__main__.py
+C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\bin\AzureSetup.cfg
+C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\bin\Microsoft.PythonTools.AzureSetup.exe
+C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\bin\Microsoft.PythonTools.AzureSetup.exe.config
+C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\bin\wfastcgi.py
+C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\obj\Debug\deployment-updated-orig-prefix.txt
+C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\ptvs_virtualenv_proxy.py
+C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\obj\Debug\web.config
+C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\obj\Debug\web.debug.config

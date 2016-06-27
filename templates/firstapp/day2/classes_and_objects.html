@@ -1,0 +1,1115 @@
+﻿{% extends "firstapp/course_base.html" %}
+
+{% block content %}
+
+<h1>Python Object Oriented</h1>
+<br>
+<p><b>Overview of OOP Terminology:</b></p>
+<ul>
+<li>Class: A user-defined prototype for an object that defines a set of attributes that characterize any object of the class. The attributes are data members (class variables and instance variables) and methods, accessed via dot notation.</li>
+
+<li>Class variable: A variable that is shared by all instances of a class. Class variables are defined within a class but outside any of the class's methods. Class variables are not used as frequently as instance variables are.</li>
+
+<li>Data member: A class variable or instance variable that holds data associated with a class and its objects.</li>
+
+<li>Function overloading: The assignment of more than one behavior to a particular function. The operation performed varies by the types of objects or arguments involved.</li>
+
+<li>Instance variable: A variable that is defined inside a method and belongs only to the current instance of a class.</li>
+
+<li>Inheritance: The transfer of the characteristics of a class to other classes that are derived from it.</li>
+
+<li>Instance: An individual object of a certain class. An object obj that belongs to a class Circle, for example, is an instance of the class Circle.</li>
+
+<li>Instantiation: The creation of an instance of a class.</li>
+
+<li>Method : A special kind of function that is defined in a class definition.</li>
+
+<li>Object: A unique instance of a data structure that's defined by its class. An object comprises both data members (class variables and instance variables) and methods.</li>
+
+<li>Operator overloading: The assignment of more than one function to a particular operator.</li>
+</ul>
+
+<h2>A minimal class in Python</h2>
+<hr>
+<p>We will design and use a robot class in Python as an example to demonstrate the most important terms and ideas of object orientation. We will start with the simplest class in Python.</p>
+
+<pre class = "brush:py;">
+class Robot:
+    pass
+</pre>
+
+<p>We can realize the fundamental syntactical structure of a class in Python: A class consists of two parts: the header and the body. The header usually consists of just one line of code. It begins with the keyword "class" followed by a blank and an arbitrary name for the class. The class name is "Robot" in our case. The class name is followed by a listing of other class names, which are classes from which the defined class inherits from.</p>
+<p>The body of a class consists of an indented block of statements. In our case a single statement, the "pass" statement. 
+
+A class object is created, when the definition is left normally, i.e. via the end. This is basically a wrapper around the contents of the namespace created by the class definition. </p>
+
+<pre class = "brush:py;">
+class Robot:
+    pass
+
+if __name__ == "__main__":
+    x = Robot()
+    y = Robot()
+    y2 = y
+    print(y == y2)
+    print(y == x)
+</pre>
+
+<p>We have created two different robots <code>x</code> and <code>y</code> in our example. Besides this, we have created a reference <code>y2</code> to <code>y</code>, i.e. <code>y2</code> is an alias name for <code>y</code>. The output of this example program looks like this:</p>
+
+<pre class = "brush:py;">
+True
+False
+</pre>
+
+<h3>What is 'if __name__ == "__main__"' for?</h3>
+
+<p>The <code>if __name__ == "__main__"</code>: ... trick exists in Python so that our Python files can act as either reusable modules, or as standalone programs. As a toy example, let’s say that we have two files:
+<p><b>mymath.py:</b></p>
+
+<pre class = "brush:py;">
+def square(x):
+    return(x * x)
+
+if __name__ == '__main__':
+    a = square(42)
+    print(a)
+</pre>
+<p>In this example, we’ve written <code>mymath.py</code> to be as a standalone program. We can run mymath standalone by doing this:
+
+Output:
+<pre class = "brush:py;">
+>>> 
+1764
+>>>
+</pre>
+
+<p><b>mymath.py</b></p>
+<pre class = "brush:py;">
+def square(x):
+    return(x * x)
+
+if __name__ == '__main__':
+    a = square(42)
+    print(a)
+
+print("I have been called from the 2nd module. Since I am not the 'main' module, square of 42 cannot be returned.")	
+</pre>
+
+<p>Now, we will use <code>mymath.py</code> as a utility module and see what happens:</p>
+<p><b>mymath2.py</p></b>
+
+<pre class = "brush:py;">
+import mymath
+
+if __name__ == '__main__':
+    print("This is the 2nd module")
+
+mymath.square(42)
+</pre>
+
+<p><code>mymath.py</code> is being imported by <code>mymath2.py</code>. Since <code>mymath.py</code> isused as module, let’s see what happens when we run mymath2.py:
+<pre class = "brush:py;">
+>>> 
+I have been called from the 2nd module. Since I am not the 'main' module, square of 42 cannot be returned.
+This is the 2nd module
+>>> 
+</pre>
+
+<p>Notice that here we don’t see the the <b>square of x i.e 42</b> that <code>mymath.py</code> had near the bottom of its code. That’s because, in this context, <code>mymath.py</code> is not the main program. That’s what the <code>if __name__ == "__main__":</code> ... trick is used for.</p>
+<p>The <code>mymath.py</code> has not been executed directly. It has been imported (so it is not the 'main') and hence it did not called the function <code>square(x)</code>.</p>
+
+<h2>Attributes</h2>
+<hr>
+<p>According to Wikipedia, "In computing, an attribute is a specification that defines a property of an object, element, or file. It may also refer to or set the specific value for a given instance of such." </p>
+<p>This subsection of our tutorial is about attributes in Python. So far our robots have no attributes. Not even a name, like it is customary for ordinary robots, isn't it? So, let's implement a name attribute. "type designation", "build year" and so on are easily conceivable as further attributes as well.</p>
+
+<p>Attributes are created inside of a class definition, as we will soon learn. We can dynamically create arbitrary new attributes for existing instances of a class. We do this by joining an arbitrary name to the instance name, separated by a dot ".". In the following example <code>class_attr.py</code>, we demonstrate this by created an attribute for the name and the build year:</p>
+
+<pre class = "brush:py;">
+class Robot:
+    pass
+
+x = Robot()
+y = Robot()
+
+x.name = "Marvin"
+x.build_year = "1979"
+
+y.name = "Caliban"
+y.build_year = "1993"
+
+print(x.name, x.build_year)
+print(y.name, y.build_year)
+</pre>
+
+<p>When the above code is executed, the following output is generated:</p>
+
+<pre class = "brush:py;">
+>>> 
+('Marvin', '1979')
+('Caliban', '1993')
+>>> 
+</pre>
+
+<p>If you want to know, what's happening internally: The instances possess dictionaries <code>__dict__</code>, which they use to store their attributes and their corresponding values:</p>
+
+<pre class = "brush:py;">
+>>> x.__dict__
+{'name': 'Marvin', 'build_year': '1979'}
+>>> y.__dict__
+{'name': 'Caliban', 'build_year': '1993'}
+</pre>
+
+<p>Attributes can be bound to class names as well. In this case, each instance will possess this name as well. Watch out, what happens, if you assign the same name to an instance:</p> 
+
+<pre class = "brush:py;">
+>>> class Robot(object):
+	pass
+
+>>> x = Robot()
+>>> Robot.brand = "Kuka"
+>>> x.brand
+'Kuka'
+>>> y = Robot()
+>>> y.brand
+'Kuka'
+>>> Robot.brand
+'Kuka'
+>>> x.brand = "Thales"
+>>> x.brand
+'Thales'
+>>> Robot.brand
+'Kuka'
+>>> Robot.brand = "Thales"
+>>> y.brand
+'Thales'
+>>> 
+</pre>
+
+<p>If you look at the <code>__dict__ dictionaries</code>, you can see what's happening. </p>
+
+<pre class = "brush:py;">
+>>> 
+>>> x.__dict__
+{'brand': 'Thales'}
+>>> y.__dict__
+{}
+>>> Robot.__dict__
+dict_proxy({'__dict__': <attribute '__dict__' of 'Robot' objects>, '__module__': '__main__', '__weakref__': <attribute '__weakref__' of 'Robot' objects>, '__doc__': None, 'brand': 'Thales'})
+>>> 
+</pre>
+<p>If you try to access <code>y.brand</code>, Python checks first, if "<code>brand</code>" is a <b>key</b> of the <code>y.__dict__</code> dictionary. If it is not, Python checks, if "<code>brand</code>" is a <b>key</b> of the <code>Robot.__dict__</code>. If so, the value can be retrieved.</p> 
+
+<h2>Methods</h2>
+<hr>
+
+<p>We want to demonstrate now, how we can define <b>methods</b> in classes.</p> 
+
+<p>Let's define a function "<code>hi</code>", which takes an object "<code>obj</code>" as an argument and assumes that this object has an attribute "<code>name</code>". We will also define again our basic <code>Robot</code> class:</p>
+
+<pre class = "brush:py;">
+def hi(obj):
+    print("Hi, I am " + obj.name + "!")
+
+class Robot:
+    pass
+    
+x = Robot()
+x.name = "Marvin"
+hi(x)
+</pre>
+
+<p>If we call this code, we get the result:</p>
+
+<pre class = "brush:py;">
+Hi, I am Marvin!
+</pre>
+
+<p>We will now bind the function "<code>hi</code>" to a class attribute "<code>say_hi</code>"!</p>
+
+<pre class = "brush:py;">
+def hi(obj):
+        print("Hi, I am " + obj.name)
+
+class Robot:
+    say_hi = hi
+    
+x = Robot()
+x.name = "Marvin"
+Robot.say_hi(x)
+</pre>
+
+<p>"<code>say_hi</code>" is called a method. Usually, it will be called like this:</p>
+
+<pre class = "brush:py;">x.say_hi()</pre>
+
+<p>It is possible to define methods like this, but you shouldn't do it. The proper way to do it:</p>
+
+<ul>
+<li>Instead of defining a function outside of a class definition and binding it to a class attribute, we define a method directly inside (indented) of a class definition.</li>
+<li>A method is "just" a function which is defined inside of a class..</li>
+<li>The first parameter is used a reference to the calling instance.</li>
+<li>This parameter is usually called self.</li>
+<li>Self corresponds to the Robot object x.</li>
+</ul>
+
+<p>We have seen that a method differs from a function only in two aspects:</p>
+
+<ul>
+<li>It belongs to a class, and it is defined within a class</li>
+<li>The first parameter in the definition of a method has to be a reference to the instance, which called the method. This parameter is usually called "<code>self</code>".</li>
+</ul>
+
+<p>As a matter of fact, "<code>self</code>" is not a Python keyword. It's just a naming convention! So C++ or Java programmers are free to call it "<b>this</b>".</p>
+<p>We need a mechanism to initialize an instance right after its creation. This is the <code>__init__method</code>, which we cover in the next section.</p>
+
+<h2>The __init__ Method</h2>
+<hr>
+
+<p>We want to define the attributes of an instance right after its creation. <code>__init__</code> is a method which is immediately and automatically called after an instance has been created. This name is fixed and it is not possible to chose another name. <code>__init__</code> is one of the so-called magic methods, of which we will get to know some more details later. The <code>__init__</code> method is used to initialize an instance. There is no explicit constructor or destructor method in Python, as they are known in C++ and Java. The <code>__init__ </code> method can be anywhere in a class definition, but it is usually the first method of a class, i.e. it follows right after the class header.</p>
+
+<pre class = "brush:py;">
+>>> class A:
+...     def __init__(self):
+...         print("__init__ has been executed!")
+... 
+>>> x = A()
+__init__ has been executed!
+>>> 
+</pre>
+
+<p>We add an <code>__init__</code> method to our robot class:</p>
+
+<pre class = "brush:py;">
+class Robot:
+ 
+    def __init__(self, name=None):
+        self.name = name   
+        
+    def say_hi(self):
+        if self.name:
+            print("Hi, I am " + self.name)
+        else:
+            print("Hi, I am a robot without a name")
+
+x = Robot()
+x.say_hi()
+y = Robot("Marvin")
+y.say_hi()
+</pre>
+
+<p>This little program returns the following:</p>
+
+<pre class = "brush:py;">
+Hi, I am a robot without a name
+Hi, I am Marvin
+</pre>
+
+<h2>Data Abstraction, Data Encapsulation, and Information Hiding</h2>
+<hr>
+<p>Data Abstraction, Data Encapsulation and Information Hiding are often synonymously used in books and tutorials on OOP. But there is a difference. Encapsulation is seen as the bundling of data with the methods that operate on that data. Information hiding on the other hand is the principle that some internal information or data is "hidden", so that it can't be accidentally changed. Data encapsulation via methods doesn't necessarily mean that the data is hidden. You might be capable of accessing and seeing the data anyway, but using the methods is recommended. Finally, data abstraction is present, if both data hiding and data encapsulation is used. This means data abstraction is the broader term:</p>
+
+<p><b>Data Abstraction = Data Encapsulation + Data Hiding</b></p>
+
+<p>Encapsulation is often accomplished by providing two kinds of methods for attributes: The methods for retrieving or accessing the values of attributes are called <b>getter</b> methods. <b>Getter</b> methods do not change the values of attributes, they just return the values. The methods used for changing the values of attributes are called <b>setter</b> methods.</p>
+
+<p>We will define now a Robot class with a Getter and a Setter for the name attribute. We will call them <code>get_name</code> and <code>set_name</code> accordingly.</p>
+
+<pre class = "brush:py;">
+class Robot:
+ 
+    def __init__(self, name=None):
+        self.name = name   
+        
+    def say_hi(self):
+        if self.name:
+            print("Hi, I am " + self.name)
+        else:
+            print("Hi, I am a robot without a name")
+            
+    def set_name(self, name):
+        self.name = name
+        
+    def get_name(self):
+        return self.name
+
+x = Robot()
+x.set_name("Henry")
+x.say_hi()
+y = Robot()
+y.set_name(x.get_name())
+print(x.get_name())
+</pre>
+<p>The above code will produce the following result:</p>
+
+<pre class = "brush:py;">
+Hi, I am Henry
+Henry
+>>> 
+</pre>
+
+
+
+<h2>Public- Protected- and Private Attributes</h2>
+<hr>
+<p>Python uses a special naming scheme for attributes to control the accessibility of the attributes. So far, we have used attribute names, which can be freely used inside or outside of a class definition, as we have seen. This corresponds to public attributes of course.</p> 
+There are two ways to restrict the access to class attributes:
+First, we can prefix an attribute name with <b>a leading underscore "_"</b>. This marks the attribute as <b>protected</b>. It tells users of the class not to use this attribute unless, somebody writes a subclass.
+Second, we can prefix an attribute name with <b>two leading underscores "__"</b>. This marks the attribute as <b>private</b>. The attribute is now inaccessible and invisible from outside. It's neither possible to read nor write to those attributes except inside of the class definition itself.</p>
+
+<p>We want to demonstrate the behaviour of these attribute types with an example class:</p>
+
+<pre class = "brush:py;">
+class A():
+    
+    def __init__(self):
+        self.__priv = "I am private"
+        self._prot = "I am protected"
+        self.pub = "I am public"
+</pre>
+
+<p>We store this class (attribute_tests.py) and test its behaviour in the following interactive Python shell:</p>
+
+<pre class = "brush:py;">
+>>> from attribute_tests import A
+>>> x = A()
+>>> x.pub
+'I am public'
+>>> x.pub = x.pub + " and my value can be changed"
+>>> x.pub
+'I am public and my value can be changed'
+>>> x._prot
+'I am protected'
+>>> x.__priv
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'A' object has no attribute '__priv'
+>>>
+</pre>
+
+<p>The error message is very interesting. One might have expected a message like "<code>__priv is private</code>". We get the message "<b>AttributeError: 'A' object has no attribute '__priv'</b>" instead, which looks like a "lie". There is such an attribute, but we are told that there isn't. This is perfect information hiding. Telling a user that an attribute name is private, means that we make some information visible, i.e. the existence or non-existence of a private variable. 
+
+<p>Our next task consists in rewriting our <code>Robot</code> class. Though we have <code>Getter</code> and <code>Setter</code> methods for the <code>name</code> and the <code>build_year</code>, we can access the attributes directly as well, because we have defined them as public attributes. Data Encapsulation means, that we should only be able to access private attributes via getters and setters. We have to replace each occurrence of <code>self.name</code> and <code>self.build_year</code> by <code>self.__name</code> and <code>self.__build_year</code>.</p>
+
+<p>The listing of our revised class:</p>
+
+<pre class = "brush:py;">
+class Robot:
+ 
+    def __init__(self, name=None, build_year=2000):
+        self.__name = name
+        self.__build_year = build_year
+        
+    def say_hi(self):
+        if self.__name:
+            print("Hi, I am " + self.__name)
+        else:
+            print("Hi, I am a robot without a name")
+            
+    def set_name(self, name):
+        self.__name = name
+        
+    def get_name(self):
+        return self.__name    
+
+    def set_build_year(self, by):
+        self.__build_year = by
+        
+    def get_build_year(self):
+        return self.__build_year    
+    
+    def __repr__(self):
+        return "Robot('" + self.__name + "', " +  str(self.__build_year) +  ")"
+
+    def __str__(self):
+        return "Name: " + self.__name + ", Build Year: " +  str(self.__build_year)
+
+     
+if __name__ == "__main__":
+    x = Robot("Marvin", 1979)
+    y = Robot("Caliban", 1943)
+    for rob in [x, y]:
+        rob.say_hi()
+        if rob.get_name() == "Caliban":
+            rob.set_build_year(1993)
+        print("I was built in the year " + str(rob.get_build_year()) + "!")
+</pre>
+
+<p>We get the following out, if we call this program:</p>
+
+<pre class = "brush:py;">
+Hi, I am Marvin
+I was built in the year 1979!
+Hi, I am Caliban
+I was built in the year 1993!
+</pre>
+
+<p><b>Example:</b></p>
+
+<pre class = "brush:py;">
+class Employee:
+   'Common base class for all employees'
+   empCount = 0
+
+   def __init__(self, name, salary):
+      self.name = name
+      self.salary = salary
+      Employee.empCount += 1
+   
+   def displayCount(self):
+     print "Total Employee %d" % Employee.empCount
+
+   def displayEmployee(self):
+      print "Name : ", self.name,  ", Salary: ", self.salary
+</pre>
+<p>The variable <code>empCount</code> is a class variable whose value is shared among all instances of a this class. This can be accessed as <code>Employee.empCount</code> from inside the class or outside the class.</p>
+
+<p>The first method <code>__init__()</code> is a special method, which is called <b>class constructor</b> or <b>initialization</b> method that Python calls when you create a new instance of this class.<p>
+
+<p>You declare other class methods like normal functions with the exception that the first argument to each method is self. Python adds the self argument to the list for you; you do not need to include it when you call the methods.</p>
+
+<b><p>Creating Instance Objects</b></p>
+<p>To create instances of a class, you call the class using class name and pass in whatever arguments its <code>__init__</code> method accepts.</p>
+
+pre class = "brush:py;">
+This would create first object of Employee class
+emp1 = Employee("Zara", 2000)
+This would create second object of Employee class
+emp2 = Employee("Manni", 5000)
+</pre>
+
+<p><b>Accessing Attributes</b></p>
+<p>You access the object's attributes using the <code>dot</code> operator with object. Class variable would be accessed using class name as follows:</p>
+
+<pre class = "brush:py;">
+emp1.displayEmployee()
+emp2.displayEmployee()
+print "Total Employee %d" % Employee.empCount
+</pre>
+<p>Now, putting all the concepts together:</p>
+
+<pre class = "brush:py;">
+#!/usr/bin/python3
+
+class Employee:
+   'Common base class for all employees'
+   empCount = 0
+
+   def __init__(self, name, salary):
+      self.name = name
+      self.salary = salary
+      Employee.empCount += 1
+   
+   def displayCount(self):
+     print ("Total Employee %d" % Employee.empCount)
+
+   def displayEmployee(self):
+      print ("Name : ", self.name,  ", Salary: ", self.salary)
+
+
+#This would create first object of Employee class"
+emp1 = Employee("Zara", 2000)
+#This would create second object of Employee class"
+emp2 = Employee("Manni", 5000)
+emp1.displayEmployee()
+emp2.displayEmployee()
+print ("Total Employee %d" % Employee.empCount)
+</pre>
+<p>When the above code is executed, it produces the following result:</p>
+
+<pre class = "brush:py;">
+Name :  Zara ,Salary:  2000
+Name :  Manni ,Salary:  5000
+Total Employee 2
+</pre>
+<p>You can add, remove, or modify attributes of classes and objects at any time:</p>
+
+<pre class = "brush:py;">
+emp1.salary = 7000  # Add an 'salary' attribute.
+emp1.name = 'xyz'  # Modify 'age' attribute.
+del emp1.salary  # Delete 'age' attribute.
+</pre>
+<p>Instead of using the normal statements to access attributes, you can use the following functions:</p>
+<ul>
+
+<li>The getattr(obj, name[, default]) : to access the attribute of object.</li>
+
+<li>The hasattr(obj,name) : to check if an attribute exists or not.</li>
+
+<li>The setattr(obj,name,value) : to set an attribute. If attribute does not exist, then it would be created.</li>
+
+<li>The delattr(obj, name) : to delete an attribute.</li>
+</ul>
+
+<pre class = "brush:py;">
+hasattr(emp1, 'salary')    # Returns true if 'salary' attribute exists
+getattr(emp1, 'salary')    # Returns value of 'salary' attribute
+setattr(emp1, 'salary', 7000) # Set attribute 'age' at 8
+delattr(emp1, 'salary')    # Delete attribute 'age'
+</pre>
+
+<h2>Class Inheritance</h2>
+<hr>
+<p>Instead of starting from scratch, you can create a class by deriving it from a preexisting class by listing the parent class in parentheses after the new class name.</p>
+
+<p>The <b>child</b> class inherits the attributes of its <b>parent</b> class, and you can use those attributes as if they were defined in the child class. A child class can also override data members and methods from the parent.</p>
+
+<b>Syntax</b>
+<p>Derived classes are declared much like their parent class; however, a list of base classes to inherit from is given after the class name:</p>
+<p><b>Example:</p></b>
+
+<pre class = "brush:py;">
+
+#!/usr/bin/python3
+
+class Parent:        # define parent class
+   parentAttr = 100
+   def __init__(self):
+      print ("Calling parent constructor")
+
+   def parentMethod(self):
+      print ('Calling parent method')
+
+   def setAttr(self, attr):
+      Parent.parentAttr = attr
+
+   def getAttr(self):
+      print ("Parent attribute :", Parent.parentAttr)
+
+class Child(Parent): # define child class
+   def __init__(self):
+      print ("Calling child constructor")
+
+   def childMethod(self):
+      print ('Calling child method')
+
+c = Child()          # instance of child
+c.childMethod()      # child calls its method
+c.parentMethod()     # calls parent's method
+c.setAttr(200)       # again call parent's method
+c.getAttr()          # again call parent's method
+</pre>
+
+<p>When the above code is executed, it produces the following result:</p>
+
+<pre class = "brush:py;">
+Calling child constructor
+Calling child method
+Calling parent method
+Parent attribute : 200
+</pre>
+<p>Similar way, you can drive a class from multiple parent classes as follows:</p>
+
+<pre class = "brush:py;">
+class A:        # define your class A
+.....
+
+class B:         # define your calss B
+.....
+
+class C(A, B):   # subclass of A and B
+.....
+</pre>
+
+<p>You can use <code>issubclass()</code> or <code>isinstance()</code> functions to check a relationships of two classes and instances.
+
+The <code>issubclass(sub, sup)</code> boolean function returns true if the given subclass sub is indeed a subclass of the superclass sup.
+
+The <code>isinstance(obj, Class)</code> boolean function returns true if obj is an instance of class Class or is an instance of a subclass of Class.</p>
+
+<h2>Overriding and Overloading Methods</h2>
+<hr>
+<p>You can always override your parent class methods. One reason for overriding parent's methods is because you may want special or different functionality in your subclass.</p>
+
+<p><b>Example:</b></p>
+
+<pre class = "brush:py;">
+class Person:
+
+    def __init__(self, first, last):
+        self.firstname = first
+        self.lastname = last
+
+    def __str__(self):
+        return self.firstname + " " + self.lastname
+
+class Employee(Person):
+
+    def __init__(self, first, last, staffnum):
+        super().__init__(first, last)
+        self.staffnumber = staffnum
+
+
+x = Person("Marge", "Simpson")
+y = Employee("Homer", "Simpson", "1007")
+
+print(x)
+print(y)
+</pre>
+
+<p>The output looks like this:</p>
+
+<pre class = "brush:py;">
+$ python3 person2.py 
+Marge Simpson
+Homer Simpson
+</pre>
+
+<p>First of all, we can see that if we print an instance of the Employee class, the <code>__str__</code> method of <code>Person</code> is used. This is due to inheritance. The only problem we have now is the fact that the output of "<code>print(y)</code>" is not the same as the "<code>print(y.GetEmployee())</code>". This means that our Employee class needs its own <code>__str__</code> method. We could write it like this:<p>
+    <pre class = "brush:py;">
+	def __str__(self):
+        return self.firstname + " " + self.lastname + ", " +  self.staffnumber
+	</pre>
+	
+<p>But it is a lot better to use the <code>__str__</code> method of Person inside of the new definition. This way, we can make sure that the output of the Employee <code>__str__method</code> will automatically change, if the <code>__str__</code> method from the superclass Person changes. We could for example add a new attribute <code>age</code> in <code>Person</code>:</p> 
+
+<pre class = "brush:py;">
+class Person:
+
+    def __init__(self, first, last, age):
+        self.firstname = first
+        self.lastname = last
+        self.age = age
+
+    def __str__(self):
+        return self.firstname + " " + self.lastname + ", " + str(self.age)
+
+class Employee(Person):
+
+    def __init__(self, first, last, age, staffnum):
+        super().__init__(first, last, age)
+        self.staffnumber = staffnum
+
+    def __str__(self):
+        return super().__str__() + ", " +  self.staffnumber
+
+
+x = Person("Marge", "Simpson", 36)
+y = Employee("Homer", "Simpson", 28, "1007")
+
+print(x)
+print(y)
+</pre>
+
+<p>We have overridden the method __str__ from Person in Employee. By the way, we have overridden __init__ also. Method overriding is an object-oriented programming feature that allows a subclass to provide a different implementation of a method that is already defined by its superclass or by one of its superclasses. The implementation in the subclass overrides the implementation of the superclass by providing a method with the same name, same parameters or signature, and same return type as the method of the parent class. </p>
+
+<p>Having a function with a different number of parameters is another way of function overloading. The following C++ program shows such an example. The function f can be called with either one or two integer arguments:</p>
+
+<pre class = "brush:py;">
+#include <iostream>
+using namespace std;
+
+int f(int n);
+int f(int n, int m);
+
+int main() {
+    
+    cout << "f(3): " << f(3) << endl;
+    cout << "f(3, 4): " << f(3, 4) << endl;
+    return 0;
+}
+
+int f(int n) {
+    return n + 42;
+}
+int f(int n, int m) {
+    return n + m + 42; 
+}
+</pre>
+
+<p>This doesn't work in Python, as we can see in the following example. The second definition of f with two parameters redefines or overrides the first definition with one argument. Overriding means that the first definition is not available anymore. This explains the error message:</p>
+<pre class = "brush:py;">
+>>> def f(n):
+...     return n + 42
+... 
+>>> def f(n,m):
+...     return n + m + 42
+... 
+>>> f(3,4)
+49
+>>> f(3)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: f() takes exactly 2 arguments (1 given)
+>>>
+</pre>
+
+<p>If we need such a behaviour, we can simulate it with default parameters:</p>
+
+<pre class = "brush:py;">
+def f(n, m=None):
+    if m:
+        return n + m +42
+    else:
+        return n + 42
+</pre>
+
+<p>The <code>*</code> operator can be used as a more general approach for a family of functions with 1, 2, 3, or even more parameters:</p>
+
+<pre class = "brush:py;">
+def f(*x):
+    if len(x) == 1:
+        return x[0] + 42
+    else: 
+        return x[0] + x[1] + 42
+</pre>
+
+<h2>Data Hiding</h2>
+<hr>
+<p>An object's attributes may or may not be visible outside the class definition. You need to name attributes with a double underscore prefix, and those attributes then are not be directly visible to outsiders.</p>
+
+<p><b>Example:</b></p>
+
+<pre class = "brush:py;">
+#!/usr/bin/python3
+
+class JustCounter:
+   __secretCount = 0
+  
+   def count(self):
+      self.__secretCount += 1
+      print (self.__secretCount)
+
+counter = JustCounter()
+counter.count()
+counter.count()
+print (counter.__secretCount)
+</pre>
+
+<p>When the above code is executed, it produces the following result:</p>
+
+<pre class = "brush:py;">
+1
+2
+Traceback (most recent call last):
+  File "test.py", line 12, in <module>
+    print counter.__secretCount
+AttributeError: JustCounter instance has no attribute '__secretCount'
+</pre>
+
+<p>Python protects those members by internally changing the name to include the class name. You can access such attributes as object.<code>_className__attrName</code>. If you would replace your last line as following, then it works for you:</p>
+
+<pre class = "brush:py;">
+print (counter._JustCounter__secretCount)
+</pre>
+<p>When the above code is executed, it produces the following result:</p>
+
+<pre class = "brush:py;">
+1
+2
+2
+</pre>
+
+<p><b>Example: CalendarClock</b></p>
+
+<p>We want to introduce the principles of multiple inheritance with an example. For this purpose, we will implement to independent classes: a "Clock" and a "Calendar" class. After this, we will introduce a class "CalendarClock", which is, as the name implies, a combination of "Clock" and "Calendar". CalendarClock inherits both from "Clock" and "Calendar".</p>
+<p>The class Clock simulates the tick-tack of a clock. An instance of this class contains the time, which is stored in the attributes self.hours, self.minutes and self.seconds. Principally, we could have written the __init__ method and the set method like this:</p>
+
+<pre class = "brush:py;">
+    def __init__(self,hours=0, minutes=0, seconds=0):
+        self._hours = hours
+        self.__minutes = minutes
+        self.__seconds = seconds
+
+    def set(self,hours, minutes, seconds=0):
+        self._hours = hours
+        self.__minutes = minutes
+        self.__seconds = seconds
+</pre>
+
+<p>The complete Clock class:</p>
+<pre class = "brush:py;">
+""" 
+The class Clock is used to simulate a clock.
+"""
+
+class Clock(object):
+
+    def __init__(self, hours, minutes, seconds):
+        """
+        The paramaters hours, minutes and seconds have to be 
+        integers and must satisfy the following equations:
+        0 <= h < 24
+        0 <= m < 60
+        0 <= s < 60
+        """
+
+        self.set_Clock(hours, minutes, seconds)
+
+    def set_Clock(self, hours, minutes, seconds):
+        """
+        The parameters hours, minutes and seconds have to be 
+        integers and must satisfy the following equations:
+        0 <= h < 24
+        0 <= m < 60
+        0 <= s < 60
+        """
+
+        if type(hours) == int and 0 <= hours and hours < 24:
+            self._hours = hours
+        else:
+            raise TypeError("Hours have to be integers between 0 and 23!")
+        if type(minutes) == int and 0 <= minutes and minutes < 60:
+            self.__minutes = minutes 
+        else:
+            raise TypeError("Minutes have to be integers between 0 and 59!")
+        if type(seconds) == int and 0 <= seconds and seconds < 60:
+            self.__seconds = seconds
+        else:
+            raise TypeError("Seconds have to be integers between 0 and 59!")
+
+    def __str__(self):
+        return "{0:02d}:{1:02d}:{2:02d}".format(self._hours,
+                                                self.__minutes,
+                                                self.__seconds)
+
+    def tick(self):
+        """
+        This method lets the clock "tick", this means that the 
+        internal time will be advanced by one second.
+
+        Examples:
+        >>> x = Clock(12,59,59)
+        >>> print(x)
+        12:59:59
+        >>> x.tick()
+        >>> print(x)
+        13:00:00
+        >>> x.tick()
+        >>> print(x)
+        13:00:01
+        """
+
+        if self.__seconds == 59:
+            self.__seconds = 0
+            if self.__minutes == 59:
+                self.__minutes = 0
+                if self._hours == 23:
+                    self._hours = 0
+                else:
+                    self._hours += 1
+            else:
+                self.__minutes += 1
+        else:
+            self.__seconds += 1
+
+
+if __name__ == "__main__":
+    x = Clock(23,59,59)
+    print(x)
+    x.tick()
+    print(x)
+    y = str(x)
+    print(type(y))
+</pre>
+
+<p>If you call this module standalone, you get the following output:</p>
+<pre class = "brush:py;">
+$ python3 clock.py 
+23:59:59
+00:00:00
+<class 'str'>
+</pre>
+
+<p><b>The Calendar class</p></b>
+<pre class = "brush:py;">
+""" 
+The class Calendar implements a calendar.   
+"""
+
+class Calendar(object):
+
+    months = (31,28,31,30,31,30,31,31,30,31,30,31)
+    date_style = "British"
+
+    @staticmethod
+    def leapyear(year):
+        """ 
+        The method leapyear returns True if the parameter year
+        is a leap year, False otherwise
+        """
+
+        if year % 4 == 0:
+            if year % 100 == 0:
+                # divisible by 4 and by 100
+                if year % 400 == 0:
+                    leapyear = True
+                else:
+                    leapyear = False
+            else:
+                # divisible by 4 but not by 100
+                leapyear = True
+        else:
+            # not divisible by 4
+            leapyear = False
+
+        return leapyear
+
+
+    def __init__(self, d, m, y):
+        """
+        d, m, y have to be integer values and year has to be 
+        a four digit year number
+        """
+
+        self.set_Calendar(d,m,y)
+
+
+    def set_Calendar(self, d, m, y):
+        """
+        d, m, y have to be integer values and year has to be 
+        a four digit year number
+        """
+
+        if type(d) == int and type(m) == int and type(y) == int:
+            self.__days = d
+            self.__months = m
+            self.__years = y
+        else:
+            raise TypeError("d, m, y have to be integers!")
+
+
+    def __str__(self):
+        if Calendar.date_style == "British":
+            return "{0:02d}/{1:02d}/{2:4d}".format(self.__days,
+                                                   self.__months,
+                                                   self.__years)
+        else: 
+            # assuming American style
+            return "{0:02d}/{1:02d}/{2:4d}".format(self.__months,
+                                                   self.__days,
+                                                   self.__years)
+
+    def advance(self):
+        """
+        This method advances to the next date.
+        """
+
+        max_days = Calendar.months[self.__months-1]
+        if self.__months == 2 and Calendar.leapyear(self.__years):
+            max_days += 1
+        if self.__days == max_days:
+            self.__days= 1
+            if self.__months == 12:
+                self.__months = 1
+                self.__years += 1
+            else:
+                self.__months += 1
+        else:
+            self.__days += 1
+
+
+if __name__ == "__main__":
+    x = Calendar(31,12,2012)
+    print(x, end=" ")
+    x.advance()
+    print("after applying advance: ", x)
+    print("2012 was a leapyear:")
+    x = Calendar(28,2,2012)
+    print(x, end=" ")
+    x.advance()
+    print("after applying advance: ", x)
+    x = Calendar(28,2,2013)
+    print(x, end=" ")
+    x.advance()
+    print("after applying advance: ", x)
+    print("1900 no leapyear: number divisible by 100 but not by 400: ")
+    x = Calendar(28,2,1900)
+    print(x, end=" ")
+    x.advance()
+    print("after applying advance: ", x)
+    print("2000 was a leapyear, because number divisibe by 400: ")
+    x = Calendar(28,2,2000)
+    print(x, end=" ")
+    x.advance()
+    print("after applying advance: ", x)
+    print("Switching to American date style: ")
+    Calendar.date_style = "American"
+    print("after applying advance: ", x)  
+</pre>
+
+<p>Starting this script provides us with the following results: </p>
+
+<pre class = "brush:py;">
+$ python3 calendar.py
+31.12.2012 after applying advance:  01.01.2013
+2012 was a leapyear:
+28.02.2012 after applying advance:  29.02.2012
+28.02.2013 after applying advance:  01.03.2013
+1900 no leapyear: number divisible by 100 but not by 400: 
+28.02.1900 after applying advance:  01.03.1900
+2000 was a leapyear, because number divisibe by 400: 
+28.02.2000 after applying advance:  29.02.2000
+Switching to American date style: 
+after applying advance:  02/29/2000
+</pre>
+
+<p>At last, we will come to our multiple inheritance example. We are now capable of implementing the originally intended class CalendarClock, which will inherit from both Clock and Calendar. The method "tick" of Clock will have to be overloaded. However, the new tick method of CalendarClock has to call the tick method of Clock: Clock.tick(self)</p>
+
+<pre class = "brush:py;">
+""" 
+Module, which implements the class CalendarClock.
+"""
+
+from clock import Clock
+from calendar import Calendar
+
+
+class CalendarClock(Clock, Calendar):
+    """ 
+        The class CalendarClock implements a clock with integrated 
+        calendar. It's a case of multiple inheritance, as it inherits 
+        both from Clock and Calendar      
+    """
+
+    def __init__(self,day, month, year, hour, minute, second):
+        Clock.__init__(self,hour, minute, second)
+        Calendar.__init__(self,day, month, year)
+
+
+    def tick(self):
+        """
+        advance the clock by one second
+        """
+        previous_hour = self._hours
+        Clock.tick(self)
+        if (self._hours < previous_hour): 
+            self.advance()
+
+    def __str__(self):
+        return Calendar.__str__(self) + ", " + Clock.__str__(self)
+
+
+if __name__ == "__main__":
+    x = CalendarClock(31,12,2013,23,59,59)
+    print("One tick from ",x, end=" ")
+    x.tick()
+    print("to ", x)
+
+    x = CalendarClock(28,2,1900,23,59,59)
+    print("One tick from ",x, end=" ")
+    x.tick()
+    print("to ", x)
+
+    x = CalendarClock(28,2,2000,23,59,59)
+    print("One tick from ",x, end=" ")
+    x.tick()
+    print("to ", x)
+
+    x = CalendarClock(7,2,2013,13,55,40)
+    print("One tick from ",x, end=" ")
+    x.tick()
+    print("to ", x)
+</pre>
+
+<p>The output of the program hopefully further clarifies what's going on in this class:</p>
+<pre class = "brush:py;">
+$ python3 calendar_clock.py 
+One tick from  31/12/2013, 23:59:59 to  01/01/2014, 00:00:00
+One tick from  28/02/1900, 23:59:59 to  01/03/1900, 00:00:00
+One tick from  28/02/2000, 23:59:59 to  29/02/2000, 00:00:00
+One tick from  07/02/2013, 13:55:40 to  07/02/2013, 13:55:41
+</pre>
+
+{% endblock %}

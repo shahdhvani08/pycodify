@@ -1,0 +1,183 @@
+﻿{% extends "firstapp/course_base.html" %}
+
+{% block content %}
+
+<h1>Data Scraping using Python</h1>
+
+ <h2>Introduction</h2>
+ <hr>
+	<p>The need and importance of extracting data from the web is becoming increasingly loud and clear. Every few weeks, we find ourselves in a situation where we need to extract data from the web. For example, last week we were thinking of creating a script to get the MCQs from different web portals. This would not only require finding out the MCQs, but also scrape the web for their answers and then converting them to the AIKEN format! This is one of the problems / products, whose efficacy depends more on web scrapping and information extraction (data collection) than the techniques used to summarize the data.</p>
+
+<h2>Ways to extract information from web</h2>
+<hr>
+<p>There are several ways to extract information from the web. Use of APIs being probably the best way to extract data from a website. Almost all large websites like Twitter, Facebook, Google, Twitter, StackOverflow provide APIs to access their data in a more structured manner. If you can get what you need through an API, it is almost always preferred approach over web scrapping. This is because if you are getting access to structured data from the provider, why would you want to create an engine to extract the same information.</p>
+<p>Sadly, not all websites provide an API. Some do it because they do not want the readers to extract huge information in structured way, while others don't provide APIs due to lack of technical knowledge. What do you do in these cases? Well, we need to scrape the website to fetch the information.</p>
+<h2>What is Web Scraping?</h2>
+<hr>
+<p>Web scraping is a computer software technique of extracting information from websites. This technique mostly focuses on the transformation of unstructured data (HTML format) on the web into structured data (database or spreadsheet).
+
+<p>You can perform web scrapping in various ways, including use of Google Docs to almost every programming language. I would resort to Python because of its ease and rich eocsystem. It has a library known as 'BeautifulSoup' which assists this task. In this article, we'll show you the easiest way to learn web scraping using python programming.</p>
+
+<p>For those of you, who need a non-programming way to extract information out of web pages, you can also look at <a href="https://import.io/">import.io</a> . It provides a GUI driven interface to perform all basic web scraping operations. </p>
+
+<h2>Libraries required for web scraping</h2>
+<hr>
+<p>As we know, python is a open source programming language. You may find many libraries to perform one function. Hence, it is necessary to find the best to use library. We prefer BeautifulSoup (python library), since it is easy and intuitive to work on. Precisely, We'll use two Python modules for scraping data:</p>
+<ul>
+<li><b>Requests: HTTP for Humans:</b> It allows you to send organic, grass-fed HTTP/1.1 requests, without the need for manual labor. There's no need to manually add query strings to your URLs, or to form-encode your POST data. Keep-alive and HTTP connection pooling are 100% automatic, powered by urllib3, which is embedded within Requests. You can look at the installation instruction in its <a href="http://docs.python-requests.org/en/master/">documentation page</a>.</li>
+<li><b>BeautifulSoup:</b> t is an incredible tool for pulling out information from a webpage. You can use it to extract tables, lists, paragraph and you can also put filters to extract information from web pages. In this article, we will use latest version BeautifulSoup 4. You can look at the installation instruction in its <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">documentation page</a>.</li>
+</ul>
+<p>BeautifulSoup does not fetch the web page for us. That's why, we use requests module in combination with the BeautifulSoup library. </p>
+<p>Python has several other options for HTML scraping in addition to BeatifulSoup. Here are some others:</p>
+<ul>
+<li><a href="http://wwwsearch.sourceforge.net/mechanize/">mechanize</a></li>
+<li><a href="http://arshaw.com/scrapemark/">scrapemark</a></li>
+<li><a href="http://scrapy.org/">scrapy</a></li>
+</ul>
+
+<h2>Beautiful Soup</h2>
+<hr>
+<p>Beautiful Soup is a Python library for pulling data out of HTML and XML files. It works with your favorite parser to provide idiomatic ways of navigating, searching, and modifying the parse tree. It commonly saves programmers hours or days of work.</p>
+
+<p>These instructions illustrate all major features of Beautiful Soup 4, with examples. We show you what the library is good for, how it works, how to use it, how to make it do what you want, and what to do when it violates your expectations.</p>
+
+<p>The examples in this documentation should work the same way in Python 2.7 and Python 3.</p>
+
+<p>You might be looking for the documentation for <a href="http://www.crummy.com/software/BeautifulSoup/bs3/documentation.html">Beautiful Soup 3</a>. If so, you should know that Beautiful Soup 3 is no longer being developed, and that Beautiful Soup 4 is recommended for all new projects. If you want to learn about the differences between Beautiful Soup 3 and Beautiful Soup 4, see <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/#porting-code-to-bs4">Porting code to BS4</a>.</p>
+
+<h3>Quick Start</h3>
+Import the required libraries:
+
+<pre class="brush:py;">
+import requests
+from bs4 import BeautifulSoup
+</pre>
+<p>To get the contents of the required page</p>
+<pre class="brush:py;">
+r = requests.get('http://www.sjcet.co.in/')
+</pre>
+
+<p>Pass the fetched contents to the 'soup' object. Soup object will be used to do the further operations.</p>
+
+<p>To get the contents of the required page</p>
+<pre class="brush:py;">
+soup = BeautifulSoup(r.content, 'html.parser')
+</pre>
+<p>Here are some simple ways to navigate that data structure:</p>
+<pre class="brush:py;">
+>>> soup.title
+#<title>S J C E T - St. John College Of Engineering And Technology , Palghar (East)</title>
+>>> soup.title.name
+#'title'
+>>> soup.title.string
+#'S J C E T - St. John College Of Engineering And Technology , Palghar (East)'
+>>> soup.p
+>>> soup.a
+#<a href="#" id="logo"><img align="middle" alt="" height="50" src="images/button.gif" width="255"/></a>
+>>> soup.find_all('a')
+>>> soup.find(id="logo")
+#<a href="#" id="logo"><img align="middle" alt="" height="50" src="images/button.gif" width="255"/></a>
+>>> for link in soup.find_all('a'):
+...     print(link.get('href'))
+</pre>
+<h3>Navigating using tag names</h3>
+<p>The simplest way to navigate the parse tree is to say the name of the tag you want. If you want the &lthead&gt tag, just say <code>soup.head</code>:</p>
+<pre class="brush:py;">
+>>> soup.head
+>>> soup.title
+#<title>S J C E T - St. John College Of Engineering And Technology , Palghar (East)</title>
+
+</pre>
+<p>You can do use this trick again and again to zoom in on a certain part of the parse tree. This code gets the first &lta&gt tag beneath the &ltbody&gt tag:</p>
+<pre class="brush:py;">
+>>> soup.body.a
+#<a href="#" id="logo"><img align="middle" alt="" height="50" src="images/button.gif" width="255"/></a>
+</pre>
+<p>Using a tag name as an attribute will give you only the first tag by that name:</p>
+<pre class="brush:py;">
+>>> soup.a
+#<a href="#" id="logo"><img align="middle" alt="" height="50" src="images/button.gif" width="255"/></a>
+</pre>
+<p>If you need to get all the &lta&gt tags, or anything more complicated than the first tag with a certain name, you'll need to use one of the methods described in Searching the tree, such as <code>find_all()</code>:</p>
+<pre class="brush:py;">
+>>> soup.find_all('a')
+</pre>
+<p>A tag's children are available in a list called <code>.contents</code>:</p>
+<pre class="brush:py;">
+>>> a_tag = soup.find_all('a')
+>>> text = title_tag.contents[0]
+</pre>
+<p>If a tag has only one child, the child is made available as <code>.string</code>:</p>
+<pre class="brush:py;">
+>>> a_tag = soup.find_all('a')
+>>> a_tag[0].text
+>>> a_tag[0].string
+</pre>
+<h3>Searching the tree</h3>
+<p>Beautiful Soup defines a lot of methods for searching the parse tree, but they're all very similar. We are going to spend a lot of time explaining the two most popular methods: find() and find_all(). The other methods take almost exactly the same arguments, so we'll just cover them briefly.</p>
+<h3>Kinds of filters</h3>
+<p>Before talking in detail about find_all() and similar methods, we want to show examples of different filters you can pass into these methods. These filters show up again and again, throughout the search API. You can use them to filter based on a tag's name, on its attributes, on the text of a string, or on some combination of these.</p>
+<h3>A string</h3>
+<p>The simplest filter is a string. Pass a string to a search method and Beautiful Soup will perform a match against that exact string. This code finds all the &ltb&gt tags in the document:</p>
+<pre class="brush:py;">
+>>> soup.find_all('b')
+</pre>
+<h3>A regular expression</h3>
+<pre class="brush:py;">
+>>> import re
+>>> for tag in soup.find_all(re.compile("^b")):
+        print(tag.name)
+</pre>
+<h3>A list</h3>
+<p>If you pass in a list, Beautiful Soup will allow a string match against any item in that list. This code finds all the &lta&gt tags and all the &ltb&gt tags:</p>
+<pre class="brush:py;">
+>>> soup.find_all(["a", "b"])
+</pre>
+<h4>find_all()</h4>
+Signature: <code>find_all(name, attrs, recursive, string, limit, **kwargs)</code>
+<p>The <code>find_all()</code> method looks through a tag’s descendants and retrieves all descendants that match your filters. We gave several examples in Kinds of filters, but here are a few more:</p>
+<pre class="brush:py;">
+>>> soup.find_all("title")
+#[<title>S J C E T - St. John College Of Engineering And Technology , Palghar (East)</title>, <title>RVH 3D</title>]
+>>> soup.find_all("a", "firstlink")
+#[<a class="firstlink" href="index.html">Home</a>]
+>>> soup.find_all("link", {'media': 'screen'})
+#[<link href="css/colorbox.css" media="screen" rel="stylesheet" type="text/css"/>, <link href="css/easyslider.css" media="screen" rel="stylesheet" type="text/css"/>]
+>>> soup.find_all(rel="stylesheet")
+[<link href="css/style.css" rel="stylesheet"/>, <link href="css/ddlevelsmenu-base.css" rel="stylesheet" type="text/css"/
+>, <link href="css/colorbox.css" media="screen" rel="stylesheet" type="text/css"/>, <link href="css/recent-projects.css"
+ rel="stylesheet" type="text/css"/>, <link href="css/easyslider.css" media="screen" rel="stylesheet" type="text/css"/>,
+<link href="css/slidemenu.css" rel="stylesheet" type="text/css"/>]
+#soup.find_all("a", limit=2)
+</pre>
+
+
+<h2>Scraping Yellow Pages Website</h2>
+<hr>
+<p>Now we will be scraping the yellowpages.com to get the address of the desired search query.
+<p>Import the required libraries:</p>
+<pre class="brush:py;">
+import requests
+from BeautifulSoup import BeautifulSoup
+</pre>
+<p>Fetch the required URL:</p>
+<pre class="brush:py;">
+url = 'http://www.yellowpages.com/search?search_terms=coffee&geo_location_terms=new+york'
+r = requests.get(url)
+</pre>
+<p>Create a beautiful soup object:</p>
+<pre class="brush:py;">
+soup = BeautifulSoup(r.content)
+</pre>
+<p>Identify the &ltdiv&gt class that is holding the address details and iterate it.</p>
+<pre class="brush:py;">
+for item in soup.find_all('div', {'class': 'info'}):
+	print item.contents[0].find_all('a', {'class': 'business-name'})[0].text
+	print item.contents[1].find_all('span', {'class': 'street-address'})[0].text
+	print item.contents[1].find_all('span', {'class': 'locality'})[0].text.replace(',', '')
+	print item.contents[1].find_all('span', {'itemprop': 'addressRegion'})[0].text,
+	print item.contents[1].find_all('span', {'itemprop': 'postalCode'})[0].text
+	print item.contents[1].find_all('div', {'itemprop': 'telephone'})[0].text
+</pre>
+
+{% endblock %}

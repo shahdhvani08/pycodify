@@ -1,0 +1,129 @@
+﻿{% extends "firstapp/course_base.html" %}
+
+{% block content %}
+<h1>Python Object Types - Lists</h1>
+<br>
+<p>List object is the more general sequence provided by Python. Lists are ordered collections of arbitrarily typed objects. They have no fixed size. In other words, they can hold arbitrary objects and can expand dynamically as new items are added. They are mutable - unlike strings, lists can be modified in-place by assignment to offsets as well as several list method calls.</p>
+<h2>Lists - Type-Specific Operations</h2>
+<hr>
+<p>The lists have no <b>fixed type constraint</b>. The list we just look at, for instance, contains three objects of completely different types. Further, lists have no <b>fixed size</b>. In other words, they can grow and shrink on demand in response to list-specific operations:</p>
+
+<pre class = "brush:py;">
+>>> # Growing: add object at the end of list
+>>> L.append('Dijkstra')
+>>> L
+[123, 'poe', 3.1415, 'Dijkstra']
+>>>
+>>> # Shrinking: delete an item in the middle
+>>> L.pop(2)
+3.1415
+>>> 
+>>> L
+[123, 'poe', 'Dijkstra']
+>>> 
+</pre>
+<p>The <code>append</code> method expands the list's size and inserts an item at the end. The <code>pop</code> method then removes an item at a given offset. Other list methods insert an item at an arbitrary position (insert), remove a given item by value (remove), etc. Because lists are <b>mutable</b>, most list methods also change the list object in-place instead of creating a new one:</p>
+
+<pre class = "brush:py;">
+>>> 
+>>> M = ['Ludwig', 'van', 'Beethoven']
+>>> M.sort()
+>>> M
+['Beethoven', 'Ludwig', 'van']
+>>> M.reverse()
+>>> M
+['van', 'Ludwig', 'Beethoven']
+>>> 
+</pre>
+<p>The list <code>sort</code> method orders the list in ascending fashion by default. The <code>reverse</code> method reverses it. In both cases, the methods modify the list directly.</p>
+
+
+
+<h2>Lists - Bound Checking</h2>
+<hr>
+<p>Even though <code>lists</code> have no fixed size, <code>Python</code> still doesn't allow us to reference items that are not exist. Indexing off the end of a list is always a mistake, but so is assigning off the end. Rather than silently growing the list, Python reports an error. To grow a list, we call list methods such as append.</p>
+
+<pre class = "brush:py;">
+>>> L
+[123, 'poe', 'Dijkstra']
+>>> L[10]
+Traceback (most recent call last):
+  File "", line 1, in 
+    L[10]
+IndexError: list index out of range
+>>> 
+>>> L[10] = 99
+Traceback (most recent call last):
+  File "", line 1, in 
+    L[10] = 99
+IndexError: list assignment index out of range
+>>>
+</pre> 
+
+
+<h2>Lists - Nesting</h2>
+<hr>
+<p>Python's core data types support arbitrary nesting. We can nest them in any combination. We can have a list that contains a dictionary, which contains another list, and so on. One immediate application of this feature is to represent <b>matrixes</b> or <b>multidimensional arrays</b>.</p>
+
+<pre class = "brush:py;">
+>>> 
+>>> # A 3 x 3 matrix, as nested lists
+>>> M = [ [1, 2, 3],
+          [4, 5, 6],
+          [7, 8, 9] ]
+>>> M
+[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+>>> 
+</pre>
+<p>We can access the matrix in several ways:</p>
+
+<pre class = "brush:py;">
+>>> 
+>>> # Get row 2
+>>> M[1]
+[4, 5, 6]
+>>> # Get row 2, then get item 3 of that row
+>>> M[1][2]
+6
+>>> 
+</pre>
+<p>The first operation fetches the entire second row, and the second grabs the third item of that row.</p>
+
+<h2>Methods of list objects:</h2>
+<hr>
+<ul>
+<li>list.append(x)</li>
+Add an item to the end of the list. Equivalent to a[len(a):] = [x].
+
+<li>list.extend(L)</li>
+Extend the list by appending all the items in the given list. Equivalent to a[len(a):] = L.
+
+<li>list.insert(i, x)</li>
+Insert an item at a given position. The first argument is the index of the element before which to insert, so a.insert(0, x) inserts at the front of the list, and a.insert(len(a), x) is equivalent to a.append(x).
+
+<li>list.remove(x)</li>
+Remove the first item from the list whose value is x. It is an error if there is no such item.
+
+<li>list.pop([i])</li>
+Remove the item at the given position in the list, and return it. If no index is specified, a.pop() removes and returns the last item in the list. (The square brackets around the i in the method signature denote that the parameter is optional, not that you should type square brackets at that position. You will see this notation frequently in the Python Library Reference.)
+
+<li>list.clear()</li>
+Remove all items from the list. Equivalent to del a[:].
+
+<li>list.index(x)</li>
+Return the index in the list of the first item whose value is x. It is an error if there is no such item.
+
+<li>list.count(x)</li>
+Return the number of times x appears in the list.
+
+<li>list.sort(key=None, reverse=False)</li>
+Sort the items of the list in place (the arguments can be used for sort customization, see sorted() for their explanation).
+
+<li>list.reverse()</li>
+Reverse the elements of the list in place.
+
+<li>list.copy()</li>
+Return a shallow copy of the list. Equivalent to a[:].
+</ul>
+
+{% endblock %}

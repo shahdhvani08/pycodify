@@ -1,0 +1,216 @@
+﻿{% extends "firstapp/course_base.html" %}
+
+{% block content %}
+<h1>Python Date &amp; Time</h1>
+
+<hr />
+<p>A Python program can handle date and time in several ways. Converting between date formats is a common chore for computers. Python's time and calendar modules help track dates and times.</p>
+<h2>What is Tick?</h2><hr />
+<p>Time intervals are floating-point numbers in units of seconds. Particular instants in time are expressed in seconds since 12:00am, January 1, 1970(epoch).</p>
+<p>There is a popular <b>time</b> module available in Python which provides functions for working with times, and for converting between representations. The function <i>time.time()</i> returns the current system time in ticks since 12:00am, January 1, 1970(epoch).</p>
+<h2>Example</h2><hr />
+<pre class="brush:py;">
+#!/usr/bin/python
+import time;  # This is required to include time module.
+
+ticks = time.time()
+print "Number of ticks since 12:00am, January 1, 1970:", ticks
+</pre>
+<p>This would produce a result something as follows &minus;</p>
+<pre class="result notranslate">
+Number of ticks since 12:00am, January 1, 1970: 7186862.73399
+</pre>
+<p>Date arithmetic is easy to do with ticks. However, dates before the epoch cannot be represented in this form. Dates in the far future also cannot be represented this way - the cutoff point is sometime in 2038 for UNIX and Windows.</p>
+<h2>What is TimeTuple?</h2><hr />
+<p>Many of Python's time functions handle time as a tuple of 9 numbers, as shown below &minus;</p>
+<table class="table table-bordered">
+<tr>
+<th style="width:10%">Index</th><th style="width:40%">Field</th><th>Values</th>
+</tr>
+<tr><td>0</td><td>4-digit year</td><td>2008</td></tr>
+<tr><td>1</td><td>Month</td><td>1 to 12</td></tr>
+<tr><td>2</td><td>Day</td><td>1 to 31</td></tr>
+<tr><td>3</td><td>Hour</td><td>0 to 23</td></tr>
+<tr><td>4</td><td>Minute</td><td>0 to 59</td></tr>
+<tr><td>5</td><td>Second</td><td>0 to 61 (60 or 61 are leap-seconds)</td></tr>
+<tr><td>6</td><td>Day of Week</td><td>0 to 6 (0 is Monday)</td></tr>
+<tr><td>7</td><td>Day of year</td><td>1 to 366 (Julian day)</td></tr>
+<tr><td>8</td><td>Daylight savings</td><td>-1, 0, 1, -1 means library determines DST</td></tr>
+</table>
+<p>The above tuple is equivalent to <b>struct_time</b> structure. This structure has following attributes &minus;</p>
+<table class="table table-bordered">
+<tr>
+<th style="width:10%">Index</th><th style="width:40%">Attributes</th><th>Values</th>
+</tr>
+<tr><td>0</td><td>tm_year</td><td>2008</td></tr>
+<tr><td>1</td><td>tm_mon</td><td>1 to 12</td></tr>
+<tr><td>2</td><td>tm_mday</td><td>1 to 31</td></tr>
+<tr><td>3</td><td>tm_hour</td><td>0 to 23</td></tr>
+<tr><td>4</td><td>tm_min</td><td>0 to 59</td></tr>
+<tr><td>5</td><td>tm_sec</td><td>0 to 61 (60 or 61 are leap-seconds)</td></tr>
+<tr><td>6</td><td>tm_wday</td><td>0 to 6 (0 is Monday)</td></tr>
+<tr><td>7</td><td>tm_yday</td><td>1 to 366 (Julian day)</td></tr>
+<tr><td>8</td><td>tm_isdst</td><td>-1, 0, 1, -1 means library determines DST</td></tr>
+</table>
+<h2>Getting current time</h2><hr />
+<p>To translate a time instant from a <i>seconds since the epoch</i> floating-point value into a time-tuple, pass the floating-point value to a function (e.g., localtime) that returns a time-tuple with all nine items valid.</p>
+<pre class="brush:py;">
+#!/usr/bin/python
+import time;
+
+localtime = time.localtime(time.time())
+print "Local current time :", localtime
+</pre>
+<p>This would produce the following result, which could be formatted in any other presentable form &minus;</p>
+<pre class="result notranslate">
+Local current time : time.struct_time(tm_year=2013, tm_mon=7, 
+tm_mday=17, tm_hour=21, tm_min=26, tm_sec=3, tm_wday=2, tm_yday=198, tm_isdst=0)
+</pre>
+<h2>Getting formatted time</h2><hr />
+<p>You can format any time as per your requirement, but simple method to get time in readable format is asctime() &minus;</p>
+<pre class="brush:py;">
+#!/usr/bin/python
+import time;
+
+localtime = time.asctime( time.localtime(time.time()) )
+print "Local current time :", localtime
+</pre>
+<p>This would produce the following result &minus;</p>
+<pre class="prettyprint notranslate">
+Local current time : Tue Jan 13 10:17:09 2009
+</pre>
+<h2>Getting calendar for a month</h2><hr />
+<p>The calendar module gives a wide range of methods to play with yearly and monthly calendars. Here, we print a calendar for a given month ( Jan 2008 ) &minus;</p>
+<pre class="brush:py;">
+#!/usr/bin/python
+import calendar
+
+cal = calendar.month(2008, 1)
+print "Here is the calendar:"
+print cal
+</pre>
+<p>This would produce the following result &minus;</p>
+<pre class="result notranslate">
+Here is the calendar:
+    January 2008
+Mo Tu We Th Fr Sa Su
+    1  2  3  4  5  6
+ 7  8  9 10 11 12 13
+14 15 16 17 18 19 20
+21 22 23 24 25 26 27
+28 29 30 31
+</pre>
+<h2>The <i>time</i> Module</h2><hr />
+<p>There is a popular <b>time</b> module available in Python which provides functions for working with times and for converting between representations. Here is the list of all available methods &minus;</p>
+<table class="table table-bordered">
+<tr>
+<th style="width:5%">SN</th><th style="width:95%">Function with Description</th></tr>
+<tr><td>1</td><td><p>time.altzone</p><p>The offset of the local DST timezone, in seconds west of UTC, if one is defined. This is negative if the local DST timezone is east of UTC (as in Western Europe, including the UK). Only use this if daylight is nonzero.</p></td></tr>
+<tr><td>2</td><td><p>time.asctime([tupletime])</p><p>Accepts a time-tuple and returns a readable 24-character string such as 'Tue Dec 11 18:07:14 2008'.</p></td></tr>
+<tr><td>3</td><td><p>time.clock( )</p><p>Returns the current CPU time as a floating-point number of seconds. To measure computational costs of different approaches, the value of time.clock is more useful than that of time.time().</p></td></tr>
+<tr><td>4</td><td><p>time.ctime([secs])</p><p>Like asctime(localtime(secs)) and without arguments is like asctime( )</p></td></tr>
+<tr><td>5</td><td><p>time.gmtime([secs])</p><p>Accepts an instant expressed in seconds since the epoch and returns a time-tuple t with the UTC time. Note : t.tm_isdst is always 0</p></td></tr>
+<tr><td>6</td><td><p>time.localtime([secs])</p><p>Accepts an instant expressed in seconds since the epoch and returns a time-tuple t with the local time (t.tm_isdst is 0 or 1, depending on whether DST applies to instant secs by local rules).</p></td></tr>
+<tr><td>7</td><td><p>time.mktime(tupletime)</p><p>Accepts an instant expressed as a time-tuple in local time and returns a floating-point value with the instant expressed in seconds since the epoch.</p></td></tr>
+<tr><td>8</td><td><p>time.sleep(secs)</p><p>Suspends the calling thread for secs seconds.</p></td></tr>
+<tr><td>9</td><td><p>time.strftime(fmt[,tupletime])</p><p>Accepts an instant expressed as a time-tuple in local time and returns a string representing the instant as specified by string fmt.</p></td></tr>
+<tr><td>10</td><td><p>time.strptime(str,fmt='%a %b %d %H:%M:%S %Y')</p><p>Parses str according to format string fmt and returns the instant in time-tuple format.</p></td></tr>
+<tr><td>11</td><td><p>time.time( )</p><p>Returns the current time instant, a floating-point number of seconds since the epoch. </p></td></tr>
+<tr><td>12</td><td><p>time.tzset()</p><p>Resets the time conversion rules used by the library routines. The environment variable TZ specifies how this is done.</p></td></tr>
+</table>
+<p>Let us go through the functions briefly &minus;</p>
+<p>There are following two important attributes available with time module:</p>
+<table class="table table-bordered">
+<tr>
+<th style="width:5%">SN</th><th style="width:95%">Attribute with Description</th></tr>
+<tr><td>1</td><td><b>time.timezone</b><p>Attribute time.timezone is the offset in seconds of the local time zone (without DST) from UTC (&gt;0 in the Americas; &lt;=0 in most of Europe, Asia, Africa).</p></td></tr>
+<tr><td>2</td><td><b>time.tzname</b><p>Attribute time.tzname is a pair of locale-dependent strings, which are the names of the local time zone without and with DST, respectively.</p></td></tr>
+</table>
+<h2>The <i>calendar</i> Module</h2><hr />
+<p>The calendar module supplies calendar-related functions, including functions to print a text calendar for a given month or year.</p>
+<p> By default, calendar takes Monday as the first day of the week and Sunday as the last one. To change this, call calendar.setfirstweekday() function.</p>
+<p>Here is a list of functions available with the <i>calendar</i> module:</p>
+<table class="table table-bordered">
+<tr>
+<th style="width:5%">SN</th>
+<th style="width:95%">Function with Description</th>
+</tr>
+<tr>
+<td>1</td>
+<td><b>calendar.calendar(year,w=2,l=1,c=6)</b><p>Returns a multiline string with a calendar for year year formatted into three columns separated by c spaces. w is the width in characters of each date; each line has length 21*w+18+2*c. l is the number of lines for each week.</p></td>
+</tr>
+<tr>
+<td>2</td>
+<td><b>calendar.firstweekday( )</b><p>Returns the current setting for the weekday that starts each week. By default, when calendar is first imported, this is 0, meaning Monday.</p></td></tr>
+<tr>
+<td>3</td>
+<td><b>calendar.isleap(year)</b><p>Returns True if year is a leap year; otherwise, False.</p></td></tr>
+<tr>
+<td>4</td>
+<td><b>calendar.leapdays(y1,y2)</b><p>Returns the total number of leap days in the years within range(y1,y2).</p></td></tr>
+<tr>
+<td>5</td>
+<td><b>calendar.month(year,month,w=2,l=1)</b><p>Returns a multiline string with a calendar for month month of year year, one line per week plus two header lines. w is the width in characters of each date; each line has length 7*w+6. l is the number of lines for each week.</p></td></tr>
+<tr>
+<td>6</td>
+<td><b>calendar.monthcalendar(year,month)</b><p>Returns a list of lists of ints. Each sublist denotes a week. Days outside month month of year year are set to 0; days within the month are set to their day-of-month, 1 and up.</p></td></tr>
+<tr>
+<td>7</td>
+<td><b>calendar.monthrange(year,month)</b><p>Returns two integers. The first one is the code of the weekday for the first day of the month month in year year; the second one is the number of days in the month. Weekday codes are 0 (Monday) to 6 (Sunday); month numbers are 1 to 12.</p></td></tr>
+<tr>
+<td>8</td>
+<td><b>calendar.prcal(year,w=2,l=1,c=6)</b><p>Like print calendar.calendar(year,w,l,c).</p></td></tr>
+<tr>
+<td>9</td>
+<td><b>calendar.prmonth(year,month,w=2,l=1)</b><p>Like print calendar.month(year,month,w,l).</p></td></tr>
+<tr>
+<td>10</td>
+<td><b>calendar.setfirstweekday(weekday)</b><p>Sets the first day of each week to weekday code weekday. Weekday codes are 0 (Monday) to 6 (Sunday).</p></td></tr>
+<tr>
+<td>11</td>
+<td><b>calendar.timegm(tupletime)</b><p>The inverse of time.gmtime: accepts a time instant in time-tuple form and returns the same instant as a floating-point number of seconds since the epoch.</p></td></tr>
+<tr>
+<td>12</td>
+<td><b>calendar.weekday(year,month,day)</b><p>Returns the weekday code for the given date. Weekday codes are 0 (Monday) to 6 (Sunday); month numbers are 1 (January) to 12 (December).</p></td></tr>
+</table>
+<h2>Example</h2><hr />
+<p>Check the output of the following:</p>
+<pre class="brush:py;">
+import datetime
+
+today = datetime.date.today()
+print 'Today    :', today
+
+one_day = datetime.timedelta(days=1)
+print 'One day  :', one_day #prints delta days
+
+yesterday = today - one_day
+print 'Yesterday:', yesterday #prints the yesterday's date
+
+tomorrow = today + one_day
+print 'Tomorrow :', tomorrow #prints the tomorrow's date
+
+print 'tomorrow - yesterday:', tomorrow - yesterday
+print 'yesterday - tomorrow:', yesterday - tomorrow
+
+#Below is the snippet for comparing the dates 
+print
+print "############ Now comparing the dates ############"
+print 
+
+print 'Times:'
+t1 = datetime.time(12, 55, 0)
+print '\tt1:', t1
+t2 = datetime.time(13, 5, 0)
+print '\tt2:', t2
+print '\tt1 < t2:', t1 < t2
+
+print 'Dates:'
+d1 = datetime.date.today()
+print '\td1:', d1
+d2 = datetime.date.today() + datetime.timedelta(days=1)
+print '\td2:', d2
+print '\td1 > d2:', d1 > d2
+</pre>
+
+{% endblock %}
