@@ -15,7 +15,7 @@ import posixpath
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+PROJECT_DIR = os.path.dirname(__file__)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -67,7 +67,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-          r'C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\templates'
+          #r'C:\Users\Jeri_Dabba\Google Drive\Python\Django\user_reg1\user_reg1\templates'
+          os.path.join(PROJECT_ROOT, '/templates'),
           ],
         'APP_DIRS': True,
         'OPTIONS': {
