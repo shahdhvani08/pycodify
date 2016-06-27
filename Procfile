@@ -1,1 +1,1 @@
-web: gunicorn test-python.wsgi --log-file -
+web: gunicorn user_reg1.wsgi --log-file -
