@@ -24,7 +24,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = 'f3767f6d-8757-42e1-99b4-65c80aaeab01'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['test-pycodify.herokuapp.com']
 EMAIL_HOST = 'smtp.gmail.com'
