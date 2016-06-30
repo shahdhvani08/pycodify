@@ -26,7 +26,7 @@ SECRET_KEY = 'f3767f6d-8757-42e1-99b4-65c80aaeab01'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['pycodify-sjcet.herokuapp.com']
+ALLOWED_HOSTS = ['test-pycodify.herokuapp.com']
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'pycodify@gmail.com'
